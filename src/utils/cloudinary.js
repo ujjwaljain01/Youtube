@@ -5,7 +5,7 @@ cloudinary.config({
   secure: true,
 });
 
-console.log(cloudinary.config());
+// console.log(cloudinary.config());
 
 const uploadOnCloudinary = async (localFilePath) => {
   try {
