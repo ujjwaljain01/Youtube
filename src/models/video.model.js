@@ -8,9 +8,15 @@ const videoSchema = new Schema(
       required: true,
       index: true,
     },
+    videoPublicId: {
+      type: String,
+    },
     Thumbnail: {
       type: String,
       required: true,
+    },
+    thumbnailPublicId: {
+      type: String,
     },
     owner: {
       type: mongoose.Schema.Types.ObjectId,
@@ -42,6 +48,6 @@ const videoSchema = new Schema(
   { timestamps: true }
 );
 
-mongoose.plugin(mongooseAggregatePaginate);
+videoSchema.plugin(mongooseAggregatePaginate);
 
 export const Video = mongoose.model("Video", videoSchema);

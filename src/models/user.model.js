@@ -32,6 +32,13 @@ const userSchema = new Schema(
     coverImage: {
       type: String,
     },
+    avatarPublicId:{
+      type: String,
+      required: true,
+    },
+    coverImagePublicId:{
+      type:String
+    },
     password: {
       type: String,
       required: [true, "password is required"],
