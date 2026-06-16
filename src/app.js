@@ -1,6 +1,7 @@
 import express from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import { ApiResponse } from "./utils/ApiResponse.js";
 
 const app = express();
 
@@ -18,8 +19,23 @@ app.use(cookieParser());
 
 //routes import
 import userRouter from "./routes/user.routes.js";
+import videoRouter from "./routes/video.routes.js";
 
 //routes declaration
 app.use("/api/v1/users", userRouter);
+app.use("/api/v1/videos", videoRouter);
+
+app.use((err, req, res, next) => {
+  const statusCode = err.statusCode || (err.name === "MulterError" ? 400 : 500);
+
+  return res.status(statusCode).json({
+    ...new ApiResponse(
+      statusCode,
+      null,
+      err.message || "Internal Server Error"
+    ),
+    errors: err.errors || [],
+  });
+});
 
 export { app };
