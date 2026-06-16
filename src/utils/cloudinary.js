@@ -1,6 +1,6 @@
-import { v4 as uuidv4 } from "uuid"; // Recommended for unique file names
+import { v4 as uuidv4 } from "uuid";
 import { v2 as cloudinary } from "cloudinary";
-import fs from "fs/promises";
+import fs from "fs";
 
 cloudinary.config({
   secure: true,
@@ -13,20 +13,19 @@ const uploadOnCloudinary = async (localFilePath, uploadType) => {
     if (!localFilePath) return null;
 
     const configMap = {
-      profile: {
-        folder: "user/profiles",
+      avatar: {
+        folder: "user/avatars",
         transformation: [
           { width: 400, height: 400, crop: "fill", gravity: "face" },
         ],
       },
       coverImage: {
-        folder: "user/covers",
+        folder: "user/coverImages",
         transformation: [{ width: 1200, height: 400, crop: "fill" }],
       },
       video: {
         folder: "videos/raw",
         resource_type: "video",
-        // Eagerly generates a thumbnail from the video frame
         eager: [{ width: 300, height: 200, crop: "pad", format: "jpg" }],
       },
       thumbnail: {
@@ -35,7 +34,6 @@ const uploadOnCloudinary = async (localFilePath, uploadType) => {
       },
     };
 
-    // 2. Fallback to default if an invalid type is passed
     const uploadConfig = configMap[uploadType] || {
       folder: "misc",
       resource_type: "auto",
@@ -47,17 +45,14 @@ const uploadOnCloudinary = async (localFilePath, uploadType) => {
       resource_type: uploadConfig.resource_type || "auto",
     };
 
-    // 4. Upload to Cloudinary
     const response = await cloudinary.uploader.upload(localFilePath, options);
 
-    // 5. Clean up local file system safely
     if (fs.existsSync(localFilePath)) {
       await fs.promises.unlink(localFilePath);
     }
 
     return response;
   } catch (error) {
-    // Clean up local file system even if upload fails
     if (localFilePath && fs.existsSync(localFilePath)) {
       await fs.promises.unlink(localFilePath);
     }
@@ -65,7 +60,6 @@ const uploadOnCloudinary = async (localFilePath, uploadType) => {
     return null;
   }
 };
-
 
 // this fn deletes file from cloudinary using public id and resource type
 const deleteFromCloudinary = async (publicId, resourceType = "image") => {

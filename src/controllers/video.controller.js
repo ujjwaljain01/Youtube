@@ -72,8 +72,8 @@ const publishVideo = asyncHandler(async (req, res) => {
   }
 
   const [videoResult, thumbnailResult] = await Promise.allSettled([
-    uploadOnCloudinary(videoFile.path),
-    uploadOnCloudinary(thumbnailFile.path),
+    uploadOnCloudinary(videoFile.path, "video"),
+    uploadOnCloudinary(thumbnailFile.path, "thumbnail"),
   ]);
 
   if (
@@ -180,7 +180,7 @@ const updateVideoAssets = asyncHandler(async (req, res) => {
     if (videoFile) {
       const duration = await getVideoDuration(videoFile.path);
 
-      uploadedVideo = await uploadOnCloudinary(videoFile.path);
+      uploadedVideo = await uploadOnCloudinary(videoFile.path, "video");
       if (!uploadedVideo) {
         throw new ApiError(500, "Failed to upload video file to Cloudinary");
       }
@@ -191,7 +191,10 @@ const updateVideoAssets = asyncHandler(async (req, res) => {
     }
 
     if (thumbnailFile) {
-      uploadedThumbnail = await uploadOnCloudinary(thumbnailFile.path);
+      uploadedThumbnail = await uploadOnCloudinary(
+        thumbnailFile.path,
+        "thumbnail"
+      );
       if (!uploadedThumbnail) {
         throw new ApiError(
           500,
