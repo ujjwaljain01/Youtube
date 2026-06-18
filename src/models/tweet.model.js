@@ -9,9 +9,15 @@ const tweetSchema = new Schema(
     },
     content: {
       type: String,
-      required: true,
+      required: [true, "Tweet content is required"],
+      validate: {
+        validator: function (value) {
+          return [...value].length <= 320;
+        },
+        message:
+          "Database Error: Tweet content cannot exceed 320 visual characters.",
+      },
       trim: true,
-      maxLength: 320,
     },
   },
   { timestamps: true }
