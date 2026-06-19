@@ -5,6 +5,7 @@ import { ApiResponse } from "../utils/ApiResponse.js";
 import { asyncHandler } from "../utils/asynchandler.js";
 import {
   deleteFromCloudinary,
+  uploadLargeOnCloudinary,
   uploadOnCloudinary,
 } from "../utils/cloudinary.js";
 import Ffmpeg from "fluent-ffmpeg";
@@ -72,7 +73,7 @@ const publishVideo = asyncHandler(async (req, res) => {
   }
 
   const [videoResult, thumbnailResult] = await Promise.allSettled([
-    uploadOnCloudinary(videoFile.path, "video"),
+    uploadLargeOnCloudinary(videoFile.path, "video"),
     uploadOnCloudinary(thumbnailFile.path, "thumbnail"),
   ]);
 
@@ -180,7 +181,7 @@ const updateVideoAssets = asyncHandler(async (req, res) => {
     if (videoFile) {
       const duration = await getVideoDuration(videoFile.path);
 
-      uploadedVideo = await uploadOnCloudinary(videoFile.path, "video");
+      uploadedVideo = await uploadLargeOnCloudinary(videoFile.path, "video");
       if (!uploadedVideo) {
         throw new ApiError(500, "Failed to upload video file to Cloudinary");
       }

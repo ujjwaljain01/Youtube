@@ -30,7 +30,7 @@ const generateAccessAndRefreshTokens = async (userId) => {
   }
 };
 
-// router.post("/register", upload.fields([{ name: "avatar", maxCount: 1 }, { name: "coverImage", maxCount: 1 }]), registerUser);
+// router.post("/register", memoryUpload().fields([{ name: "avatar", maxCount: 1 }, { name: "coverImage", maxCount: 1 }]), registerUser);
 const registerUser = asyncHandler(async (req, res) => {
   //get user details from frontend
   //validate - check if empty
@@ -62,7 +62,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
   console.log(req.files);
 
-  const avatarLocalPath = req.files?.avatar?.[0]?.path;
+  const avatarLocalPath = req.files?.avatar?.[0]?.buffer;
   // const coverImageLocalPath = req.files?.coverImage[0]?.path;
 
   let coverImageLocalPath;
@@ -71,7 +71,7 @@ const registerUser = asyncHandler(async (req, res) => {
     Array.isArray(req.files.coverImage) &&
     req.files.coverImage.length > 0
   ) {
-    coverImageLocalPath = req.files.coverImage[0].path;
+    coverImageLocalPath = req.files.coverImage[0].buffer;
   }
 
   if (!avatarLocalPath) {
@@ -286,9 +286,9 @@ const updateAccountDetails = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, user, "Account details updated Successfully"));
 });
 
-// router.patch("/avatar", verifyJWT, upload.single("avatar"), updateUserAvatar);
+// router.patch("/avatar", verifyJWT, memoryUpload().single("avatar"), updateUserAvatar);
 const updateUserAvatar = asyncHandler(async (req, res) => {
-  const avatarLocalPath = req.file?.path;
+  const avatarLocalPath = req.file?.buffer;
 
   if (!avatarLocalPath) throw new ApiError(400, "Avatar file is missing");
 
@@ -318,9 +318,9 @@ const updateUserAvatar = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, updatedUser, "Avatar is updated successfully"));
 });
 
-// router.patch("/coverImage", verifyJWT, upload.single("coverImage"), updateUserCoverImage);
+// router.patch("/coverImage", verifyJWT, memoryUpload().single("coverImage"), updateUserCoverImage);
 const updateUserCoverImage = asyncHandler(async (req, res) => {
-  const coverImageLocalPath = req.file?.path;
+  const coverImageLocalPath = req.file?.buffer;
 
   if (!coverImageLocalPath)
     throw new ApiError(400, "Cover Image file is missing");
