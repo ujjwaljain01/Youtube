@@ -7,6 +7,7 @@ import {
   togglePublishStatus,
   updateVideoDetails,
   updateVideoAssets,
+  incrementViews,
 } from "../controllers/video.controller.js";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
 import { upload } from "../middlewares/multer.middleware.js";
@@ -25,11 +26,11 @@ router
     publishVideo
   );
 
-router.route("/:id").get(getVideoById).delete(verifyJWT, deleteVideo);
+router.route("/:videoId").get(getVideoById).delete(verifyJWT, deleteVideo);
 
-router.route("/:id/details").patch(verifyJWT, updateVideoDetails);
+router.route("/:videoId/details").patch(verifyJWT, updateVideoDetails);
 
-router.route("/:id/assets").patch(
+router.route("/:videoId/assets").patch(
   verifyJWT,
   upload.fields([
     { name: "video", maxCount: 1 },
@@ -38,6 +39,8 @@ router.route("/:id/assets").patch(
   updateVideoAssets
 );
 
-router.route("/:id/toggle-publish").patch(verifyJWT, togglePublishStatus);
+router.route("/:videoId/toggle-publish").patch(verifyJWT, togglePublishStatus);
+
+router.route("/:videoId/increment-views").patch(incrementViews);
 
 export default router;

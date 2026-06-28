@@ -97,7 +97,7 @@ const publishVideo = asyncHandler(async (req, res) => {
     const video = await Video.create({
       videoFile: uploadedVideo.secure_url,
       videoPublicId: uploadedVideo.public_id,
-      Thumbnail: uploadedThumbnail.secure_url,
+      thumbnail: uploadedThumbnail.secure_url,
       thumbnailPublicId: uploadedThumbnail.public_id,
       owner: req.user._id,
       title: title.trim(),
@@ -119,9 +119,10 @@ const publishVideo = asyncHandler(async (req, res) => {
 
 // router.route("/:id").get(getVideoById)
 const getVideoById = asyncHandler(async (req, res) => {
-  ensureValidVideoId(req.params.id);
+  const {videoId} = req.params;
+  ensureValidVideoId(videoId);
 
-  const video = await Video.findById(req.params.id);
+  const video = await Video.findById(videoId);
   if (!video) {
     throw new ApiError(404, "Video not found");
   }
@@ -153,7 +154,7 @@ const getAllVideos = asyncHandler(async (req, res) => {
 
 // router.route("/:id/assets").patch()
 const updateVideoAssets = asyncHandler(async (req, res) => {
-  ensureValidVideoId(req.params.id);
+  ensureValidVideoId(req.params.videoId);
 
   const videoFile = req.files?.video?.[0];
   const thumbnailFile = req.files?.thumbnail?.[0];
@@ -165,7 +166,7 @@ const updateVideoAssets = asyncHandler(async (req, res) => {
     );
   }
 
-  const video = await Video.findById(req.params.id);
+  const video = await Video.findById(req.params.videoId);
   if (!video) {
     throw new ApiError(404, "Video not found");
   }
@@ -250,7 +251,7 @@ const updateVideoAssets = asyncHandler(async (req, res) => {
 
 // router.route("/:id/details").patch()
 const updateVideoDetails = asyncHandler(async (req, res) => {
-  ensureValidVideoId(req.params.id);
+  ensureValidVideoId(req.params.videoId);
 
   const { title, description } = req.body || {};
 
@@ -258,7 +259,7 @@ const updateVideoDetails = asyncHandler(async (req, res) => {
     throw new ApiError(400, "Provide either title or description to update");
   }
 
-  const video = await Video.findById(req.params.id);
+  const video = await Video.findById(req.params.videoId);
 
   if (!video) {
     throw new ApiError(404, "Video not found");
@@ -289,9 +290,9 @@ const updateVideoDetails = asyncHandler(async (req, res) => {
 
 // router.route("/:id").delete(verifyJWT, deleteVideo)
 const deleteVideo = asyncHandler(async (req, res) => {
-  ensureValidVideoId(req.params.id);
+  ensureValidVideoId(req.params.videoId);
 
-  const video = await Video.findById(req.params.id);
+  const video = await Video.findById(req.params.videoId);
   if (!video) {
     throw new ApiError(404, "Video not found");
   }
@@ -310,9 +311,9 @@ const deleteVideo = asyncHandler(async (req, res) => {
 
 // router.route("/:id/toggle-publish").patch(verifyJWT, togglePublishStatus)
 const togglePublishStatus = asyncHandler(async (req, res) => {
-  ensureValidVideoId(req.params.id);
+  ensureValidVideoId(req.params.videoId);
 
-  const video = await Video.findById(req.params.id);
+  const video = await Video.findById(req.params.videoId);
   if (!video) {
     throw new ApiError(404, "Video not found");
   }
@@ -326,6 +327,33 @@ const togglePublishStatus = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, video, "Publish status updated successfully"));
 });
 
+//
+const incrementViews = asyncHandler(async (req, res) => {
+  const { videoId } = req.params;
+
+  ensureValidVideoId(videoId);
+
+  const updatedVideo = await Video.findByIdAndUpdate(
+    videoId,
+    { $inc: { views: 1 } },
+    { new: true, projection: { views: 1 } }
+  );
+ 
+  if (!updatedVideo) {
+    throw new ApiError(404, "Video not found");
+  }
+
+  return res
+    .status(200)
+    .json(
+      new ApiResponse(
+        200,
+        updatedVideo.views,
+        "Video views incremented successfully"
+      )
+    );
+});
+
 export {
   publishVideo,
   getVideoById,
@@ -334,4 +362,5 @@ export {
   updateVideoDetails,
   deleteVideo,
   togglePublishStatus,
+  incrementViews,
 };
