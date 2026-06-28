@@ -62,7 +62,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
   console.log(req.files);
 
-  const avatarLocalPath = req.files?.avatar?.[0]?.buffer;
+  const avatarLocalPath = req.files?.avatar?.[0]?.path;
   // const coverImageLocalPath = req.files?.coverImage[0]?.path;
 
   let coverImageLocalPath;
@@ -71,7 +71,7 @@ const registerUser = asyncHandler(async (req, res) => {
     Array.isArray(req.files.coverImage) &&
     req.files.coverImage.length > 0
   ) {
-    coverImageLocalPath = req.files.coverImage[0].buffer;
+    coverImageLocalPath = req.files.coverImage[0].path;
   }
 
   if (!avatarLocalPath) {
@@ -288,7 +288,7 @@ const updateAccountDetails = asyncHandler(async (req, res) => {
 
 // router.patch("/avatar", verifyJWT, memoryUpload().single("avatar"), updateUserAvatar);
 const updateUserAvatar = asyncHandler(async (req, res) => {
-  const avatarLocalPath = req.file?.buffer;
+  const avatarLocalPath = req.file?.path;
 
   if (!avatarLocalPath) throw new ApiError(400, "Avatar file is missing");
 
@@ -320,7 +320,7 @@ const updateUserAvatar = asyncHandler(async (req, res) => {
 
 // router.patch("/coverImage", verifyJWT, memoryUpload().single("coverImage"), updateUserCoverImage);
 const updateUserCoverImage = asyncHandler(async (req, res) => {
-  const coverImageLocalPath = req.file?.buffer;
+  const coverImageLocalPath = req.file?.path;
 
   if (!coverImageLocalPath)
     throw new ApiError(400, "Cover Image file is missing");
