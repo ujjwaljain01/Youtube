@@ -1,5 +1,6 @@
 import mongoose, { Schema } from "mongoose";
-import { User } from "./user.model";
+import { User } from "./user.model.js"; 
+import mongooseAggregatePaginate from "mongoose-aggregate-paginate-v2";
 
 const subscriptionSchema = new Schema(
   {
@@ -16,9 +17,7 @@ const subscriptionSchema = new Schema(
 );
 
 subscriptionSchema.index({ channel: 1 });
-
-subscriptionSchema.index({ subscriber: 1 });
-
+subscriptionSchema.plugin(mongooseAggregatePaginate);
 subscriptionSchema.index({ subscriber: 1, channel: 1 }, { unique: true });
 
 export const Subscription = mongoose.model("Subscription", subscriptionSchema);

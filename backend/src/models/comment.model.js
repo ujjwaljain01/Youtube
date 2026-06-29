@@ -9,21 +9,31 @@ const commentSchema = new Schema(
       trim: true,
       maxlength: 320,
     },
-    video: {
+    targetId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Video",
+      refPath: "targetType",
       required: true,
+    },
+    targetType: {
+      type: String,
+      required: true,
+      enum: ["Video", "Comment","Tweet",],
     },
     owner: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: true,
     },
+    parentCommentId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Comment",
+      default: null,
+    },
   },
   { timestamps: true }
 );
 
-commentSchema.index({ video: 1, createdAt: -1 });
+commentSchema.index({ targetId: 1, parentCommentId: 1, createdAt: -1 });
 
 commentSchema.plugin(mongooseAggregatePaginate);
 

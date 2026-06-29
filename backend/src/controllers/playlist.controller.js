@@ -103,7 +103,7 @@ const getPlaylistById = asyncHandler(async (req, res) => {
             $project: {
               _id: 1,
               title: 1,
-              Thumbnail: 1,
+              thumbnail: 1,
               duration: 1,
               owner: "$ownerDetails",
             },
@@ -309,19 +309,32 @@ const getUserPlaylists = asyncHandler(async (req, res) => {
   const { userId } = req.params;
   ensureValidObjectId(userId, "user id");
 
-  const page = Math.max(Number.parseInt(req.query.page, 10) || 1, 1);
-  const limit = Math.min(
-    Math.max(Number.parseInt(req.query.limit, 10) || 20, 1),
-    100
-  );
-  const skip = (page - 1) * limit;
-
-  const playlists = await Playlist.find({ owner: userId })
-    .sort({ createdAt: -1 })
-    .skip(skip)
-    .limit(limit)
-    .populate("videos")
-    .populate("owner", "username fullName avatar");
+  const playlists = await Playlist.aggregate([
+    {
+      $match: { owner: new mongoose.Types.ObjectId(userId) },
+    },
+    {
+      $lookup: {
+        from: "videos",
+        let: { firstVideoId: { $arrayElemAt: ["$videos", 0] } },
+        pipeline: [
+          { $match: { $expr: { $eq: ["$_id", "$$firstVideoId"] } } },
+          { $project: { _id: 0, thumbnail: 1 } },
+        ],
+        as: "firstVideo",
+      },
+    },
+    {
+      $project: {
+        _id: 1,
+        name: 1,
+        description: 1,
+        owner: 1,
+        totalVideos: { $size: "$videos" },
+        firstVideoThumbnail: { $arrayElemAt: ["$firstVideo.thumbnail", 0] },
+      },
+    },
+  ]);
 
   return res
     .status(200)

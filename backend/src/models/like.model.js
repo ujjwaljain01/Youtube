@@ -3,7 +3,7 @@ import mongoose, { Schema } from "mongoose";
 const likeSchema = new Schema(
   {
     likedBy: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: "User",
       required: true,
     },
@@ -15,6 +15,7 @@ const likeSchema = new Schema(
     targetId: {
       type: Schema.Types.ObjectId,
       required: true,
+      refPath: "targetType",
     },
   },
   { timestamps: true }
