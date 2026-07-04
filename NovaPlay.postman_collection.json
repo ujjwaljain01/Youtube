@@ -1,0 +1,2361 @@
+{
+	"info": {
+		"_postman_id": "46d907af-d245-4852-a089-66f0c8ad1e9d",
+		"name": "Youtube",
+		"description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "52603190",
+		"_collection_link": "https://go.postman.co/collection/52603190-46d907af-d245-4852-a089-66f0c8ad1e9d?source=collection_link"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});",
+									"",
+									"pm.test(\"data._id exists\", () => {",
+									"    pm.expect(res.data._id).to.exist;",
+									"});",
+									"",
+									"pm.collectionVariables.set(\"userId\", res.data._id);",
+									"",
+									"if (res.data && res.data.accessToken) pm.collectionVariables.set(\"accessToken\", res.data.accessToken);",
+									"if (res.data && res.data.refreshToken) pm.collectionVariables.set(\"refreshToken\", res.data.refreshToken);"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "fullName",
+									"value": "Luffy",
+									"type": "default"
+								},
+								{
+									"key": "email",
+									"value": "luffy.dev@gmail.com",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "123456789",
+									"type": "default"
+								},
+								{
+									"key": "username",
+									"value": "luffy",
+									"type": "default"
+								},
+								{
+									"key": "avatar",
+									"type": "file",
+									"fileNotInWorkingDirectoryWarning": "This file isn't in your working directory. Teammates you share this request with won't be able to use this file. To make collaboration easier you can setup your working directory in Settings.",
+									"src": "/C:/Users/ujjwa/OneDrive/Pictures/Screenshots/Screenshot 2026-06-28 190900.png"
+								},
+								{
+									"key": "coverImage",
+									"type": "file",
+									"fileNotInWorkingDirectoryWarning": "This file isn't in your working directory. Teammates you share this request with won't be able to use this file. To make collaboration easier you can setup your working directory in Settings.",
+									"src": "/C:/Users/ujjwa/Downloads/2397732.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server}}/users/register",
+							"host": ["{{server}}"],
+							"path": ["users", "register"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [""],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});",
+									"",
+									"const userId = res.data?.user?._id || res.data?._id;",
+									"if (userId) pm.collectionVariables.set(\"userId\", userId);",
+									"",
+									"if (res.data && res.data.accessToken) pm.collectionVariables.set(\"accessToken\", res.data.accessToken);",
+									"if (res.data && res.data.refreshToken) pm.collectionVariables.set(\"refreshToken\", res.data.refreshToken);"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"ujjwaljain.dev@gmail.com\",\r\n    \"password\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/users/login",
+							"host": ["{{server}}"],
+							"path": ["users", "login"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/users/logout",
+							"host": ["{{server}}"],
+							"path": ["users", "logout"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "refresh-token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});",
+									"",
+									"if (res.data && res.data.accessToken) pm.collectionVariables.set(\"accessToken\", res.data.accessToken);",
+									"if (res.data && res.data.refreshToken) pm.collectionVariables.set(\"refreshToken\", res.data.refreshToken);"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/users/refresh-token",
+							"host": ["{{server}}"],
+							"path": ["users", "refresh-token"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change-password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \r\n\r\n    \"oldPassword\": \"123456789\",\r\n    \"newPassword\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/users/change-password",
+							"host": ["{{server}}"],
+							"path": ["users", "change-password"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "current-user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});"
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/users/current-user",
+							"host": ["{{server}}"],
+							"path": ["users", "current-user"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-account",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \r\n    \"fullname\":\"UjjwalJain\",\r\n    \"email\":\"ujjwaljain.dev@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/users/update-account",
+							"host": ["{{server}}"],
+							"path": ["users", "update-account"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "avatar",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"uuid": "801c157b-5f2c-4804-83a2-584ee4e1cd9c",
+									"src": "/C:/Users/ujjwa/Downloads/asta-black-clover.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server}}/users/avatar",
+							"host": ["{{server}}"],
+							"path": ["users", "avatar"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "coverImage",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "coverImage",
+									"type": "file",
+									"uuid": "ccb33bce-c26c-4318-a979-7d764f66ace9",
+									"src": "/C:/Users/ujjwa/Downloads/vinland.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server}}/users/coverImage",
+							"host": ["{{server}}"],
+							"path": ["users", "coverImage"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "userChannel",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});"
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{server}}/users/c/{{username}}",
+							"host": ["{{server}}"],
+							"path": ["users", "c", "{{username}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "watchHistory",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});"
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{server}}/users/history",
+							"host": ["{{server}}"],
+							"path": ["users", "history"]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "videos",
+			"item": [
+				{
+					"name": "publishVideo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});",
+									"",
+									"pm.test(\"data._id exists\", () => {",
+									"    pm.expect(res.data._id).to.exist;",
+									"});",
+									"",
+									"pm.collectionVariables.set(\"videoId\", res.data._id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "video",
+									"type": "file",
+									"uuid": "622480c4-8ac0-442f-9474-c15df5ff05f5",
+									"src": "/C:/Users/ujjwa/Videos/Screen Recordings/portfolioLong.mp4"
+								},
+								{
+									"key": "thumbnail",
+									"type": "file",
+									"uuid": "c0803aa2-6f0b-42b3-b990-dc4baa9a481b",
+									"src": "/C:/Users/ujjwa/OneDrive/Pictures/Screenshots/portfolio2.png"
+								},
+								{
+									"key": "title",
+									"value": "Long Portfolio Video",
+									"type": "text",
+									"uuid": "44ca0f6c-cbd0-423d-9697-3d7562574df6"
+								},
+								{
+									"key": "description",
+									"value": "This video is the showcase video of portoflio Project \nurl - ujjwalportfolio.vercel.app",
+									"type": "text",
+									"uuid": "0829fcd5-0ff4-48b1-abf8-553c48996665"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server}}/videos/",
+							"host": ["{{server}}"],
+							"path": ["videos", ""]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllVideo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});"
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{server}}/videos/",
+							"host": ["{{server}}"],
+							"path": ["videos", ""]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getVideoById",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});"
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{server}}/videos/{{videoId}}",
+							"host": ["{{server}}"],
+							"path": ["videos", "{{videoId}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Increment Video Views",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{server}}/videos/{{videoId}}/increment-views",
+							"host": ["{{server}}"],
+							"path": ["videos", "{{videoId}}", "increment-views"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateVideoAssests",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "video",
+									"type": "file",
+									"uuid": "088a6f78-05b0-47c9-afdd-15ad8397a139",
+									"src": "/C:/Users/ujjwa/Videos/Screen Recordings/portfolio.mp4"
+								},
+								{
+									"key": "thumbnail",
+									"type": "file",
+									"uuid": "890fe778-f57c-4495-af49-1f56e813d24f",
+									"src": "/C:/Users/ujjwa/OneDrive/Pictures/Screenshots/PortfolioThumbnail.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server}}/videos/{{videoId}}/assets",
+							"host": ["{{server}}"],
+							"path": ["videos", "{{videoId}}", "assets"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateVideoDetails",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"A Short Portfolio Video\",\r\n    \"description\":\"This video is the showcase video of my Portfolio Website\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/videos/{{videoId}}/views",
+							"host": ["{{server}}"],
+							"path": ["videos", "{{videoId}}", "views"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteVideo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/videos/{{videoId}}",
+							"host": ["{{server}}"],
+							"path": ["videos", "{{videoId}}"]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "tweets",
+			"item": [
+				{
+					"name": "createTweet",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});",
+									"",
+									"pm.test(\"data._id exists\", () => {",
+									"    pm.expect(res.data._id).to.exist;",
+									"});",
+									"",
+									"pm.collectionVariables.set(\"tweetId\", res.data._id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"Your tech stack doesn't matter if your foundational habits are broken. Optimize your daily routine before you optimize your software. 🚀\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/tweets/",
+							"host": ["{{server}}"],
+							"path": ["tweets", ""]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateTweet",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"Your tech stack doesn't matter if your foundational habits are broken. Optimize your daily routine before you optimize your software. 🚀\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/tweets/{{tweetId}}",
+							"host": ["{{server}}"],
+							"path": ["tweets", "{{tweetId}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteTweet",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/tweets/{{tweetId}}",
+							"host": ["{{server}}"],
+							"path": ["tweets", "{{tweetId}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllTweets",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/tweets?page=1&limit=8",
+							"host": ["{{server}}"],
+							"path": ["tweets"],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUsersTweet",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});"
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"If you could give your 18-year-old self just one sentence of advice, what would it be? Let's see them 👇\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/tweets/user/{{userId}}?nextCursor=",
+							"host": ["{{server}}"],
+							"path": ["tweets", "user", "{{userId}}"],
+							"query": [
+								{
+									"key": "nextCursor",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getTweetById",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});"
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"Your tech stack doesn't matter if your foundational habits are broken. Optimize your daily routine before you optimize your software. 🚀\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/tweets/{{tweetId}}",
+							"host": ["{{server}}"],
+							"path": ["tweets", "{{tweetId}}"]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "playlist",
+			"item": [
+				{
+					"name": "createPlaylist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});",
+									"",
+									"pm.test(\"data._id exists\", () => {",
+									"    pm.expect(res.data._id).to.exist;",
+									"});",
+									"",
+									"pm.collectionVariables.set(\"playlistId\", res.data._id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"ShowCases\",\r\n    \"description\": \"This playlist contains videos of all the projects created by me\",\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/playlist/",
+							"host": ["{{server}}"],
+							"path": ["playlist", ""]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPlaylistById",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});"
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/playlist/{{playlistId}}",
+							"host": ["{{server}}"],
+							"path": ["playlist", "{{playlistId}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatePlaylistDetails",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/playlist/{{playlistId}}",
+							"host": ["{{server}}"],
+							"path": ["playlist", "{{playlistId}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "removeVideoToPlaylist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/playlist/remove/{{videoId}}/{{playlistId}}",
+							"host": ["{{server}}"],
+							"path": [
+								"playlist",
+								"remove",
+								"{{videoId}}",
+								"{{playlistId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Playlist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{server}}/playlists/{{playlistId}}",
+							"host": ["{{server}}"],
+							"path": ["playlists", "{{playlistId}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addVideoToPlaylist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/playlist/add/{{videoId}}/{{playlistId}}",
+							"host": ["{{server}}"],
+							"path": [
+								"playlist",
+								"add",
+								"{{videoId}}",
+								"{{playlistId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserPlaylist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});"
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/playlist/user/{{userId}}",
+							"host": ["{{server}}"],
+							"path": ["playlist", "user", "{{userId}}"]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "subscriptions",
+			"item": [
+				{
+					"name": "toggleSubs",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"ShowCases\",\r\n        \"description\": \"This playlist contains videos of all the projects created by me\",\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/subscription/c/{{channelId}}",
+							"host": ["{{server}}"],
+							"path": ["subscription", "c", "{{channelId}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getSubscriptions",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});"
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/subscriptions/c/{{channelId}}",
+							"host": ["{{server}}"],
+							"path": ["subscriptions", "c", "{{channelId}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getSubscribers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});"
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/subscriptions/u/{{channelId}}",
+							"host": ["{{server}}"],
+							"path": ["subscriptions", "u", "{{channelId}}"]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "likes",
+			"item": [
+				{
+					"name": "Toggle Video Like",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/likes/toggle/v/{{videoId}}",
+							"host": ["{{server}}"],
+							"path": ["likes", "toggle", "v", "{{videoId}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Toggle Tweet Like",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/likes/toggle/t/{{tweetId}}",
+							"host": ["{{server}}"],
+							"path": ["likes", "toggle", "t", "{{tweetId}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Toggle Comment Like",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/likes/toggle/c/{{commentId}}",
+							"host": ["{{server}}"],
+							"path": ["likes", "toggle", "c", "{{commentId}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Liked Videos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/likes/videos",
+							"host": ["{{server}}"],
+							"path": ["likes", "videos"]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "comments",
+			"item": [
+				{
+					"name": "Add Comment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});",
+									"",
+									"pm.test(\"data._id exists\", () => {",
+									"    pm.expect(res.data._id).to.exist;",
+									"});",
+									"",
+									"pm.collectionVariables.set(\"commentId\", res.data._id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"content\": \"This is a sample comment\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/comments/{{targetId}}",
+							"host": ["{{server}}"],
+							"path": ["comments", "{{targetId}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Comment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"content\": \"Updated comment\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/comments/{{commentId}}",
+							"host": ["{{server}}"],
+							"path": ["comments", "{{commentId}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Comment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/comments/{{commentId}}",
+							"host": ["{{server}}"],
+							"path": ["comments", "{{commentId}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Replies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/comments/{{commentId}}/replies?limit=10&cursor=",
+							"host": ["{{server}}"],
+							"path": ["comments", "{{commentId}}", "replies"],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "cursor",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Comments",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const res = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 2xx\", () => {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"pm.test(\"Response contains statusCode\", () => {",
+									"    pm.expect(res).to.have.property(\"statusCode\");",
+									"});",
+									"",
+									"pm.test(\"Response contains data\", () => {",
+									"    pm.expect(res).to.have.property(\"data\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/comments/{{targetId}}?limit=10&cursor=",
+							"host": ["{{server}}"],
+							"path": ["comments", "{{targetId}}"],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "cursor",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "dashboard",
+			"item": [
+				{
+					"name": "Get Channel Stats",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{server}}/dashboard/stats",
+							"host": ["{{server}}"],
+							"path": ["dashboard", "stats"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Channel Videos (Default)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{server}}/dashboard/videos?page=1&limit=10",
+							"host": ["{{server}}"],
+							"path": ["dashboard", "videos"],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Channel Videos (Page 2)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{server}}/dashboard/videos?page=2&limit=5",
+							"host": ["{{server}}"],
+							"path": ["dashboard", "videos"],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "healthcheck",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{server}}/healthcheck",
+					"host": ["{{server}}"],
+					"path": ["healthcheck"]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [""]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [""]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "server",
+			"value": ""
+		},
+		{
+			"key": "username",
+			"value": ""
+		},
+		{
+			"key": "videoId",
+			"value": ""
+		},
+		{
+			"key": "commentId",
+			"value": ""
+		},
+		{
+			"key": "tweetId",
+			"value": ""
+		},
+		{
+			"key": "playlistId",
+			"value": ""
+		},
+		{
+			"key": "userId",
+			"value": ""
+		},
+		{
+			"key": "channelId",
+			"value": ""
+		},
+		{
+			"key": "targetId",
+			"value": ""
+		},
+		{
+			"key": "accessToken",
+			"value": ""
+		},
+		{
+			"key": "refreshToken",
+			"value": ""
+		}
+	]
+}
