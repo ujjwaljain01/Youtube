@@ -10,6 +10,42 @@ const ensureValidTweet = (id) => {
   }
 };
 
+const getAllTweets = asyncHandler(async (req, res) => {
+  const page = Math.max(1, Number.parseInt(req.query.page, 10) || 1);
+  const limit = Math.min(
+    50,
+    Math.max(1, Number.parseInt(req.query.limit, 10) || 8)
+  );
+  const skip = (page - 1) * limit;
+
+  const [tweets, totalTweets] = await Promise.all([
+    Tweet.find({})
+      .sort({ createdAt: -1, _id: -1 })
+      .skip(skip)
+      .limit(limit)
+      .populate({ path: "owner", select: "username fullName avatar" })
+      .lean(),
+    Tweet.countDocuments({}),
+  ]);
+
+  const hasNextPage = skip + tweets.length < totalTweets;
+
+  return res.status(200).json(
+    new ApiResponse(
+      200,
+      {
+        docs: tweets,
+        page,
+        limit,
+        totalDocs: totalTweets,
+        totalPages: Math.ceil(totalTweets / limit),
+        hasNextPage,
+      },
+      "Tweets fetched successfully"
+    )
+  );
+});
+
 // router.route("/").post(createTweet);
 const createTweet = asyncHandler(async (req, res) => {
   const { content } = req.body || {};
@@ -227,4 +263,11 @@ const getTweetById = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, tweet, "Tweet fetched successfully"));
 });
 
-export { createTweet, updateTweet, deleteTweet, getUserTweets, getTweetById };
+export {
+  createTweet,
+  updateTweet,
+  deleteTweet,
+  getAllTweets,
+  getUserTweets,
+  getTweetById,
+};
