@@ -1,0 +1,9 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+@import '@fontsource-variable/jetbrains-mono';
+
+@theme {
+	--font-mono: 'Roboto Mono', ui-monospace, monospace;
+}
+
