@@ -11,37 +11,71 @@ const ensureValidTweet = (id) => {
 };
 
 const getAllTweets = asyncHandler(async (req, res) => {
-  const page = Math.max(1, Number.parseInt(req.query.page, 10) || 1);
-  const limit = Math.min(
-    50,
-    Math.max(1, Number.parseInt(req.query.limit, 10) || 8)
-  );
-  const skip = (page - 1) * limit;
+  const limit = Math.min(50, Number.parseInt(req.query.limit, 10) || 8);
+  const { nextCursor } = req.query;
 
-  const [tweets, totalTweets] = await Promise.all([
-    Tweet.find({})
-      .sort({ createdAt: -1, _id: -1 })
-      .skip(skip)
-      .limit(limit)
-      .populate({ path: "owner", select: "username fullName avatar" })
-      .lean(),
-    Tweet.countDocuments({}),
+  // 1. Build a clean, dynamic match filter first
+  const matchFilter = {};
+  if (nextCursor) {
+    matchFilter._id = { $lt: new mongoose.Types.ObjectId(nextCursor) };
+  }
+
+  // 2. Pass the entire pipeline directly as a clean, structured array
+  const tweets = await Tweet.aggregate([
+    {
+      $match: matchFilter,
+    },
+    {
+      $sort: { _id: -1 }, // Chronological sorting using MongoDB ObjectIds
+    },
+    {
+      $limit: limit + 1, // Lookahead record to evaluate if a next page exists
+    },
+    {
+      $lookup: {
+        from: "users", // Must match your exact MongoDB collection name for users
+        localField: "owner",
+        foreignField: "_id",
+        as: "owner",
+      },
+    },
+    {
+      $unwind: "$owner", // Flattens the owner array into an object
+    },
+    {
+      $project: {
+        _id: 1,
+        content: 1,
+        createdAt: 1,
+        updatedAt: 1,
+
+        // Selected owner profile fields
+        "owner._id": 1,
+        "owner.username": 1,
+        "owner.fullName": 1,
+        "owner.avatar": 1,
+      },
+    },
   ]);
 
-  const hasNextPage = skip + tweets.length < totalTweets;
+  // 3. Process infinite scroll evaluation
+  const hasNextPage = tweets.length > limit;
+  if (hasNextPage) {
+    tweets.pop(); // Remove the extra lookahead item
+  }
+
+  const lastTweet = tweets[tweets.length - 1];
+  const endCursor = lastTweet ? lastTweet._id : null;
 
   return res.status(200).json(
     new ApiResponse(
       200,
       {
         docs: tweets,
-        page,
-        limit,
-        totalDocs: totalTweets,
-        totalPages: Math.ceil(totalTweets / limit),
+        nextCursor: hasNextPage ? endCursor : null,
         hasNextPage,
       },
-      "Tweets fetched successfully"
+      "Tweets fetched successfully for infinite scroll"
     )
   );
 });

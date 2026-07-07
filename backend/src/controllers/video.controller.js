@@ -119,7 +119,7 @@ const publishVideo = asyncHandler(async (req, res) => {
 
 // router.route("/:id").get(getVideoById)
 const getVideoById = asyncHandler(async (req, res) => {
-  const {videoId} = req.params;
+  const { videoId } = req.params;
   ensureValidVideoId(videoId);
 
   const video = await Video.findById(videoId);
@@ -134,22 +134,76 @@ const getVideoById = asyncHandler(async (req, res) => {
 
 // router.route("/").get(getAllVideos)
 const getAllVideos = asyncHandler(async (req, res) => {
-  const page = Math.max(Number.parseInt(req.query.page, 10) || 1, 1);
-  const limit = Math.min(
-    Math.max(Number.parseInt(req.query.limit, 10) || 10, 1),
-    100
-  );
+  const limit = Math.min(100, Number.parseInt(req.query.limit, 10) || 10);
+  const { nextCursor } = req.query;
 
-  const aggregate = Video.aggregate([
-    { $match: { isPublished: true } },
-    { $sort: { createdAt: -1 } },
+  // 1. Build a clean, dynamic match filter first
+  const matchFilter = { isPublished: true };
+  if (nextCursor) {
+    matchFilter._id = { $lt: new mongoose.Types.ObjectId(nextCursor) };
+  }
+
+  // 2. Pass the entire pipeline directly as a clean, scannable array
+  const videos = await Video.aggregate([
+    {
+      $match: matchFilter,
+    },
+    {
+      $sort: { _id: -1 },
+    },
+    {
+      $limit: limit + 1,
+    },
+    {
+      $lookup: {
+        from: "users",
+        localField: "owner",
+        foreignField: "_id",
+        as: "owner",
+      },
+    },
+    {
+      $unwind: "$owner",
+    },
+    {
+      $project: {
+        videoFile: 1,
+        thumbnail: 1,
+        title: 1,
+        description: 1,
+        duration: 1,
+        views: 1,
+        isPublished: 1,
+        createdAt: 1,
+        updatedAt: 1,
+        "owner._id": 1,
+        "owner.username": 1,
+        "owner.fullName": 1,
+        "owner.avatar": 1,
+      },
+    },
   ]);
 
-  const videos = await Video.aggregatePaginate(aggregate, { page, limit });
+  // 3. Process infinite scroll evaluation
+  const hasNextPage = videos.length > limit;
+  if (hasNextPage) {
+    videos.pop();
+  }
 
-  return res
-    .status(200)
-    .json(new ApiResponse(200, videos, "Videos fetched successfully"));
+  const lastVideo = videos[videos.length - 1];
+  const endCursor = lastVideo ? lastVideo._id : null;
+
+  return res.status(200).json(
+    new ApiResponse(
+      200,
+      {
+        docs: videos,
+        nextCursor: hasNextPage ? endCursor : null,
+        hasNextPage,
+      },
+      "Videos fetched successfully for infinite scroll"
+    )
+  );
 });
 
 // router.route("/:id/assets").patch()
@@ -338,7 +392,7 @@ const incrementViews = asyncHandler(async (req, res) => {
     { $inc: { views: 1 } },
     { new: true, projection: { views: 1 } }
   );
- 
+
   if (!updatedVideo) {
     throw new ApiError(404, "Video not found");
   }
