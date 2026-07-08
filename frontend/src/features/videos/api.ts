@@ -1,4 +1,4 @@
-import { api } from '@/api/client';
+import { api } from '@/api/axios';
 import { API } from '@/api/endpoints';
 
 import type { ApiResponse, GetVideosResponse } from '@/types/video.types';
