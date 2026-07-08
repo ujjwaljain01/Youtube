@@ -1,0 +1,217 @@
+@layer components {
+	/* ==========================================================
+     ICON BUTTONS
+  ========================================================== */
+
+	.icon-button {
+		@apply inline-flex items-center justify-center rounded-full transition-all duration-200;
+	}
+
+	.icon-button:hover {
+		background: var(--accent);
+	}
+
+	.icon-button:active {
+		transform: scale(0.96);
+	}
+
+	.icon-button-sm {
+		@apply h-8 w-8;
+	}
+
+	.icon-button-md {
+		@apply h-10 w-10;
+	}
+
+	.icon-button-lg {
+		@apply h-12 w-12;
+	}
+
+	/* ==========================================================
+     NAVBAR
+  ========================================================== */
+
+	.navbar {
+		@apply sticky top-0 z-50 flex h-14 items-center justify-between border-b px-4 backdrop-blur-xl;
+		background: var(--navbar);
+		border-color: var(--navbar-border);
+	}
+
+	/* ==========================================================
+     SIDEBAR
+  ========================================================== */
+
+	.sidebar-item {
+		@apply flex h-10 items-center gap-6 rounded-xl px-3 text-sm font-medium transition-all duration-200;
+		color: var(--sidebar-foreground);
+	}
+
+	.sidebar-item:hover {
+		background: var(--sidebar-hover);
+	}
+
+	.sidebar-item-active {
+		background: var(--sidebar-active);
+		font-weight: 600;
+	}
+
+	.sidebar-section-title {
+		@apply px-3 py-2 text-xs font-semibold uppercase tracking-wide;
+		color: var(--muted-foreground);
+	}
+
+	/* ==========================================================
+     VIDEO CARD
+  ========================================================== */
+
+	.video-card {
+		@apply rounded-xl transition-all duration-200;
+		background: var(--video-card);
+	}
+
+	.video-card:hover {
+		background: var(--video-card-hover);
+	}
+
+	.video-thumbnail {
+		@apply relative overflow-hidden rounded-xl;
+	}
+
+	.video-duration {
+		@apply absolute bottom-2 right-2 rounded px-1.5 py-0.5 text-xs font-medium;
+		background: rgb(0 0 0 / 0.8);
+		color: white;
+	}
+
+	/* ==========================================================
+     AVATAR
+  ========================================================== */
+
+	.avatar-ring {
+		@apply ring-2 ring-offset-2;
+		ring-color: var(--primary);
+		ring-offset-color: var(--background);
+	}
+
+	/* ==========================================================
+     CHIPS
+  ========================================================== */
+
+	.chip {
+		@apply inline-flex items-center rounded-lg px-3 py-1 text-sm font-medium transition-colors duration-200;
+		background: var(--secondary);
+		color: var(--secondary-foreground);
+	}
+
+	.chip:hover {
+		background: var(--accent);
+	}
+
+	.chip-active {
+		background: var(--foreground);
+		color: var(--background);
+	}
+
+	/* ==========================================================
+     PAGE
+  ========================================================== */
+
+	.page-title {
+		@apply text-2xl font-bold tracking-tight;
+	}
+
+	.section-title {
+		@apply text-lg font-semibold;
+	}
+
+	.section-subtitle {
+		color: var(--muted-foreground);
+	}
+
+	/* ==========================================================
+     CARDS
+  ========================================================== */
+
+	.surface {
+		@apply rounded-xl border;
+		background: var(--card);
+		border-color: var(--border);
+	}
+
+	.surface-hover {
+		@apply transition-colors duration-200;
+	}
+
+	.surface-hover:hover {
+		background: var(--accent);
+	}
+
+	/* ==========================================================
+     SEARCH
+  ========================================================== */
+
+	.search-input {
+		@apply h-10 rounded-full border px-4 outline-none transition-all;
+		background: var(--background);
+		border-color: var(--border);
+	}
+
+	.search-input:focus {
+		border-color: var(--ring);
+	}
+
+	/* ==========================================================
+     DIVIDERS
+  ========================================================== */
+
+	.divider {
+		@apply border-b;
+		border-color: var(--border);
+	}
+
+	/* ==========================================================
+     BADGES
+  ========================================================== */
+
+	.badge-live {
+		@apply rounded-md px-2 py-0.5 text-xs font-semibold;
+		background: var(--live-red);
+		color: white;
+	}
+
+	.badge-premium {
+		@apply rounded-md px-2 py-0.5 text-xs font-semibold;
+		background: var(--premium-gold);
+		color: black;
+	}
+
+	.badge-verified {
+		color: var(--verified-blue);
+	}
+
+	/* ==========================================================
+     SKELETON
+  ========================================================== */
+
+	.skeleton-bg {
+		background: var(--skeleton);
+	}
+
+	/* ==========================================================
+     SCROLL AREA
+  ========================================================== */
+
+	.scroll-surface {
+		background: var(--background);
+	}
+
+	/* ==========================================================
+     DIALOG
+  ========================================================== */
+
+	.dialog-surface {
+		@apply rounded-2xl border shadow-xl;
+		background: var(--card);
+		border-color: var(--border);
+	}
+}

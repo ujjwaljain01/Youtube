@@ -1,0 +1,15 @@
+export const categories = [
+	'All',
+	'Music',
+	'Gaming',
+	'News',
+	'React',
+	'Node.js',
+	'JavaScript',
+	'Programming',
+	'Podcasts',
+	'AI',
+	'Movies',
+	'Live',
+	'Recently uploaded',
+];

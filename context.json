@@ -1,0 +1,358 @@
+{
+	"project": {
+		"name": "NovaPlay",
+		"type": "Full Stack Video Sharing Platform",
+		"frontend": {
+			"framework": "React 19",
+			"bundler": "Vite",
+			"language": "TypeScript",
+			"styling": "Tailwind CSS v4",
+			"ui": "shadcn/ui",
+			"icons": "@phosphor-icons/react",
+			"animations": "Motion",
+			"state": "Zustand",
+			"routing": "React Router v7",
+			"videoPlayer": "VidStack (Watch Page only)",
+			"http": "Axios",
+			"serverState": "TanStack Query (planned)"
+		},
+		"backend": {
+			"framework": "Express.js",
+			"database": "MongoDB",
+			"orm": "Mongoose",
+			"storage": "Cloudinary",
+			"authentication": "JWT + Cookies"
+		}
+	},
+
+	"designPhilosophy": {
+		"overall": [
+			"Production-grade architecture",
+			"Feature-oriented organization",
+			"Reusable components",
+			"Composable UI",
+			"Data-driven rendering",
+			"Strong TypeScript typing",
+			"Avoid premature abstraction",
+			"UI-first before API integration"
+		],
+		"principles": [
+			"Separate UI state from server state",
+			"Keep components small and focused",
+			"Prefer composition over inheritance",
+			"Build reusable primitives first",
+			"Avoid duplicated layout logic",
+			"Backend responses should be transformed into frontend models"
+		]
+	},
+
+	"applicationStructure": {
+		"layouts": {
+			"AppLayout": "Completed",
+			"Navbar": "Completed",
+			"Sidebar": "Completed",
+			"MainContent": "Completed"
+		},
+		"components": {
+			"home": {
+				"filters": "Completed",
+				"sections": "Completed",
+				"feed": "Planned",
+				"skeletons": "Completed"
+			},
+			"video": {
+				"card": "Completed",
+				"section": "Completed",
+				"skeleton": "Completed"
+			},
+			"tweet": {
+				"card": "Completed",
+				"section": "Completed",
+				"skeleton": "Completed"
+			}
+		}
+	},
+
+	"folderStructure": {
+		"components": {
+			"layout": {
+				"navigation": {
+					"navbar": "Modular",
+					"sidebar": "Modular"
+				}
+			},
+			"home": {
+				"feed": ["HomeFeed.tsx"],
+				"filters": ["FeedFilters.tsx", "FeedFilterChip.tsx"],
+				"sections": [
+					"ContentSection.tsx",
+					"ContentSectionSkeleton.tsx",
+					"SectionHeader.tsx",
+					"VideoSection.tsx",
+					"VideoSectionSkeleton.tsx",
+					"TweetSection.tsx",
+					"TweetSectionSkeleton.tsx"
+				]
+			},
+			"video": {
+				"card": [
+					"VideoCard.tsx",
+					"VideoThumbnail.tsx",
+					"VideoMetadata.tsx",
+					"VideoMenu.tsx"
+				],
+				"skeleton": ["VideoCardSkeleton.tsx"]
+			},
+			"tweet": {
+				"card": [
+					"TweetCard.tsx",
+					"TweetHeader.tsx",
+					"TweetContent.tsx",
+					"TweetActions.tsx"
+				],
+				"skeleton": ["TweetCardSkeleton.tsx"]
+			}
+		}
+	},
+
+	"completedFeatures": {
+		"sidebar": {
+			"desktop": true,
+			"mobile": true,
+			"zustandStore": true,
+			"responsive": true,
+			"navigationData": true
+		},
+		"navbar": {
+			"sidebarToggle": true,
+			"logo": true,
+			"search": true,
+			"themeToggle": true,
+			"notifications": true,
+			"createButton": true,
+			"userMenu": true
+		},
+		"layout": {
+			"AppLayout": true,
+			"MainContent": true,
+			"SidebarIntegration": true,
+			"NavbarIntegration": true
+		},
+		"filters": {
+			"FeedFilters": true,
+			"FeedFilterStore": true,
+			"FeedFilterChip": true,
+			"HorizontalScroll": true
+		},
+		"video": {
+			"VideoCard": true,
+			"VideoThumbnail": true,
+			"VideoMetadata": true,
+			"VideoMenu": true,
+			"VideoSection": true,
+			"VideoCardSkeleton": true,
+			"VideoSectionSkeleton": true
+		},
+		"tweet": {
+			"TweetCard": true,
+			"TweetHeader": true,
+			"TweetContent": true,
+			"TweetActions": true,
+			"TweetSection": true,
+			"TweetCardSkeleton": true,
+			"TweetSectionSkeleton": true
+		},
+		"shared": {
+			"ContentSection": true,
+			"ContentSectionSkeleton": true,
+			"SectionHeader": true
+		}
+	},
+
+	"stateManagement": {
+		"zustandStores": {
+			"sidebar": {
+				"collapsed": true,
+				"mobileOpen": true,
+				"persisted": true
+			},
+			"feedFilter": {
+				"selected": true,
+				"persisted": true
+			}
+		},
+		"future": {
+			"TanStackQuery": "Planned",
+			"AuthStore": "Planned"
+		}
+	},
+
+	"feedArchitecture": {
+		"decision": "Mixed row-based homepage instead of mixed-card feed",
+		"homeFeed": [
+			"Video Section",
+			"Tweet Section",
+			"Video Section",
+			"Tweet Section",
+			"Video Section"
+		],
+		"future": [
+			"Infinite scrolling by sections",
+			"Separate Videos page",
+			"Separate Tweets page"
+		]
+	},
+
+	"videoArchitecture": {
+		"decision": "VidStack only on Watch Page",
+		"feedCards": {
+			"thumbnail": "Image",
+			"preview": "HTML video (future)",
+			"player": "Not mounted in feed"
+		},
+		"watchPage": {
+			"VidStack": true,
+			"MediaPlayer": true,
+			"Captions": true,
+			"PlaybackSpeed": true,
+			"Quality": true,
+			"Fullscreen": true
+		}
+	},
+
+	"contentSectionArchitecture": {
+		"genericComponent": "ContentSection<T>",
+		"genericSkeleton": "ContentSectionSkeleton",
+		"variants": "class-variance-authority",
+		"gridTypes": ["video", "tweet", "playlist", "channel"],
+		"constants": {
+			"CONTENT_GRID": true
+		}
+	},
+
+	"feedFilters": {
+		"source": "YouTube Categories (adapted)",
+		"topics": [
+			"All",
+			"Film & Animation",
+			"Autos & Vehicles",
+			"Music",
+			"Pets & Animals",
+			"Sports",
+			"Travel & Events",
+			"Gaming",
+			"People & Blogs",
+			"Comedy",
+			"Entertainment",
+			"News & Politics",
+			"How-to & Style",
+			"Education",
+			"Science & Technology",
+			"Nonprofits & Activism",
+			"Anime",
+			"Action & Adventure",
+			"Classics",
+			"Documentary",
+			"Drama",
+			"Family",
+			"Foreign",
+			"Horror",
+			"Sci-Fi & Fantasy",
+			"Thriller",
+			"Shows",
+			"Trailers"
+		]
+	},
+
+	"videoApi": {
+		"currentResponse": {
+			"pagination": true,
+			"docs": true,
+			"owner": "Currently ObjectId",
+			"futureOwner": "Populated object"
+		},
+		"frontendDecision": {
+			"Video": "Full resource",
+			"VideoCardData": "Feed model"
+		}
+	},
+
+	"tweetConcept": {
+		"replacement": "Tweets instead of Shorts",
+		"behavior": {
+			"likes": true,
+			"comments": true,
+			"shares": true
+		},
+		"design": "NovaPlay identity instead of Twitter clone"
+	},
+
+	"constants": {
+		"CONTENT_GRID": ["VIDEO", "TWEET", "PLAYLIST", "CHANNEL"]
+	},
+
+	"utilities": ["formatDuration", "formatViews", "formatUploadTime"],
+
+	"plannedInfrastructure": {
+		"api": {
+			"client": "Axios Instance",
+			"endpoints": "Centralized",
+			"interceptors": "Planned"
+		},
+		"features": {
+			"videos": ["api.ts", "queries.ts", "hooks.ts"],
+			"tweets": ["api.ts", "queries.ts", "hooks.ts"],
+			"auth": ["api.ts", "queries.ts", "hooks.ts"]
+		}
+	},
+
+	"milestones": {
+		"completed": [
+			"Sidebar",
+			"Navbar",
+			"App Layout",
+			"Feed Filters",
+			"Feed Filter Store",
+			"Video Card",
+			"Tweet Card",
+			"Content Section",
+			"Content Section Skeleton",
+			"Video Section",
+			"Tweet Section",
+			"Video Skeletons",
+			"Tweet Skeletons"
+		],
+		"next": [
+			"HomeFeed using mock data",
+			"HomePage integration",
+			"TanStack Query setup",
+			"Axios client",
+			"API layer",
+			"Video queries",
+			"Tweet queries",
+			"Replace mocks with backend",
+			"Infinite scrolling",
+			"Watch Page with VidStack",
+			"Comments",
+			"Related Videos"
+		]
+	},
+
+	"importantDecisions": [
+		"VidStack is used only on Watch Page.",
+		"Video cards use image thumbnails (hover previews can be added later).",
+		"Home feed alternates between Video Sections and Tweet Sections.",
+		"Infinite scrolling loads sections instead of individual cards.",
+		"Tweets replace YouTube Shorts.",
+		"ContentSection is the generic abstraction for all section layouts.",
+		"Skeleton components mirror production components.",
+		"Feed filters are globally managed through Zustand.",
+		"Feature-first architecture preferred over large services folder.",
+		"Avoid runtime-generated Tailwind classes; use CVA variants instead."
+	],
+
+	"currentStatus": {
+		"overallProgress": "UI Foundation Complete",
+		"nextImmediateTask": "Build HomeFeed with mock data and integrate HomePage before introducing TanStack Query and backend APIs."
+	}
+}
