@@ -1,0 +1,180 @@
+frontend
+├── public
+├── src
+│   ├── api
+│   │   ├── interceptors
+│   │   │   ├── auth.interceptor.ts
+│   │   │   ├── error.interceptor.ts
+│   │   │   └── index.ts
+│   │   ├── axios.ts
+│   │   ├── endpoints.ts
+│   │   ├── index.ts
+│   │   └── types.ts
+│   ├── assets
+│   │   ├── logo.webp
+│   │   └── logoWithName.webp
+│   ├── components
+│   │   ├── home
+│   │   │   ├── feed
+│   │   │   │   └── HomeFeed.tsx
+│   │   │   ├── filters
+│   │   │   │   ├── FeedFilterChip.tsx
+│   │   │   │   ├── FeedFilters.tsx
+│   │   │   │   └── index.ts
+│   │   │   └── sections
+│   │   │       ├── content-section.variants.ts
+│   │   │       ├── ContentSection.tsx
+│   │   │       ├── ContentSectionSkeleton.tsx
+│   │   │       ├── index.ts
+│   │   │       ├── SectionHeader.tsx
+│   │   │       ├── TweetCardSkeleton.tsx
+│   │   │       ├── TweetSection.tsx
+│   │   │       ├── TweetSectionSkeleton.tsx
+│   │   │       ├── VideoCardSkeleton.tsx
+│   │   │       ├── VideoSection.tsx
+│   │   │       └── VideoSectionSkeleton.tsx
+│   │   ├── navigation
+│   │   │   ├── navbar
+│   │   │   │   ├── CreateButton.tsx
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── Logo.tsx
+│   │   │   │   ├── Navbar.tsx
+│   │   │   │   ├── NotificationButton.tsx
+│   │   │   │   ├── SearchBar.tsx
+│   │   │   │   ├── SearchButton.tsx
+│   │   │   │   ├── SidebarToggle.tsx
+│   │   │   │   └── UserMenu.tsx
+│   │   │   └── sidebar
+│   │   │       ├── DesktopSidebar.tsx
+│   │   │       ├── index.ts
+│   │   │       ├── MobileSidebar.tsx
+│   │   │       ├── Sidebar.tsx
+│   │   │       ├── SidebarFooter.tsx
+│   │   │       ├── SidebarGroup.tsx
+│   │   │       └── SidebarItem.tsx
+│   │   ├── shared
+│   │   ├── theme
+│   │   │   ├── index.ts
+│   │   │   ├── ThemeIcon.tsx
+│   │   │   ├── ThemeMenu.tsx
+│   │   │   └── ThemeToggle.tsx
+│   │   ├── tweet
+│   │   │   └── card
+│   │   │       ├── index.ts
+│   │   │       ├── TweetActions.tsx
+│   │   │       ├── TweetCard.tsx
+│   │   │       ├── TweetContent.tsx
+│   │   │       └── TweetHeader.tsx
+│   │   ├── ui
+│   │   │   ├── avatar.tsx
+│   │   │   ├── button.tsx
+│   │   │   ├── command.tsx
+│   │   │   ├── dialog.tsx
+│   │   │   ├── dropdown-menu.tsx
+│   │   │   ├── input-group.tsx
+│   │   │   ├── input.tsx
+│   │   │   ├── scroll-area.tsx
+│   │   │   ├── separator.tsx
+│   │   │   ├── sheet.tsx
+│   │   │   ├── sidebar.tsx
+│   │   │   ├── skeleton.tsx
+│   │   │   ├── sonner.tsx
+│   │   │   ├── textarea.tsx
+│   │   │   ├── toggle.tsx
+│   │   │   └── tooltip.tsx
+│   │   └── video
+│   │       └── card
+│   │           ├── index.ts
+│   │           ├── VideoCard.tsx
+│   │           ├── VideoMenu.tsx
+│   │           ├── VideoMetadata.tsx
+│   │           └── VideoThumbnail.tsx
+│   ├── constants
+│   │   ├── content-grid.ts
+│   │   ├── layout.ts
+│   │   └── navigation.ts
+│   ├── data
+│   │   ├── categories.ts
+│   │   ├── feed-filters.ts
+│   │   └── navigation.ts
+│   ├── features
+│   │   ├── auth
+│   │   │   ├── api
+│   │   │   │   └── auth.api.ts
+│   │   │   ├── hooks
+│   │   │   │   ├── useCurrentUser.ts
+│   │   │   │   └── useInitilizeAuth.ts
+│   │   │   ├── queries
+│   │   │   │   └── auth.query-keys.ts
+│   │   │   └── store
+│   │   │       └── auth.store.ts
+│   │   ├── home
+│   │   │   ├── data
+│   │   │   ├── hooks
+│   │   │   ├── transformers
+│   │   │   └── types
+│   │   ├── tweets
+│   │   └── videos
+│   │       ├── api.ts
+│   │       ├── hooks.ts
+│   │       └── queries.ts
+│   ├── hooks
+│   │   ├── use-navigation.ts
+│   │   ├── use-theme.ts
+│   │   └── useIsMobile.ts
+│   ├── layouts
+│   │   ├── AppLayout.tsx
+│   │   ├── AuthLayout.tsx
+│   │   └── EmptyLayout.tsx
+│   ├── lib
+│   │   ├── format-duration.ts
+│   │   ├── format-upload-time.ts
+│   │   ├── format-views.ts
+│   │   ├── theme.ts
+│   │   └── utils.ts
+│   ├── pages
+│   │   ├── History
+│   │   ├── Home
+│   │   │   └── HomePage.tsx
+│   │   ├── Playlist
+│   │   ├── Search
+│   │   └── Watch
+│   ├── providers
+│   │   └── themeProvider.tsx
+│   ├── routes
+│   ├── store
+│   │   ├── feed-filter.store.ts
+│   │   ├── sidebar.selector.ts
+│   │   ├── sidebar.store.ts
+│   │   └── theme.store.ts
+│   ├── styles
+│   │   ├── animations.css
+│   │   ├── components.css
+│   │   ├── globals.css
+│   │   ├── themes.css
+│   │   └── utilities.css
+│   ├── types
+│   │   ├── auth.types.ts
+│   │   ├── content-section.types.ts
+│   │   ├── feed-filter.types.ts
+│   │   ├── navigation.types.ts
+│   │   ├── sidebar.types.ts
+│   │   ├── theme.types.ts
+│   │   ├── tweet.types.ts
+│   │   └── video.types.ts
+│   ├── App.css
+│   ├── App.tsx
+│   ├── index.css
+│   └── main.tsx
+├── .gitignore
+├── components.json
+├── eslint.config.js
+├── generateTree.js
+├── index.html
+├── package-lock.json
+├── package.json
+├── README.md
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+└── vite.config.ts

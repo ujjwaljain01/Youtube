@@ -1,0 +1,20 @@
+features/
+└── videos/
+    ├── api/
+    │   └── video.api.ts
+    │
+    ├── hooks/
+    │   ├── useVideo.ts
+    │   ├── useVideos.ts
+    │   └── index.ts
+    │
+    ├── queries/
+    │   └── video.query-keys.ts
+    │
+    ├── transformers/
+    │   └── video-card.transformer.ts
+    │
+    ├── types/
+    │   └── video-api.types.ts
+    │
+    └── index.ts
