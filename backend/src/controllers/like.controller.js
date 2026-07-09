@@ -59,8 +59,8 @@ const toggleCommentLike = asyncHandler(async (req, res) => {
     throw new ApiError(400, "Invalid comment ID");
   }
 
-  const Comment = await Comment.exists({ _id: commentId });
-  if (!Comment) {
+  const CommentExists = await Comment.exists({ _id: commentId });
+  if (!CommentExists) {
     throw new ApiError(404, "Comment not found");
   }
   try {
@@ -139,7 +139,7 @@ const toggleTweetLike = asyncHandler(async (req, res) => {
 const getLikedVideos = asyncHandler(async (req, res) => {
   const userId = req.user?._id;
 
-  const likedVideoIds = await Like.aggregate([
+  const likedVideos = await Like.aggregate([
     {
       $match: { likedBy: userId, targetType: "Video" },
     },
@@ -168,7 +168,7 @@ const getLikedVideos = asyncHandler(async (req, res) => {
         title: "$video.title",
         thumbnail: "$video.thumbnail",
         duration: "$video.duration",
-        $owner: {
+        owner: {
           _id: "$video.owner._id",
           username: "$video.owner.username",
           avatar: "$video.owner.avatar",
@@ -183,7 +183,5 @@ const getLikedVideos = asyncHandler(async (req, res) => {
       new ApiResponse(200, likedVideos, "Liked videos fetched successfully")
     );
 });
-
-
 
 export { toggleVideoLike, toggleCommentLike, toggleTweetLike, getLikedVideos };
