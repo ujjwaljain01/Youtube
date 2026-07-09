@@ -17,7 +17,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
 								"exec": [
 									"const res = pm.response.json();",
 									"",
@@ -41,7 +40,10 @@
 									"",
 									"if (res.data && res.data.accessToken) pm.collectionVariables.set(\"accessToken\", res.data.accessToken);",
 									"if (res.data && res.data.refreshToken) pm.collectionVariables.set(\"refreshToken\", res.data.refreshToken);"
-								]
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
 							}
 						}
 					],
@@ -71,7 +73,7 @@
 								},
 								{
 									"key": "username",
-									"value": "luffy",
+									"value": "luffy01",
 									"type": "default"
 								},
 								{
@@ -94,7 +96,200 @@
 							"path": ["users", "register"]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "fullName",
+											"value": "Luffy",
+											"type": "default"
+										},
+										{
+											"key": "email",
+											"value": "luffy.dev@gmail.com",
+											"type": "default"
+										},
+										{
+											"key": "password",
+											"value": "123456789",
+											"type": "default"
+										},
+										{
+											"key": "username",
+											"value": "luffy01",
+											"type": "default"
+										},
+										{
+											"key": "avatar",
+											"type": "file",
+											"fileNotInWorkingDirectoryWarning": "This file isn't in your working directory. Teammates you share this request with won't be able to use this file. To make collaboration easier you can setup your working directory in Settings.",
+											"src": "/C:/Users/ujjwa/OneDrive/Pictures/Screenshots/Screenshot 2026-06-28 190900.png"
+										},
+										{
+											"key": "coverImage",
+											"type": "file",
+											"fileNotInWorkingDirectoryWarning": "This file isn't in your working directory. Teammates you share this request with won't be able to use this file. To make collaboration easier you can setup your working directory in Settings.",
+											"src": "/C:/Users/ujjwa/Downloads/2397732.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{server}}/users/register",
+									"host": ["{{server}}"],
+									"path": ["users", "register"]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "112"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"70-zd5A678r16V5hdVQBJOMYnQ27gw\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:23:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 409,\n    \"data\": null,\n    \"message\": \"USer with username or email already exits\",\n    \"success\": false,\n    \"errors\": []\n}"
+						},
+						{
+							"name": "register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "fullName",
+											"value": "Luffy",
+											"type": "default"
+										},
+										{
+											"key": "email",
+											"value": "luffy@gmail.com",
+											"type": "default"
+										},
+										{
+											"key": "password",
+											"value": "123456789",
+											"type": "default"
+										},
+										{
+											"key": "username",
+											"value": "luffy01",
+											"type": "default"
+										},
+										{
+											"key": "avatar",
+											"type": "file",
+											"fileNotInWorkingDirectoryWarning": "This file isn't in your working directory. Teammates you share this request with won't be able to use this file. To make collaboration easier you can setup your working directory in Settings.",
+											"src": "/C:/Users/ujjwa/Downloads/logo.webp"
+										},
+										{
+											"key": "coverImage",
+											"type": "file",
+											"fileNotInWorkingDirectoryWarning": "This file isn't in your working directory. Teammates you share this request with won't be able to use this file. To make collaboration easier you can setup your working directory in Settings.",
+											"src": "/C:/Users/ujjwa/Downloads/logoWithName.webp"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{server}}/users/register",
+									"host": ["{{server}}"],
+									"path": ["users", "register"]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "752"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2f0-1wKTPXOlbM0eTmPRtBOKkyMzwqc\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:26:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"_id\": \"6a4fa1706e4b676dd48a76ae\",\n        \"username\": \"luffy01\",\n        \"email\": \"luffy@gmail.com\",\n        \"fullName\": \"Luffy\",\n        \"avatar\": \"http://res.cloudinary.com/ujjwaljain/image/upload/v1783603566/user/avatars/1783603562077-cef6965f-34e0-4687-ba95-5249a8ed27e7.webp\",\n        \"coverImage\": \"http://res.cloudinary.com/ujjwaljain/image/upload/v1783603568/user/coverImages/1783603566735-33419002-50d9-4fa6-9fcb-8ecf6c897abc.webp\",\n        \"avatarPublicId\": \"user/avatars/1783603562077-cef6965f-34e0-4687-ba95-5249a8ed27e7\",\n        \"coverImagePublicId\": \"user/coverImages/1783603566735-33419002-50d9-4fa6-9fcb-8ecf6c897abc\",\n        \"watchHistory\": [],\n        \"createdAt\": \"2026-07-09T13:26:08.435Z\",\n        \"updatedAt\": \"2026-07-09T13:26:08.435Z\",\n        \"__v\": 0\n    },\n    \"message\": \"User registered successfully\",\n    \"success\": true\n}"
+						}
+					]
 				},
 				{
 					"name": "login",
@@ -157,7 +352,84 @@
 							"path": ["users", "login"]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"ujjwaljain.dev@gmail.com\",\r\n    \"password\": \"123456789\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/users/login",
+									"host": ["{{server}}"],
+									"path": ["users", "login"]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2YTMwZjBjYWY4OWI2NzA4Y2YxMmEzMTMiLCJlbWFpbCI6InVqandhbGphaW4uZGV2QGdtYWlsLmNvbSIsInVzZXJuYW1lIjoidWpqd2FsamFpbiIsImZ1bGxOYW1lIjoiVWpqd2FsIEphaW4iLCJpYXQiOjE3ODM2MDI4NjgsImV4cCI6MTc4MzY4OTI2OH0.Fu36UBrW9us7Suf0uXWeBKMDNSFW8N6ifekwxbIQ-xA; Path=/; HttpOnly; Secure"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2YTMwZjBjYWY4OWI2NzA4Y2YxMmEzMTMiLCJpYXQiOjE3ODM2MDI4NjgsImV4cCI6MTc4NDQ2Njg2OH0.aV4SPTmW1sC3Hn74vEFvzcYuXKTCkz2F_BFwuNNiV5E; Path=/; HttpOnly; Secure"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1267"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4f3-Fcso6qard4L4uBmzw/0BAfdo9us\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:14:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"user\": {\n            \"_id\": \"6a30f0caf89b6708cf12a313\",\n            \"username\": \"ujjwaljain\",\n            \"email\": \"ujjwaljain.dev@gmail.com\",\n            \"fullName\": \"Ujjwal Jain\",\n            \"avatar\": \"http://res.cloudinary.com/ujjwaljain/image/upload/v1781592565/user/avatars/1781592564555-87fdcbb4-c6cb-4b56-8829-eedda1720384.jpg\",\n            \"coverImage\": \"http://res.cloudinary.com/ujjwaljain/image/upload/v1781592263/user/coverImages/1781592262135-64fc295e-f0fc-4e83-91a8-f86da39a406b.png\",\n            \"avatarPublicId\": \"user/avatars/1781592260261-e55c1043-bd66-4fd6-8703-44af7bdb2e52\",\n            \"coverImagePublicId\": \"user/coverImages/1781592601618-d6f0c4e8-230c-4f7d-8bf8-dbcf7f0e7d4a\",\n            \"watchHistory\": [],\n            \"createdAt\": \"2026-06-16T06:44:26.931Z\",\n            \"updatedAt\": \"2026-07-09T13:14:28.630Z\",\n            \"__v\": 0\n        },\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2YTMwZjBjYWY4OWI2NzA4Y2YxMmEzMTMiLCJpYXQiOjE3ODM2MDI4NjgsImV4cCI6MTc4NDQ2Njg2OH0.aV4SPTmW1sC3Hn74vEFvzcYuXKTCkz2F_BFwuNNiV5E\",\n        \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2YTMwZjBjYWY4OWI2NzA4Y2YxMmEzMTMiLCJlbWFpbCI6InVqandhbGphaW4uZGV2QGdtYWlsLmNvbSIsInVzZXJuYW1lIjoidWpqd2FsamFpbiIsImZ1bGxOYW1lIjoiVWpqd2FsIEphaW4iLCJpYXQiOjE3ODM2MDI4NjgsImV4cCI6MTc4MzY4OTI2OH0.Fu36UBrW9us7Suf0uXWeBKMDNSFW8N6ifekwxbIQ-xA\"\n    },\n    \"message\": \"User Logged in successfully\",\n    \"success\": true\n}"
+						}
+					]
 				},
 				{
 					"name": "logout",
@@ -205,7 +477,84 @@
 							"path": ["users", "logout"]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "logout",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/users/logout",
+									"host": ["{{server}}"],
+									"path": ["users", "logout"]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "accessToken=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; HttpOnly; Secure"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "refreshToken=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; HttpOnly; Secure"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "71"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"47-Xeyc9TLCqsRaXPuLwtNxhI8LSC0\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:20:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {},\n    \"message\": \"User Logged Out\",\n    \"success\": true\n}"
+						}
+					]
 				},
 				{
 					"name": "refresh-token",
@@ -256,7 +605,84 @@
 							"path": ["users", "refresh-token"]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "refresh-token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/users/refresh-token",
+									"host": ["{{server}}"],
+									"path": ["users", "refresh-token"]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2YTMwZjBjYWY4OWI2NzA4Y2YxMmEzMTMiLCJlbWFpbCI6InVqandhbGphaW4uZGV2QGdtYWlsLmNvbSIsInVzZXJuYW1lIjoidWpqd2FsamFpbiIsImZ1bGxOYW1lIjoiVWpqd2FsIEphaW4iLCJpYXQiOjE3ODM2MDM1OTcsImV4cCI6MTc4MzY4OTk5N30.OzOrd9PjNOrFc9h8HhnQ6w7e1Qz-3EGZ7tpiFxqjQqo; Path=/; HttpOnly; Secure"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2YTMwZjBjYWY4OWI2NzA4Y2YxMmEzMTMiLCJpYXQiOjE3ODM2MDM1OTcsImV4cCI6MTc4NDQ2NzU5N30.jdEUtzGL-VV8H8qXggIa5HkUoSizHdmx50Juw-uoMsA; Path=/; HttpOnly; Secure"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "568"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"238-TsmU0xOIdDxdT5QgBQnjO+n6pGU\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:26:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2YTMwZjBjYWY4OWI2NzA4Y2YxMmEzMTMiLCJlbWFpbCI6InVqandhbGphaW4uZGV2QGdtYWlsLmNvbSIsInVzZXJuYW1lIjoidWpqd2FsamFpbiIsImZ1bGxOYW1lIjoiVWpqd2FsIEphaW4iLCJpYXQiOjE3ODM2MDM1OTcsImV4cCI6MTc4MzY4OTk5N30.OzOrd9PjNOrFc9h8HhnQ6w7e1Qz-3EGZ7tpiFxqjQqo\",\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2YTMwZjBjYWY4OWI2NzA4Y2YxMmEzMTMiLCJpYXQiOjE3ODM2MDM1OTcsImV4cCI6MTc4NDQ2NzU5N30.jdEUtzGL-VV8H8qXggIa5HkUoSizHdmx50Juw-uoMsA\"\n    },\n    \"message\": \"Access Token Refreshed\",\n    \"success\": true\n}"
+						}
+					]
 				},
 				{
 					"name": "change-password",
@@ -304,7 +730,76 @@
 							"path": ["users", "change-password"]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "change-password",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{   \r\n\r\n    \"oldPassword\": \"123456789\",\r\n    \"newPassword\": \"123456789\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/users/change-password",
+									"host": ["{{server}}"],
+									"path": ["users", "change-password"]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "85"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"55-CyGJCaxqcCXrzMloar9z7m95mvk\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:27:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {},\n    \"message\": \"Password changed successfully\",\n    \"success\": true\n}"
+						}
+					]
 				},
 				{
 					"name": "current-user",
@@ -355,7 +850,76 @@
 							"path": ["users", "current-user"]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "current-user",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{   \r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/users/current-user",
+									"host": ["{{server}}"],
+									"path": ["users", "current-user"]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "773"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"305-KJNBMq8fYsOoA9jMtVmN8AbIirM\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:27:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"_id\": \"6a30f0caf89b6708cf12a313\",\n        \"username\": \"ujjwaljain\",\n        \"email\": \"ujjwaljain.dev@gmail.com\",\n        \"fullName\": \"Ujjwal Jain\",\n        \"avatar\": \"http://res.cloudinary.com/ujjwaljain/image/upload/v1781592565/user/avatars/1781592564555-87fdcbb4-c6cb-4b56-8829-eedda1720384.jpg\",\n        \"coverImage\": \"http://res.cloudinary.com/ujjwaljain/image/upload/v1781592263/user/coverImages/1781592262135-64fc295e-f0fc-4e83-91a8-f86da39a406b.png\",\n        \"avatarPublicId\": \"user/avatars/1781592260261-e55c1043-bd66-4fd6-8703-44af7bdb2e52\",\n        \"coverImagePublicId\": \"user/coverImages/1781592601618-d6f0c4e8-230c-4f7d-8bf8-dbcf7f0e7d4a\",\n        \"watchHistory\": [],\n        \"createdAt\": \"2026-06-16T06:44:26.931Z\",\n        \"updatedAt\": \"2026-07-09T13:26:37.578Z\",\n        \"__v\": 0\n    },\n    \"message\": \"current user fetched successfully\",\n    \"success\": true\n}"
+						}
+					]
 				},
 				{
 					"name": "update-account",
@@ -363,7 +927,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
 								"exec": [
 									"const res = pm.response.json();",
 									"",
@@ -378,7 +941,10 @@
 									"pm.test(\"Response contains data\", () => {",
 									"    pm.expect(res).to.have.property(\"data\");",
 									"});"
-								]
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
 							}
 						}
 					],
@@ -390,7 +956,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{   \r\n    \"fullname\":\"UjjwalJain\",\r\n    \"email\":\"ujjwaljain.dev@gmail.com\"\r\n}",
+							"raw": "{   \r\n    \"fullName\":\"UjjwalJain\",\r\n    \"email\":\"ujjwaljain.dev@gmail.com\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -403,7 +969,144 @@
 							"path": ["users", "update-account"]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "update-account",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{   \r\n    \"fullname\":\"UjjwalJain\",\r\n    \"email\":\"ujjwaljain.dev@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/users/update-account",
+									"host": ["{{server}}"],
+									"path": ["users", "update-account"]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "94"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5e-n1u8fF/hvSSwIwfj4dDHbdGcu/E\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:28:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 400,\n    \"data\": null,\n    \"message\": \"All fields are required\",\n    \"success\": false,\n    \"errors\": []\n}"
+						},
+						{
+							"name": "update-account",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{   \r\n    \"fullName\":\"UjjwalJain\",\r\n    \"email\":\"ujjwaljain.dev@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/users/update-account",
+									"host": ["{{server}}"],
+									"path": ["users", "update-account"]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "965"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3c5-8WMkqsok07y9y8lvxSypFyWcInk\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:29:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"_id\": \"6a30f0caf89b6708cf12a313\",\n        \"username\": \"ujjwaljain\",\n        \"email\": \"ujjwaljain.dev@gmail.com\",\n        \"fullName\": \"UjjwalJain\",\n        \"avatar\": \"http://res.cloudinary.com/ujjwaljain/image/upload/v1781592565/user/avatars/1781592564555-87fdcbb4-c6cb-4b56-8829-eedda1720384.jpg\",\n        \"coverImage\": \"http://res.cloudinary.com/ujjwaljain/image/upload/v1781592263/user/coverImages/1781592262135-64fc295e-f0fc-4e83-91a8-f86da39a406b.png\",\n        \"avatarPublicId\": \"user/avatars/1781592260261-e55c1043-bd66-4fd6-8703-44af7bdb2e52\",\n        \"coverImagePublicId\": \"user/coverImages/1781592601618-d6f0c4e8-230c-4f7d-8bf8-dbcf7f0e7d4a\",\n        \"watchHistory\": [],\n        \"createdAt\": \"2026-06-16T06:44:26.931Z\",\n        \"updatedAt\": \"2026-07-09T13:29:01.335Z\",\n        \"__v\": 0,\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2YTMwZjBjYWY4OWI2NzA4Y2YxMmEzMTMiLCJpYXQiOjE3ODM2MDM3MTcsImV4cCI6MTc4NDQ2NzcxN30.KIraKiNbYdd0gUhC6q68K0kN051iaFBZUprOXwl7mbY\"\n    },\n    \"message\": \"Account details updated Successfully\",\n    \"success\": true\n}"
+						}
+					]
 				},
 				{
 					"name": "avatar",
@@ -453,7 +1156,148 @@
 							"path": ["users", "avatar"]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "avatar",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "avatar",
+											"type": "file",
+											"uuid": "801c157b-5f2c-4804-83a2-584ee4e1cd9c",
+											"src": "/C:/Users/ujjwa/Downloads/asta-black-clover.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{server}}/users/avatar",
+									"host": ["{{server}}"],
+									"path": ["users", "avatar"]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "93"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5d-06VjtoG3f6sYx9bDyOiTk5lg/lk\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:29:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 400,\n    \"data\": null,\n    \"message\": \"Avatar file is missing\",\n    \"success\": false,\n    \"errors\": []\n}"
+						},
+						{
+							"name": "avatar",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "avatar",
+											"type": "file",
+											"uuid": "801c157b-5f2c-4804-83a2-584ee4e1cd9c",
+											"src": "/C:/Users/ujjwa/Downloads/asta-black-clover.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{server}}/users/avatar",
+									"host": ["{{server}}"],
+									"path": ["users", "avatar"]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "959"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3bf-tNghihlkgrmqxFWN7gDX+xVgBx0\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:30:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"_id\": \"6a30f0caf89b6708cf12a313\",\n        \"username\": \"ujjwaljain\",\n        \"email\": \"ujjwaljain.dev@gmail.com\",\n        \"fullName\": \"UjjwalJain\",\n        \"avatar\": \"http://res.cloudinary.com/ujjwaljain/image/upload/v1783603801/user/avatars/1783603798612-5c740be9-1b41-43fc-b1d6-3e6a87c9c4ca.jpg\",\n        \"coverImage\": \"http://res.cloudinary.com/ujjwaljain/image/upload/v1781592263/user/coverImages/1781592262135-64fc295e-f0fc-4e83-91a8-f86da39a406b.png\",\n        \"avatarPublicId\": \"user/avatars/1781592260261-e55c1043-bd66-4fd6-8703-44af7bdb2e52\",\n        \"coverImagePublicId\": \"user/coverImages/1781592601618-d6f0c4e8-230c-4f7d-8bf8-dbcf7f0e7d4a\",\n        \"watchHistory\": [],\n        \"createdAt\": \"2026-06-16T06:44:26.931Z\",\n        \"updatedAt\": \"2026-07-09T13:30:01.269Z\",\n        \"__v\": 0,\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2YTMwZjBjYWY4OWI2NzA4Y2YxMmEzMTMiLCJpYXQiOjE3ODM2MDM3MTcsImV4cCI6MTc4NDQ2NzcxN30.KIraKiNbYdd0gUhC6q68K0kN051iaFBZUprOXwl7mbY\"\n    },\n    \"message\": \"Avatar is updated successfully\",\n    \"success\": true\n}"
+						}
+					]
 				},
 				{
 					"name": "coverImage",
@@ -503,7 +1347,148 @@
 							"path": ["users", "coverImage"]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "coverImage",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "coverImage",
+											"type": "file",
+											"uuid": "ccb33bce-c26c-4318-a979-7d764f66ace9",
+											"value": null
+										}
+									]
+								},
+								"url": {
+									"raw": "{{server}}/users/coverImage",
+									"host": ["{{server}}"],
+									"path": ["users", "coverImage"]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "98"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"62-0DohFg+EN2UXhOnu15WYjrce8Ls\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:30:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 400,\n    \"data\": null,\n    \"message\": \"Cover Image file is missing\",\n    \"success\": false,\n    \"errors\": []\n}"
+						},
+						{
+							"name": "coverImage",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "coverImage",
+											"type": "file",
+											"uuid": "ccb33bce-c26c-4318-a979-7d764f66ace9",
+											"src": "/C:/Users/ujjwa/Downloads/vinland.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{server}}/users/coverImage",
+									"host": ["{{server}}"],
+									"path": ["users", "coverImage"]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "964"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3c4-fh0cP4QkYzHvs1rOzD65UsPxwfc\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:30:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"_id\": \"6a30f0caf89b6708cf12a313\",\n        \"username\": \"ujjwaljain\",\n        \"email\": \"ujjwaljain.dev@gmail.com\",\n        \"fullName\": \"UjjwalJain\",\n        \"avatar\": \"http://res.cloudinary.com/ujjwaljain/image/upload/v1783603801/user/avatars/1783603798612-5c740be9-1b41-43fc-b1d6-3e6a87c9c4ca.jpg\",\n        \"coverImage\": \"http://res.cloudinary.com/ujjwaljain/image/upload/v1781592263/user/coverImages/1781592262135-64fc295e-f0fc-4e83-91a8-f86da39a406b.png\",\n        \"avatarPublicId\": \"user/avatars/1781592260261-e55c1043-bd66-4fd6-8703-44af7bdb2e52\",\n        \"coverImagePublicId\": \"user/coverImages/1783603846788-fe2f7dae-15ba-46b7-8a45-6cbca6f910c5\",\n        \"watchHistory\": [],\n        \"createdAt\": \"2026-06-16T06:44:26.931Z\",\n        \"updatedAt\": \"2026-07-09T13:30:52.126Z\",\n        \"__v\": 0,\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2YTMwZjBjYWY4OWI2NzA4Y2YxMmEzMTMiLCJpYXQiOjE3ODM2MDM3MTcsImV4cCI6MTc4NDQ2NzcxN30.KIraKiNbYdd0gUhC6q68K0kN051iaFBZUprOXwl7mbY\"\n    },\n    \"message\": \"Cover Image is updated successfully\",\n    \"success\": true\n}"
+						}
+					]
 				},
 				{
 					"name": "userChannel",
@@ -549,7 +1534,71 @@
 							"path": ["users", "c", "{{username}}"]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "userChannel",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{server}}/users/c/{{username}}",
+									"host": ["{{server}}"],
+									"path": ["users", "c", "{{username}}"]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "608"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"260-otlPRn2KzQRmtNnrJV4ST1MIWdQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:31:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"_id\": \"6a30f0caf89b6708cf12a313\",\n        \"username\": \"ujjwaljain\",\n        \"email\": \"ujjwaljain.dev@gmail.com\",\n        \"fullName\": \"UjjwalJain\",\n        \"avatar\": \"http://res.cloudinary.com/ujjwaljain/image/upload/v1783603801/user/avatars/1783603798612-5c740be9-1b41-43fc-b1d6-3e6a87c9c4ca.jpg\",\n        \"coverImage\": \"http://res.cloudinary.com/ujjwaljain/image/upload/v1781592263/user/coverImages/1781592262135-64fc295e-f0fc-4e83-91a8-f86da39a406b.png\",\n        \"createdAt\": \"2026-06-16T06:44:26.931Z\",\n        \"subscribersCount\": 0,\n        \"ChannelsSubscriberToCount\": 1,\n        \"isSubscribed\": false\n    },\n    \"message\": \"User channel is fetched successfully\",\n    \"success\": true\n}"
+						}
+					]
 				},
 				{
 					"name": "watchHistory",
@@ -595,7 +1644,71 @@
 							"path": ["users", "history"]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "watchHistory",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{server}}/users/history",
+									"host": ["{{server}}"],
+									"path": ["users", "history"]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "82"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"52-Epp6v3XvAppUPjB050gxbgDJ7ME\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:31:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": [],\n    \"message\": \"Watch fetched successfully\",\n    \"success\": true\n}"
+						}
+					]
 				}
 			]
 		},
@@ -608,7 +1721,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
 								"exec": [
 									"const res = pm.response.json();",
 									"",
@@ -629,7 +1741,10 @@
 									"});",
 									"",
 									"pm.collectionVariables.set(\"videoId\", res.data._id);"
-								]
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
 							}
 						}
 					],
@@ -655,16 +1770,16 @@
 									"src": "/C:/Users/ujjwa/OneDrive/Pictures/Screenshots/portfolio2.png"
 								},
 								{
-									"key": "title",
-									"value": "Long Portfolio Video",
-									"type": "text",
-									"uuid": "44ca0f6c-cbd0-423d-9697-3d7562574df6"
-								},
-								{
 									"key": "description",
 									"value": "This video is the showcase video of portoflio Project \nurl - ujjwalportfolio.vercel.app",
 									"type": "text",
 									"uuid": "0829fcd5-0ff4-48b1-abf8-553c48996665"
+								},
+								{
+									"key": "title",
+									"value": "Portfolio Video",
+									"type": "text",
+									"uuid": "d1337cd7-f5fe-4c59-a9df-80e8a926093e"
 								}
 							]
 						},
@@ -674,7 +1789,272 @@
 							"path": ["videos", ""]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "publishVideo",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "video",
+											"type": "file",
+											"uuid": "622480c4-8ac0-442f-9474-c15df5ff05f5",
+											"value": null
+										},
+										{
+											"key": "thumbnail",
+											"type": "file",
+											"uuid": "c0803aa2-6f0b-42b3-b990-dc4baa9a481b",
+											"value": null
+										},
+										{
+											"key": "title",
+											"value": "Long Portfolio Video",
+											"type": "text",
+											"uuid": "44ca0f6c-cbd0-423d-9697-3d7562574df6"
+										},
+										{
+											"key": "description",
+											"value": "This video is the showcase video of portoflio Project \nurl - ujjwalportfolio.vercel.app",
+											"type": "text",
+											"uuid": "0829fcd5-0ff4-48b1-abf8-553c48996665"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{server}}/videos/",
+									"host": ["{{server}}"],
+									"path": ["videos", ""]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "109"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6d-aG7kRRMNuJu+hsLF6FTLMqjRoac\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:50:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 400,\n    \"data\": null,\n    \"message\": \"Video and thumbnail files are required\",\n    \"success\": false,\n    \"errors\": []\n}"
+						},
+						{
+							"name": "publishVideo",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "video",
+											"type": "file",
+											"uuid": "622480c4-8ac0-442f-9474-c15df5ff05f5",
+											"src": "/C:/Users/ujjwa/Videos/Screen Recordings/portfolioLong.mp4"
+										},
+										{
+											"key": "thumbnail",
+											"type": "file",
+											"uuid": "c0803aa2-6f0b-42b3-b990-dc4baa9a481b",
+											"src": "/C:/Users/ujjwa/OneDrive/Pictures/Screenshots/portfolio2.png"
+										},
+										{
+											"key": "title",
+											"value": "Long Portfolio Video",
+											"type": "text",
+											"uuid": "44ca0f6c-cbd0-423d-9697-3d7562574df6"
+										},
+										{
+											"key": "description",
+											"value": "This video is the showcase video of portoflio Project \nurl - ujjwalportfolio.vercel.app",
+											"type": "text",
+											"uuid": "0829fcd5-0ff4-48b1-abf8-553c48996665"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{server}}/videos/",
+									"host": ["{{server}}"],
+									"path": ["videos", ""]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "887"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"377-+38Hl4KEksSXlff6Rfo0xXU/PxM\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:51:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 201,\n    \"data\": {\n        \"videoFile\": \"https://res.cloudinary.com/ujjwaljain/video/upload/v1783605091/videos/raw/1783605073231-0a4a1f6f-ab8c-452e-9b21-c80fd67d29c1.mp4\",\n        \"videoPublicId\": \"videos/raw/1783605073231-0a4a1f6f-ab8c-452e-9b21-c80fd67d29c1\",\n        \"thumbnail\": \"https://res.cloudinary.com/ujjwaljain/image/upload/v1783605078/videos/thumbnails/1783605073233-820d5f4f-9265-429e-8132-d0afba8f8caf.png\",\n        \"thumbnailPublicId\": \"videos/thumbnails/1783605073233-820d5f4f-9265-429e-8132-d0afba8f8caf\",\n        \"owner\": \"6a30f0caf89b6708cf12a313\",\n        \"title\": \"Long Portfolio Video\",\n        \"description\": \"This video is the showcase video of portoflio Project \\nurl - ujjwalportfolio.vercel.app\",\n        \"duration\": 75.178188,\n        \"views\": 0,\n        \"isPublished\": true,\n        \"_id\": \"6a4fa76a6e4b676dd48a76af\",\n        \"createdAt\": \"2026-07-09T13:51:38.208Z\",\n        \"updatedAt\": \"2026-07-09T13:51:38.208Z\",\n        \"__v\": 0\n    },\n    \"message\": \"Video published successfully\",\n    \"success\": true\n}"
+						},
+						{
+							"name": "publishVideo",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "video",
+											"type": "file",
+											"uuid": "622480c4-8ac0-442f-9474-c15df5ff05f5",
+											"src": "/C:/Users/ujjwa/Videos/Screen Recordings/portfolioLong.mp4"
+										},
+										{
+											"key": "thumbnail",
+											"type": "file",
+											"uuid": "c0803aa2-6f0b-42b3-b990-dc4baa9a481b",
+											"src": "/C:/Users/ujjwa/OneDrive/Pictures/Screenshots/portfolio2.png"
+										},
+										{
+											"key": "description",
+											"value": "This video is the showcase video of portoflio Project \nurl - ujjwalportfolio.vercel.app",
+											"type": "text",
+											"uuid": "0829fcd5-0ff4-48b1-abf8-553c48996665"
+										},
+										{
+											"key": "title",
+											"value": "",
+											"type": "text",
+											"uuid": "d1337cd7-f5fe-4c59-a9df-80e8a926093e"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{server}}/videos/",
+									"host": ["{{server}}"],
+									"path": ["videos", ""]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "105"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"69-Qlum0bYVhhgOR0Ck0jKScy04bEU\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:52:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 400,\n    \"data\": null,\n    \"message\": \"Title and description are required\",\n    \"success\": false,\n    \"errors\": []\n}"
+						}
+					]
 				},
 				{
 					"name": "getAllVideo",
@@ -720,7 +2100,71 @@
 							"path": ["videos", ""]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "getAllVideo",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{server}}/videos/",
+									"host": ["{{server}}"],
+									"path": ["videos", ""]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2545"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9f1-peg9lyj9YHx3gFT+mSf/odyZdmM\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:32:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"docs\": [\n            {\n                \"_id\": \"6a356cdb36f6afd5e35a5196\",\n                \"videoFile\": \"https://res.cloudinary.com/ujjwaljain/video/upload/v1781886166/videos/raw/1781886136002-1cf72d7e-72f5-4588-a566-83d42481f071.mp4\",\n                \"owner\": {\n                    \"_id\": \"6a30f0caf89b6708cf12a313\",\n                    \"username\": \"ujjwaljain\",\n                    \"fullName\": \"UjjwalJain\",\n                    \"avatar\": \"http://res.cloudinary.com/ujjwaljain/image/upload/v1783603801/user/avatars/1783603798612-5c740be9-1b41-43fc-b1d6-3e6a87c9c4ca.jpg\"\n                },\n                \"title\": \"Long Portfolio Video\",\n                \"description\": \"This video is the showcase video of portoflio Project \\nurl - ujjwalportfolio.vercel.app\",\n                \"duration\": 75.178188,\n                \"views\": 7,\n                \"isPublished\": true,\n                \"createdAt\": \"2026-06-19T16:22:51.283Z\",\n                \"updatedAt\": \"2026-07-01T15:37:19.272Z\",\n                \"thumbnail\": \"https://res.cloudinary.com/ujjwaljain/image/upload/v1781886138/videos/thumbnails/1781886136009-2a23e94e-7960-469d-b8cd-b9f441f148ae.png\"\n            },\n            {\n                \"_id\": \"6a3568f636f6afd5e35a5195\",\n                \"videoFile\": \"https://res.cloudinary.com/ujjwaljain/video/upload/v1781885169/videos/raw/1781885112659-63628077-85a2-4479-a029-72b655e3db6f.mp4\",\n                \"owner\": {\n                    \"_id\": \"6a30f0caf89b6708cf12a313\",\n                    \"username\": \"ujjwaljain\",\n                    \"fullName\": \"UjjwalJain\",\n                    \"avatar\": \"http://res.cloudinary.com/ujjwaljain/image/upload/v1783603801/user/avatars/1783603798612-5c740be9-1b41-43fc-b1d6-3e6a87c9c4ca.jpg\"\n                },\n                \"title\": \"BlogX Project Video\",\n                \"description\": \"This video is the showcase video of BlogX Project\",\n                \"duration\": 56.8,\n                \"views\": 2,\n                \"isPublished\": true,\n                \"createdAt\": \"2026-06-19T16:06:14.736Z\",\n                \"updatedAt\": \"2026-07-01T15:38:04.635Z\",\n                \"thumbnail\": \"https://res.cloudinary.com/ujjwaljain/image/upload/v1781885130/videos/thumbnails/1781885112663-70c39ae9-d3b4-4c44-a748-48f03cb44aad.png\"\n            },\n            {\n                \"_id\": \"6a31479838f06c5a9dac7181\",\n                \"videoFile\": \"https://res.cloudinary.com/ujjwaljain/video/upload/v1781614487/videos/raw/1781614483507-857a7418-c767-49fc-b90b-19f6679ba6b4.mp4\",\n                \"owner\": {\n                    \"_id\": \"6a30f0caf89b6708cf12a313\",\n                    \"username\": \"ujjwaljain\",\n                    \"fullName\": \"UjjwalJain\",\n                    \"avatar\": \"http://res.cloudinary.com/ujjwaljain/image/upload/v1783603801/user/avatars/1783603798612-5c740be9-1b41-43fc-b1d6-3e6a87c9c4ca.jpg\"\n                },\n                \"title\": \"Short Portfolio Video\",\n                \"description\": \"This video is the showcase video of my Portfolio Website\",\n                \"duration\": 19.455875,\n                \"views\": 0,\n                \"isPublished\": true,\n                \"createdAt\": \"2026-06-16T12:54:48.895Z\",\n                \"updatedAt\": \"2026-06-16T12:54:48.895Z\",\n                \"thumbnail\": \"https://res.cloudinary.com/ujjwaljain/image/upload/v1781614485/videos/thumbnails/1781614483518-3e9e48e0-2836-41d4-a370-a9b815104880.png\"\n            }\n        ],\n        \"nextCursor\": null,\n        \"hasNextPage\": false\n    },\n    \"message\": \"Videos fetched successfully for infinite scroll\",\n    \"success\": true\n}"
+						}
+					]
 				},
 				{
 					"name": "getVideoById",
@@ -766,7 +2210,71 @@
 							"path": ["videos", "{{videoId}}"]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "getVideoById",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{server}}/videos/{{videoId}}",
+									"host": ["{{server}}"],
+									"path": ["videos", "{{videoId}}"]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "885"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"375-zLGn/wMUHdRbBbZsODANEFbx/qw\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:32:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"_id\": \"6a356cdb36f6afd5e35a5196\",\n        \"videoFile\": \"https://res.cloudinary.com/ujjwaljain/video/upload/v1781886166/videos/raw/1781886136002-1cf72d7e-72f5-4588-a566-83d42481f071.mp4\",\n        \"videoPublicId\": \"videos/raw/1781886136002-1cf72d7e-72f5-4588-a566-83d42481f071\",\n        \"thumbnailPublicId\": \"videos/thumbnails/1781886136009-2a23e94e-7960-469d-b8cd-b9f441f148ae\",\n        \"owner\": \"6a30f0caf89b6708cf12a313\",\n        \"title\": \"Long Portfolio Video\",\n        \"description\": \"This video is the showcase video of portoflio Project \\nurl - ujjwalportfolio.vercel.app\",\n        \"duration\": 75.178188,\n        \"views\": 7,\n        \"isPublished\": true,\n        \"createdAt\": \"2026-06-19T16:22:51.283Z\",\n        \"updatedAt\": \"2026-07-01T15:37:19.272Z\",\n        \"__v\": 0,\n        \"thumbnail\": \"https://res.cloudinary.com/ujjwaljain/image/upload/v1781886138/videos/thumbnails/1781886136009-2a23e94e-7960-469d-b8cd-b9f441f148ae.png\"\n    },\n    \"message\": \"Video fetched successfully\",\n    \"success\": true\n}"
+						}
+					]
 				},
 				{
 					"name": "Increment Video Views",
@@ -812,7 +2320,81 @@
 							"path": ["videos", "{{videoId}}", "increment-views"]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Increment Video Views",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{server}}/videos/{{videoId}}/increment-views",
+									"host": ["{{server}}"],
+									"path": [
+										"videos",
+										"{{videoId}}",
+										"increment-views"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "91"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5b-ny7fmtfAinz1IYvJtxVNa0TSvE4\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:32:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": 8,\n    \"message\": \"Video views incremented successfully\",\n    \"success\": true\n}"
+						}
+					]
 				},
 				{
 					"name": "updateVideoAssests",
@@ -820,7 +2402,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
 								"exec": [
 									"const res = pm.response.json();",
 									"",
@@ -835,7 +2416,10 @@
 									"pm.test(\"Response contains data\", () => {",
 									"    pm.expect(res).to.have.property(\"data\");",
 									"});"
-								]
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
 							}
 						}
 					],
@@ -868,7 +2452,160 @@
 							"path": ["videos", "{{videoId}}", "assets"]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "updateVideoAssests",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "video",
+											"type": "file",
+											"uuid": "088a6f78-05b0-47c9-afdd-15ad8397a139",
+											"src": "/C:/Users/ujjwa/Videos/Screen Recordings/portfolio.mp4"
+										},
+										{
+											"key": "thumbnail",
+											"type": "file",
+											"uuid": "890fe778-f57c-4495-af49-1f56e813d24f",
+											"src": "/C:/Users/ujjwa/OneDrive/Pictures/Screenshots/PortfolioThumbnail.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{server}}/videos/{{videoId}}/assets",
+									"host": ["{{server}}"],
+									"path": ["videos", "{{videoId}}", "assets"]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "123"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7b-ED2b15u+HeCLMIzg1JN320YWASw\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:32:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 400,\n    \"data\": null,\n    \"message\": \"Provide either a video file or a thumbnail to update\",\n    \"success\": false,\n    \"errors\": []\n}"
+						},
+						{
+							"name": "updateVideoAssests",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "video",
+											"type": "file",
+											"uuid": "088a6f78-05b0-47c9-afdd-15ad8397a139",
+											"src": "/C:/Users/ujjwa/Videos/Screen Recordings/portfolio.mp4"
+										},
+										{
+											"key": "thumbnail",
+											"type": "file",
+											"uuid": "890fe778-f57c-4495-af49-1f56e813d24f",
+											"src": "/C:/Users/ujjwa/OneDrive/Pictures/Screenshots/PortfolioThumbnail.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{server}}/videos/{{videoId}}/assets",
+									"host": ["{{server}}"],
+									"path": ["videos", "{{videoId}}", "assets"]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "892"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"37c-PDqylwN4j8FabZq0duOCE27GSHk\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:33:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"_id\": \"6a356cdb36f6afd5e35a5196\",\n        \"videoFile\": \"https://res.cloudinary.com/ujjwaljain/video/upload/v1783604025/videos/raw/1783604015796-4817a55e-424e-49b7-91f7-11dfc0d2c074.mp4\",\n        \"videoPublicId\": \"videos/raw/1783604015796-4817a55e-424e-49b7-91f7-11dfc0d2c074\",\n        \"thumbnailPublicId\": \"videos/thumbnails/1783604027086-3bd47502-f946-4f9e-8162-acc2142ef441\",\n        \"owner\": \"6a30f0caf89b6708cf12a313\",\n        \"title\": \"Long Portfolio Video\",\n        \"description\": \"This video is the showcase video of portoflio Project \\nurl - ujjwalportfolio.vercel.app\",\n        \"duration\": 19.455875,\n        \"views\": 8,\n        \"isPublished\": true,\n        \"createdAt\": \"2026-06-19T16:22:51.283Z\",\n        \"updatedAt\": \"2026-07-09T13:33:48.764Z\",\n        \"__v\": 0,\n        \"thumbnail\": \"https://res.cloudinary.com/ujjwaljain/image/upload/v1783604028/videos/thumbnails/1783604027086-3bd47502-f946-4f9e-8162-acc2142ef441.png\"\n    },\n    \"message\": \"Video assets updated successfully\",\n    \"success\": true\n}"
+						}
+					]
 				},
 				{
 					"name": "updateVideoDetails",
@@ -876,7 +2613,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
 								"exec": [
 									"const res = pm.response.json();",
 									"",
@@ -891,7 +2627,10 @@
 									"pm.test(\"Response contains data\", () => {",
 									"    pm.expect(res).to.have.property(\"data\");",
 									"});"
-								]
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
 							}
 						}
 					],
@@ -911,12 +2650,81 @@
 							}
 						},
 						"url": {
-							"raw": "{{server}}/videos/{{videoId}}/views",
+							"raw": "{{server}}/videos/{{videoId}}/details",
 							"host": ["{{server}}"],
-							"path": ["videos", "{{videoId}}", "views"]
+							"path": ["videos", "{{videoId}}", "details"]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "updateVideoDetails",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\":\"A Short Portfolio Video\",\r\n    \"description\":\"This video is the showcase video of my Portfolio Website\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/videos/{{videoId}}/details",
+									"host": ["{{server}}"],
+									"path": ["videos", "{{videoId}}", "details"]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "864"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"360-Og6C7rM9yeokn2c98FXACiAFI84\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:35:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"_id\": \"6a356cdb36f6afd5e35a5196\",\n        \"videoFile\": \"https://res.cloudinary.com/ujjwaljain/video/upload/v1783604025/videos/raw/1783604015796-4817a55e-424e-49b7-91f7-11dfc0d2c074.mp4\",\n        \"videoPublicId\": \"videos/raw/1783604015796-4817a55e-424e-49b7-91f7-11dfc0d2c074\",\n        \"thumbnailPublicId\": \"videos/thumbnails/1783604027086-3bd47502-f946-4f9e-8162-acc2142ef441\",\n        \"owner\": \"6a30f0caf89b6708cf12a313\",\n        \"title\": \"A Short Portfolio Video\",\n        \"description\": \"This video is the showcase video of my Portfolio Website\",\n        \"duration\": 19.455875,\n        \"views\": 8,\n        \"isPublished\": true,\n        \"createdAt\": \"2026-06-19T16:22:51.283Z\",\n        \"updatedAt\": \"2026-07-09T13:35:03.042Z\",\n        \"__v\": 0,\n        \"thumbnail\": \"https://res.cloudinary.com/ujjwaljain/image/upload/v1783604028/videos/thumbnails/1783604027086-3bd47502-f946-4f9e-8162-acc2142ef441.png\"\n    },\n    \"message\": \"Video details updated successfully\",\n    \"success\": true\n}"
+						}
+					]
 				},
 				{
 					"name": "deleteVideo",
@@ -964,7 +2772,76 @@
 							"path": ["videos", "{{videoId}}"]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "deleteVideo",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/videos/{{videoId}}",
+									"host": ["{{server}}"],
+									"path": ["videos", "{{videoId}}"]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "82"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"52-aIqT41zk93vuX7K7v7eBiK2PSt8\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:35:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {},\n    \"message\": \"Video deleted successfully\",\n    \"success\": true\n}"
+						}
+					]
 				}
 			]
 		},
@@ -977,7 +2854,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
 								"exec": [
 									"const res = pm.response.json();",
 									"",
@@ -998,7 +2874,10 @@
 									"});",
 									"",
 									"pm.collectionVariables.set(\"tweetId\", res.data._id);"
-								]
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
 							}
 						}
 					],
@@ -1023,7 +2902,144 @@
 							"path": ["tweets", ""]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "createTweet",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"content\": \"Your tech stack doesn't matter if your foundational habits are broken. Optimize your daily routine before you optimize your software. 🚀\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/tweets/",
+									"host": ["{{server}}"],
+									"path": ["tweets", ""]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "386"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"182-QXE7QxSSLcR9w6uUGRRAhYQ4i0s\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:52:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 201,\n    \"data\": {\n        \"owner\": \"6a30f0caf89b6708cf12a313\",\n        \"content\": \"Your tech stack doesn't matter if your foundational habits are broken. Optimize your daily routine before you optimize your software. 🚀\",\n        \"_id\": \"6a4fa7ac6e4b676dd48a76b0\",\n        \"createdAt\": \"2026-07-09T13:52:44.581Z\",\n        \"updatedAt\": \"2026-07-09T13:52:44.581Z\",\n        \"__v\": 0\n    },\n    \"message\": \"Tweet created successfully\",\n    \"success\": true\n}"
+						},
+						{
+							"name": "createTweet",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/tweets/",
+									"host": ["{{server}}"],
+									"path": ["tweets", ""]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "96"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"60-uoZ2tepZPLzPsKbaLZnwW2NDKJc\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:53:11 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 400,\n    \"data\": null,\n    \"message\": \"Tweet content is required\",\n    \"success\": false,\n    \"errors\": []\n}"
+						}
+					]
 				},
 				{
 					"name": "updateTweet",
@@ -1031,7 +3047,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
 								"exec": [
 									"const res = pm.response.json();",
 									"",
@@ -1046,7 +3061,10 @@
 									"pm.test(\"Response contains data\", () => {",
 									"    pm.expect(res).to.have.property(\"data\");",
 									"});"
-								]
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
 							}
 						}
 					],
@@ -1071,7 +3089,144 @@
 							"path": ["tweets", "{{tweetId}}"]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "updateTweet",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"content\": \"Your tech stack doesn't matter if your foundational habits are broken. Optimize your daily routine before you optimize your software. 🚀\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/tweets/{{tweetId}}",
+									"host": ["{{server}}"],
+									"path": ["tweets", "{{tweetId}}"]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "386"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"182-pAxb5PLGXJF5NALX88nAOcaj21s\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:52:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"_id\": \"6a4fa7ac6e4b676dd48a76b0\",\n        \"owner\": \"6a30f0caf89b6708cf12a313\",\n        \"content\": \"Your tech stack doesn't matter if your foundational habits are broken. Optimize your daily routine before you optimize your software. 🚀\",\n        \"createdAt\": \"2026-07-09T13:52:44.581Z\",\n        \"updatedAt\": \"2026-07-09T13:52:59.162Z\",\n        \"__v\": 0\n    },\n    \"message\": \"Tweet updated successfully\",\n    \"success\": true\n}"
+						},
+						{
+							"name": "updateTweet",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/tweets/{{tweetId}}",
+									"host": ["{{server}}"],
+									"path": ["tweets", "{{tweetId}}"]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "96"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"60-uoZ2tepZPLzPsKbaLZnwW2NDKJc\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:53:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 400,\n    \"data\": null,\n    \"message\": \"Tweet content is required\",\n    \"success\": false,\n    \"errors\": []\n}"
+						}
+					]
 				},
 				{
 					"name": "deleteTweet",
@@ -1119,7 +3274,76 @@
 							"path": ["tweets", "{{tweetId}}"]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "deleteTweet",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/tweets/{{tweetId}}",
+									"host": ["{{server}}"],
+									"path": ["tweets", "{{tweetId}}"]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "82"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"52-0hWE81lWeVSyBfv8cAv2oexpuEM\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:54:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {},\n    \"message\": \"Tweet deleted successfully\",\n    \"success\": true\n}"
+						}
+					]
 				},
 				{
 					"name": "getAllTweets",
@@ -1127,7 +3351,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{server}}/tweets?page=1&limit=8",
+							"raw": "{{server}}/tweets?page=1&limit=10",
 							"host": ["{{server}}"],
 							"path": ["tweets"],
 							"query": [
@@ -1137,12 +3361,82 @@
 								},
 								{
 									"key": "limit",
-									"value": "8"
+									"value": "10"
 								}
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "getAllTweets",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}/tweets?page=1&limit=10",
+									"host": ["{{server}}"],
+									"path": ["tweets"],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "5087"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"13df-CpDLpvf24ofh8bSJ/8d6P7sC6E8\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:54:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"docs\": [\n            {\n                \"_id\": \"6a33a80d2db3aa1dbd1eef94\",\n                \"owner\": {\n                    \"_id\": \"6a30f0caf89b6708cf12a313\",\n                    \"username\": \"ujjwaljain\",\n                    \"fullName\": \"UjjwalJain\",\n                    \"avatar\": \"http://res.cloudinary.com/ujjwaljain/image/upload/v1783603801/user/avatars/1783603798612-5c740be9-1b41-43fc-b1d6-3e6a87c9c4ca.jpg\"\n                },\n                \"content\": \"If you could give your 18-year-old self just one sentence of advice, what would it be? Let's see them 👇\",\n                \"createdAt\": \"2026-06-18T08:10:53.321Z\",\n                \"updatedAt\": \"2026-06-18T08:10:53.321Z\"\n            },\n            {\n                \"_id\": \"6a33a7ea2db3aa1dbd1eef93\",\n                \"owner\": {\n                    \"_id\": \"6a30f0caf89b6708cf12a313\",\n                    \"username\": \"ujjwaljain\",\n                    \"fullName\": \"UjjwalJain\",\n                    \"avatar\": \"http://res.cloudinary.com/ujjwaljain/image/upload/v1783603801/user/avatars/1783603798612-5c740be9-1b41-43fc-b1d6-3e6a87c9c4ca.jpg\"\n                },\n                \"content\": \"The best investments don't come from the stock market. They come from the books you read, the skills you learn, and the health choices you make daily.\",\n                \"createdAt\": \"2026-06-18T08:10:18.731Z\",\n                \"updatedAt\": \"2026-06-18T08:10:18.731Z\"\n            },\n            {\n                \"_id\": \"6a33a7cc2db3aa1dbd1eef92\",\n                \"owner\": {\n                    \"_id\": \"6a30f0caf89b6708cf12a313\",\n                    \"username\": \"ujjwaljain\",\n                    \"fullName\": \"UjjwalJain\",\n                    \"avatar\": \"http://res.cloudinary.com/ujjwaljain/image/upload/v1783603801/user/avatars/1783603798612-5c740be9-1b41-43fc-b1d6-3e6a87c9c4ca.jpg\"\n                },\n                \"content\": \"A clean desktop or a well-organized workspace clears mental clutter instantly. Take 5 minutes to organize your digital space today. 🧹\",\n                \"createdAt\": \"2026-06-18T08:09:48.316Z\",\n                \"updatedAt\": \"2026-06-18T08:09:48.316Z\"\n            },\n            {\n                \"_id\": \"6a33a7ae2db3aa1dbd1eef91\",\n                \"owner\": {\n                    \"_id\": \"6a30f0caf89b6708cf12a313\",\n                    \"username\": \"ujjwaljain\",\n                    \"fullName\": \"UjjwalJain\",\n                    \"avatar\": \"http://res.cloudinary.com/ujjwaljain/image/upload/v1783603801/user/avatars/1783603798612-5c740be9-1b41-43fc-b1d6-3e6a87c9c4ca.jpg\"\n                },\n                \"content\": \"Open-source communities are built on sharing knowledge freely. What is one thing you learned today that you can share with someone else? 🤝\",\n                \"createdAt\": \"2026-06-18T08:09:18.584Z\",\n                \"updatedAt\": \"2026-06-18T08:09:18.584Z\"\n            },\n            {\n                \"_id\": \"6a33a7a12db3aa1dbd1eef90\",\n                \"owner\": {\n                    \"_id\": \"6a30f0caf89b6708cf12a313\",\n                    \"username\": \"ujjwaljain\",\n                    \"fullName\": \"UjjwalJain\",\n                    \"avatar\": \"http://res.cloudinary.com/ujjwaljain/image/upload/v1783603801/user/avatars/1783603798612-5c740be9-1b41-43fc-b1d6-3e6a87c9c4ca.jpg\"\n                },\n                \"content\": \"Data without context is just noise. Spend more time understanding the 'why' behind your metrics instead of just tracking the numbers. 📊\",\n                \"createdAt\": \"2026-06-18T08:09:05.105Z\",\n                \"updatedAt\": \"2026-06-18T08:09:05.105Z\"\n            },\n            {\n                \"_id\": \"6a33a7942db3aa1dbd1eef8f\",\n                \"owner\": {\n                    \"_id\": \"6a30f0caf89b6708cf12a313\",\n                    \"username\": \"ujjwaljain\",\n                    \"fullName\": \"UjjwalJain\",\n                    \"avatar\": \"http://res.cloudinary.com/ujjwaljain/image/upload/v1783603801/user/avatars/1783603798612-5c740be9-1b41-43fc-b1d6-3e6a87c9c4ca.jpg\"\n                },\n                \"content\": \"AI won't replace you, but someone who knows how to effectively prompt an AI just might. Embrace the tools that amplify your output. 🤖\",\n                \"createdAt\": \"2026-06-18T08:08:52.854Z\",\n                \"updatedAt\": \"2026-06-18T08:08:52.854Z\"\n            },\n            {\n                \"_id\": \"6a33a7872db3aa1dbd1eef8e\",\n                \"owner\": {\n                    \"_id\": \"6a30f0caf89b6708cf12a313\",\n                    \"username\": \"ujjwaljain\",\n                    \"fullName\": \"UjjwalJain\",\n                    \"avatar\": \"http://res.cloudinary.com/ujjwaljain/image/upload/v1783603801/user/avatars/1783603798612-5c740be9-1b41-43fc-b1d6-3e6a87c9c4ca.jpg\"\n                },\n                \"content\": \"Learning a new programming language? Build something useless but fun first. The best way to learn is through curiosity, not chores. 🎮\",\n                \"createdAt\": \"2026-06-18T08:08:39.026Z\",\n                \"updatedAt\": \"2026-06-18T08:08:39.026Z\"\n            },\n            {\n                \"_id\": \"6a33a7782db3aa1dbd1eef8d\",\n                \"owner\": {\n                    \"_id\": \"6a30f0caf89b6708cf12a313\",\n                    \"username\": \"ujjwaljain\",\n                    \"fullName\": \"UjjwalJain\",\n                    \"avatar\": \"http://res.cloudinary.com/ujjwaljain/image/upload/v1783603801/user/avatars/1783603798612-5c740be9-1b41-43fc-b1d6-3e6a87c9c4ca.jpg\"\n                },\n                \"content\": \"Burnout isn't a badge of honor; it's a design flaw in your schedule. Rest is a prerequisite for high performance. 🔋\",\n                \"createdAt\": \"2026-06-18T08:08:24.895Z\",\n                \"updatedAt\": \"2026-06-18T08:08:24.895Z\"\n            },\n            {\n                \"_id\": \"6a33a76f2db3aa1dbd1eef8c\",\n                \"owner\": {\n                    \"_id\": \"6a30f0caf89b6708cf12a313\",\n                    \"username\": \"ujjwaljain\",\n                    \"fullName\": \"UjjwalJain\",\n                    \"avatar\": \"http://res.cloudinary.com/ujjwaljain/image/upload/v1783603801/user/avatars/1783603798612-5c740be9-1b41-43fc-b1d6-3e6a87c9c4ca.jpg\"\n                },\n                \"content\": \"Automating a repetitive task saves you 5 minutes today, but it gives you back hours over the next year. What are you automating this week? ⚙️\",\n                \"createdAt\": \"2026-06-18T08:08:15.279Z\",\n                \"updatedAt\": \"2026-06-18T08:08:15.279Z\"\n            },\n            {\n                \"_id\": \"6a33a7652db3aa1dbd1eef8b\",\n                \"owner\": {\n                    \"_id\": \"6a30f0caf89b6708cf12a313\",\n                    \"username\": \"ujjwaljain\",\n                    \"fullName\": \"UjjwalJain\",\n                    \"avatar\": \"http://res.cloudinary.com/ujjwaljain/image/upload/v1783603801/user/avatars/1783603798612-5c740be9-1b41-43fc-b1d6-3e6a87c9c4ca.jpg\"\n                },\n                \"content\": \"The best developers don't memorize every syntax—they master the art of asking the right questions and reading documentation. 🔍\",\n                \"createdAt\": \"2026-06-18T08:08:05.376Z\",\n                \"updatedAt\": \"2026-06-18T08:08:05.376Z\"\n            }\n        ],\n        \"nextCursor\": \"6a33a7652db3aa1dbd1eef8b\",\n        \"hasNextPage\": true\n    },\n    \"message\": \"Tweets fetched successfully for infinite scroll\",\n    \"success\": true\n}"
+						}
+					]
 				},
 				{
 					"name": "getUsersTweet",
@@ -1199,7 +3493,82 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "getUsersTweet",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"content\": \"If you could give your 18-year-old self just one sentence of advice, what would it be? Let's see them 👇\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/tweets/user/{{userId}}?nextCursor=",
+									"host": ["{{server}}"],
+									"path": ["tweets", "user", "{{userId}}"],
+									"query": [
+										{
+											"key": "nextCursor",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "3210"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c8a-SL1aYCDvTlWePtG6RySGw36og7Y\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:54:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"tweets\": [\n            {\n                \"_id\": \"6a33a80d2db3aa1dbd1eef94\",\n                \"owner\": \"6a30f0caf89b6708cf12a313\",\n                \"content\": \"If you could give your 18-year-old self just one sentence of advice, what would it be? Let's see them 👇\",\n                \"createdAt\": \"2026-06-18T08:10:53.321Z\",\n                \"updatedAt\": \"2026-06-18T08:10:53.321Z\",\n                \"__v\": 0\n            },\n            {\n                \"_id\": \"6a33a7ea2db3aa1dbd1eef93\",\n                \"owner\": \"6a30f0caf89b6708cf12a313\",\n                \"content\": \"The best investments don't come from the stock market. They come from the books you read, the skills you learn, and the health choices you make daily.\",\n                \"createdAt\": \"2026-06-18T08:10:18.731Z\",\n                \"updatedAt\": \"2026-06-18T08:10:18.731Z\",\n                \"__v\": 0\n            },\n            {\n                \"_id\": \"6a33a7cc2db3aa1dbd1eef92\",\n                \"owner\": \"6a30f0caf89b6708cf12a313\",\n                \"content\": \"A clean desktop or a well-organized workspace clears mental clutter instantly. Take 5 minutes to organize your digital space today. 🧹\",\n                \"createdAt\": \"2026-06-18T08:09:48.316Z\",\n                \"updatedAt\": \"2026-06-18T08:09:48.316Z\",\n                \"__v\": 0\n            },\n            {\n                \"_id\": \"6a33a7ae2db3aa1dbd1eef91\",\n                \"owner\": \"6a30f0caf89b6708cf12a313\",\n                \"content\": \"Open-source communities are built on sharing knowledge freely. What is one thing you learned today that you can share with someone else? 🤝\",\n                \"createdAt\": \"2026-06-18T08:09:18.584Z\",\n                \"updatedAt\": \"2026-06-18T08:09:18.584Z\",\n                \"__v\": 0\n            },\n            {\n                \"_id\": \"6a33a7a12db3aa1dbd1eef90\",\n                \"owner\": \"6a30f0caf89b6708cf12a313\",\n                \"content\": \"Data without context is just noise. Spend more time understanding the 'why' behind your metrics instead of just tracking the numbers. 📊\",\n                \"createdAt\": \"2026-06-18T08:09:05.105Z\",\n                \"updatedAt\": \"2026-06-18T08:09:05.105Z\",\n                \"__v\": 0\n            },\n            {\n                \"_id\": \"6a33a7942db3aa1dbd1eef8f\",\n                \"owner\": \"6a30f0caf89b6708cf12a313\",\n                \"content\": \"AI won't replace you, but someone who knows how to effectively prompt an AI just might. Embrace the tools that amplify your output. 🤖\",\n                \"createdAt\": \"2026-06-18T08:08:52.854Z\",\n                \"updatedAt\": \"2026-06-18T08:08:52.854Z\",\n                \"__v\": 0\n            },\n            {\n                \"_id\": \"6a33a7872db3aa1dbd1eef8e\",\n                \"owner\": \"6a30f0caf89b6708cf12a313\",\n                \"content\": \"Learning a new programming language? Build something useless but fun first. The best way to learn is through curiosity, not chores. 🎮\",\n                \"createdAt\": \"2026-06-18T08:08:39.026Z\",\n                \"updatedAt\": \"2026-06-18T08:08:39.026Z\",\n                \"__v\": 0\n            },\n            {\n                \"_id\": \"6a33a7782db3aa1dbd1eef8d\",\n                \"owner\": \"6a30f0caf89b6708cf12a313\",\n                \"content\": \"Burnout isn't a badge of honor; it's a design flaw in your schedule. Rest is a prerequisite for high performance. 🔋\",\n                \"createdAt\": \"2026-06-18T08:08:24.895Z\",\n                \"updatedAt\": \"2026-06-18T08:08:24.895Z\",\n                \"__v\": 0\n            },\n            {\n                \"_id\": \"6a33a76f2db3aa1dbd1eef8c\",\n                \"owner\": \"6a30f0caf89b6708cf12a313\",\n                \"content\": \"Automating a repetitive task saves you 5 minutes today, but it gives you back hours over the next year. What are you automating this week? ⚙️\",\n                \"createdAt\": \"2026-06-18T08:08:15.279Z\",\n                \"updatedAt\": \"2026-06-18T08:08:15.279Z\",\n                \"__v\": 0\n            },\n            {\n                \"_id\": \"6a33a7652db3aa1dbd1eef8b\",\n                \"owner\": \"6a30f0caf89b6708cf12a313\",\n                \"content\": \"The best developers don't memorize every syntax—they master the art of asking the right questions and reading documentation. 🔍\",\n                \"createdAt\": \"2026-06-18T08:08:05.376Z\",\n                \"updatedAt\": \"2026-06-18T08:08:05.376Z\",\n                \"__v\": 0\n            }\n        ],\n        \"pagination\": {\n            \"nextCursor\": \"6a33a7652db3aa1dbd1eef8b\",\n            \"hasNextPage\": true,\n            \"limit\": 10\n        }\n    },\n    \"message\": \"User tweets fetched successfully\",\n    \"success\": true\n}"
+						}
+					]
 				},
 				{
 					"name": "getTweetById",
@@ -1250,7 +3619,144 @@
 							"path": ["tweets", "{{tweetId}}"]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "getTweetById",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"content\": \"Your tech stack doesn't matter if your foundational habits are broken. Optimize your daily routine before you optimize your software. 🚀\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/tweets/{{tweetId}}",
+									"host": ["{{server}}"],
+									"path": ["tweets", "{{tweetId}}"]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "529"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"211-zYZbBw07qX/XXHtmnrqi5mFq6E0\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:55:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": [\n        {\n            \"_id\": \"6a33a80d2db3aa1dbd1eef94\",\n            \"owner\": {\n                \"_id\": \"6a30f0caf89b6708cf12a313\",\n                \"username\": \"ujjwaljain\",\n                \"avatar\": \"http://res.cloudinary.com/ujjwaljain/image/upload/v1783603801/user/avatars/1783603798612-5c740be9-1b41-43fc-b1d6-3e6a87c9c4ca.jpg\"\n            },\n            \"content\": \"If you could give your 18-year-old self just one sentence of advice, what would it be? Let's see them 👇\",\n            \"createdAt\": \"2026-06-18T08:10:53.321Z\",\n            \"updatedAt\": \"2026-06-18T08:10:53.321Z\",\n            \"__v\": 0\n        }\n    ],\n    \"message\": \"Tweet fetched successfully\",\n    \"success\": true\n}"
+						},
+						{
+							"name": "getTweetById",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"content\": \"Your tech stack doesn't matter if your foundational habits are broken. Optimize your daily routine before you optimize your software. 🚀\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/tweets/{{tweetId}}",
+									"host": ["{{server}}"],
+									"path": ["tweets", "{{tweetId}}"]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "87"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"57-LRu0D68RBGhI+fxsbya2txQM0wc\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:55:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 400,\n    \"data\": null,\n    \"message\": \"Invalid tweet id\",\n    \"success\": false,\n    \"errors\": []\n}"
+						}
+					]
 				}
 			]
 		},
@@ -1263,7 +3769,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
 								"exec": [
 									"const res = pm.response.json();",
 									"",
@@ -1284,7 +3789,10 @@
 									"});",
 									"",
 									"pm.collectionVariables.set(\"playlistId\", res.data._id);"
-								]
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
 							}
 						}
 					],
@@ -1296,7 +3804,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"ShowCases\",\r\n    \"description\": \"This playlist contains videos of all the projects created by me\",\r\n}",
+							"raw": "{\r\n    \"name\": \"ShowCases\",\r\n    \"description\": \"This playlist contains videos of all the projects created by me\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1309,7 +3817,144 @@
 							"path": ["playlist", ""]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "createPlaylist",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"ShowCases\",\r\n    \"description\": \"This playlist contains videos of all the projects created by me\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/playlist/",
+									"host": ["{{server}}"],
+									"path": ["playlist", ""]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "349"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"15d-NZwo9N6nbHkeIWlppgdL6E4PdM8\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:56:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 201,\n    \"data\": {\n        \"name\": \"ShowCases\",\n        \"description\": \"This playlist contains videos of all the projects created by me\",\n        \"videos\": [],\n        \"owner\": \"6a30f0caf89b6708cf12a313\",\n        \"_id\": \"6a4fa89b6e4b676dd48a76b1\",\n        \"createdAt\": \"2026-07-09T13:56:43.897Z\",\n        \"updatedAt\": \"2026-07-09T13:56:43.897Z\",\n        \"__v\": 0\n    },\n    \"message\": \"Playlist created successfully\",\n    \"success\": true\n}"
+						},
+						{
+							"name": "createPlaylist",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"ShowCases\"\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/playlist/",
+									"host": ["{{server}}"],
+									"path": ["playlist", ""]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "103"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"67-H2xzw5zfK1FKUCI3gkPJRQnk2Dw\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:57:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 400,\n    \"data\": null,\n    \"message\": \"Playlist description is required\",\n    \"success\": false,\n    \"errors\": []\n}"
+						}
+					]
 				},
 				{
 					"name": "getPlaylistById",
@@ -1360,7 +4005,144 @@
 							"path": ["playlist", "{{playlistId}}"]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "getPlaylistById",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/playlist/{{playlistId}}",
+									"host": ["{{server}}"],
+									"path": ["playlist", "{{playlistId}}"]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "230"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e6-YtmVinbJn14CZZBHpNUWqIk8H8c\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:57:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": [\n        {\n            \"_id\": \"6a4fa89b6e4b676dd48a76b1\",\n            \"name\": \"ShowCases\",\n            \"description\": \"This playlist contains videos of all the projects created by me\",\n            \"videos\": []\n        }\n    ],\n    \"message\": \"Playlist fetched successfully\",\n    \"success\": true\n}"
+						},
+						{
+							"name": "getPlaylistById",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/playlist/{{playlistId}}",
+									"host": ["{{server}}"],
+									"path": ["playlist", "{{playlistId}}"]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "90"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5a-PuCIl8d9vPGH2KW2oGO4NHb6kx8\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:57:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 400,\n    \"data\": null,\n    \"message\": \"Invalid playlist id\",\n    \"success\": false,\n    \"errors\": []\n}"
+						}
+					]
 				},
 				{
 					"name": "updatePlaylistDetails",
@@ -1368,7 +4150,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
 								"exec": [
 									"const res = pm.response.json();",
 									"",
@@ -1383,7 +4164,10 @@
 									"pm.test(\"Response contains data\", () => {",
 									"    pm.expect(res).to.have.property(\"data\");",
 									"});"
-								]
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
 							}
 						}
 					],
@@ -1395,7 +4179,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "",
+							"raw": "{\r\n    \"name\": \"ShowCases\",\r\n    \"description\": \"This playlist contains videos of all the projects created by me\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1408,7 +4192,144 @@
 							"path": ["playlist", "{{playlistId}}"]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "updatePlaylistDetails",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/playlist/{{playlistId}}",
+									"host": ["{{server}}"],
+									"path": ["playlist", "{{playlistId}}"]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "123"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7b-PsuMVyuf7lnh3js+zqCtU/vsRlg\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:58:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 400,\n    \"data\": null,\n    \"message\": \"At least one field (name or description) is required\",\n    \"success\": false,\n    \"errors\": []\n}"
+						},
+						{
+							"name": "updatePlaylistDetails",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"ShowCases\",\r\n    \"description\": \"This playlist contains videos of all the projects created by me\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/playlist/{{playlistId}}",
+									"host": ["{{server}}"],
+									"path": ["playlist", "{{playlistId}}"]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "349"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"15d-mJiliABDWl0LZ8gpaglRAyWAhEo\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:58:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"_id\": \"6a4fa89b6e4b676dd48a76b1\",\n        \"name\": \"ShowCases\",\n        \"description\": \"This playlist contains videos of all the projects created by me\",\n        \"videos\": [],\n        \"owner\": \"6a30f0caf89b6708cf12a313\",\n        \"createdAt\": \"2026-07-09T13:56:43.897Z\",\n        \"updatedAt\": \"2026-07-09T13:56:43.897Z\",\n        \"__v\": 0\n    },\n    \"message\": \"Playlist updated successfully\",\n    \"success\": true\n}"
+						}
+					]
 				},
 				{
 					"name": "removeVideoToPlaylist",
@@ -1461,7 +4382,227 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "removeVideoToPlaylist",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/playlist/remove/{{videoId}}/{{playlistId}}",
+									"host": ["{{server}}"],
+									"path": [
+										"playlist",
+										"remove",
+										"{{videoId}}",
+										"{{playlistId}}"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "89"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"59-Wm+WIa25aiwZnJfjpLr0R74uHu0\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 14:00:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"data\": null,\n    \"message\": \"Playlist not found\",\n    \"success\": false,\n    \"errors\": []\n}"
+						},
+						{
+							"name": "removeVideoToPlaylist",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/playlist/remove/{{videoId}}/{{playlistId}}",
+									"host": ["{{server}}"],
+									"path": [
+										"playlist",
+										"remove",
+										"{{videoId}}",
+										"{{playlistId}}"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "102"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"66-MmkZcnQsxVUIVKB6cYJppzBi7l4\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 14:00:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"data\": null,\n    \"message\": \"Video not found in the playlist\",\n    \"success\": false,\n    \"errors\": []\n}"
+						},
+						{
+							"name": "removeVideoToPlaylist",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/playlist/remove/{{videoId}}/{{playlistId}}",
+									"host": ["{{server}}"],
+									"path": [
+										"playlist",
+										"remove",
+										"{{videoId}}",
+										"{{playlistId}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "360"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"168-Dahof++2ePx+Llmpe54ng2U5h5o\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 14:00:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"_id\": \"6a4fa89b6e4b676dd48a76b1\",\n        \"name\": \"ShowCases\",\n        \"description\": \"This playlist contains videos of all the projects created by me\",\n        \"videos\": [],\n        \"owner\": \"6a30f0caf89b6708cf12a313\",\n        \"createdAt\": \"2026-07-09T13:56:43.897Z\",\n        \"updatedAt\": \"2026-07-09T14:00:37.257Z\",\n        \"__v\": 2\n    },\n    \"message\": \"Video removed from playlist successfully\",\n    \"success\": true\n}"
+						}
+					]
 				},
 				{
 					"name": "Delete Playlist",
@@ -1469,7 +4610,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
 								"exec": [
 									"const res = pm.response.json();",
 									"",
@@ -1484,7 +4624,10 @@
 									"pm.test(\"Response contains data\", () => {",
 									"    pm.expect(res).to.have.property(\"data\");",
 									"});"
-								]
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
 							}
 						}
 					],
@@ -1498,12 +4641,143 @@
 							}
 						],
 						"url": {
-							"raw": "{{server}}/playlists/{{playlistId}}",
+							"raw": "{{server}}/playlist/{{playlistId}}",
 							"host": ["{{server}}"],
-							"path": ["playlists", "{{playlistId}}"]
+							"path": ["playlist", "{{playlistId}}"]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Delete Playlist",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{server}}/playlist/{{playlistId}}",
+									"host": ["{{server}}"],
+									"path": ["playlist", "{{playlistId}}"]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "85"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"55-Efy1rAyabYVFSaNx6ci9ln09LNk\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 14:02:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {},\n    \"message\": \"Playlist deleted successfully\",\n    \"success\": true\n}"
+						},
+						{
+							"name": "Delete Playlist",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{server}}/playlist/{{playlistId}}",
+									"host": ["{{server}}"],
+									"path": ["playlist", "{{playlistId}}"]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "89"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"59-Wm+WIa25aiwZnJfjpLr0R74uHu0\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 14:02:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"data\": null,\n    \"message\": \"Playlist not found\",\n    \"success\": false,\n    \"errors\": []\n}"
+						}
+					]
 				},
 				{
 					"name": "addVideoToPlaylist",
@@ -1556,7 +4830,227 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "addVideoToPlaylist",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/playlist/add/{{videoId}}/{{playlistId}}",
+									"host": ["{{server}}"],
+									"path": [
+										"playlist",
+										"add",
+										"{{videoId}}",
+										"{{playlistId}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "382"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"17e-nHcelYHvKDH2xPyC5qocRk+bIDw\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:58:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"_id\": \"6a4fa89b6e4b676dd48a76b1\",\n        \"name\": \"ShowCases\",\n        \"description\": \"This playlist contains videos of all the projects created by me\",\n        \"videos\": [\n            \"6a4fa76a6e4b676dd48a76af\"\n        ],\n        \"owner\": \"6a30f0caf89b6708cf12a313\",\n        \"createdAt\": \"2026-07-09T13:56:43.897Z\",\n        \"updatedAt\": \"2026-07-09T13:58:48.211Z\",\n        \"__v\": 1\n    },\n    \"message\": \"Video added to playlist successfully\",\n    \"success\": true\n}"
+						},
+						{
+							"name": "addVideoToPlaylist",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/playlist/add/{{videoId}}/{{playlistId}}",
+									"host": ["{{server}}"],
+									"path": [
+										"playlist",
+										"add",
+										"{{videoId}}",
+										"{{playlistId}}"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "87"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"57-4ZrgQek7rNyaKbSSkAamDLZym9c\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:59:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 400,\n    \"data\": null,\n    \"message\": \"Invalid video id\",\n    \"success\": false,\n    \"errors\": []\n}"
+						},
+						{
+							"name": "addVideoToPlaylist",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/playlist/add/{{videoId}}/{{playlistId}}",
+									"host": ["{{server}}"],
+									"path": [
+										"playlist",
+										"add",
+										"{{videoId}}",
+										"{{playlistId}}"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "90"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5a-PuCIl8d9vPGH2KW2oGO4NHb6kx8\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 13:59:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 400,\n    \"data\": null,\n    \"message\": \"Invalid playlist id\",\n    \"success\": false,\n    \"errors\": []\n}"
+						}
+					]
 				},
 				{
 					"name": "getUserPlaylist",
@@ -1607,7 +5101,76 @@
 							"path": ["playlist", "user", "{{userId}}"]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "getUserPlaylist",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/playlist/user/{{userId}}",
+									"host": ["{{server}}"],
+									"path": ["playlist", "user", "{{userId}}"]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "295"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"127-d760twPSZfEg4wI1p6DhpnkWwkk\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 14:02:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": [\n        {\n            \"_id\": \"6a356ded3fffe64292b39557\",\n            \"name\": \"ShowCases Playlist\",\n            \"description\": \"Hii there, This playlist contains videos of all the projects created by me\",\n            \"owner\": \"6a30f0caf89b6708cf12a313\",\n            \"totalVideos\": 3\n        }\n    ],\n    \"message\": \"User playlists fetched successfully\",\n    \"success\": true\n}"
+						}
+					]
 				}
 			]
 		},
@@ -1620,7 +5183,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
 								"exec": [
 									"const res = pm.response.json();",
 									"",
@@ -1635,7 +5197,10 @@
 									"pm.test(\"Response contains data\", () => {",
 									"    pm.expect(res).to.have.property(\"data\");",
 									"});"
-								]
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
 							}
 						}
 					],
@@ -1647,7 +5212,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"ShowCases\",\r\n        \"description\": \"This playlist contains videos of all the projects created by me\",\r\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1655,12 +5220,157 @@
 							}
 						},
 						"url": {
-							"raw": "{{server}}/subscription/c/{{channelId}}",
+							"raw": "{{server}}/subscriptions/c/{{channelId}}",
 							"host": ["{{server}}"],
-							"path": ["subscription", "c", "{{channelId}}"]
+							"path": ["subscriptions", "c", "{{channelId}}"]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "toggleSubs",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/subscriptions/c/{{channelId}}",
+									"host": ["{{server}}"],
+									"path": [
+										"subscriptions",
+										"c",
+										"{{channelId}}"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "309"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"135-THgR8aBHx4Z9DXfpzyjPa8arqIg\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 14:38:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 201,\n    \"data\": {\n        \"subscription\": {\n            \"subscriber\": \"6a30f0caf89b6708cf12a313\",\n            \"channel\": \"6a4fa1706e4b676dd48a76ae\",\n            \"_id\": \"6a4fb26b6e4b676dd48a76b2\",\n            \"createdAt\": \"2026-07-09T14:38:35.477Z\",\n            \"updatedAt\": \"2026-07-09T14:38:35.477Z\",\n            \"__v\": 0\n        },\n        \"subscribed\": true\n    },\n    \"message\": \"Subscribed successfully\",\n    \"success\": true\n}"
+						},
+						{
+							"name": "toggleSubs",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/subscriptions/c/{{channelId}}",
+									"host": ["{{server}}"],
+									"path": [
+										"subscriptions",
+										"c",
+										"{{channelId}}"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "89"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"59-gdKgzViWmhWXCHkCv+a1bWU/VfU\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 14:39:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 400,\n    \"data\": null,\n    \"message\": \"Invalid channel id\",\n    \"success\": false,\n    \"errors\": []\n}"
+						}
+					]
 				},
 				{
 					"name": "getSubscriptions",
@@ -1711,7 +5421,80 @@
 							"path": ["subscriptions", "c", "{{channelId}}"]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "getSubscriptions",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/subscriptions/c/{{channelId}}",
+									"host": ["{{server}}"],
+									"path": [
+										"subscriptions",
+										"c",
+										"{{channelId}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "508"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1fc-mg+YNEzPPKHqux9/km8tk/kO2KA\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 14:40:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": [\n        {\n            \"_id\": \"6a41293c597bcbb76670cb24\",\n            \"channelName\": \"Luffy\",\n            \"channelAvatar\": \"http://res.cloudinary.com/ujjwaljain/image/upload/v1782655286/user/avatars/1782655284831-212f2c20-ecbc-4b35-99bc-c6f478fc2722.png\"\n        },\n        {\n            \"_id\": \"6a4fa1706e4b676dd48a76ae\",\n            \"channelName\": \"Luffy\",\n            \"channelAvatar\": \"http://res.cloudinary.com/ujjwaljain/image/upload/v1783603566/user/avatars/1783603562077-cef6965f-34e0-4687-ba95-5249a8ed27e7.webp\"\n        }\n    ],\n    \"message\": \"Subscribed channels retrieved successfully\",\n    \"success\": true\n}"
+						}
+					]
 				},
 				{
 					"name": "getSubscribers",
@@ -1762,7 +5545,80 @@
 							"path": ["subscriptions", "u", "{{channelId}}"]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "getSubscribers",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/subscriptions/u/{{channelId}}",
+									"host": ["{{server}}"],
+									"path": [
+										"subscriptions",
+										"u",
+										"{{channelId}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "415"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"19f-fTuNmt3LGmd61TsMyRKUMXVXUyg\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 14:39:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"subscribers\": [\n            {\n                \"_id\": \"6a30f0caf89b6708cf12a313\",\n                \"username\": \"ujjwaljain\",\n                \"fullName\": \"UjjwalJain\",\n                \"avatar\": \"http://res.cloudinary.com/ujjwaljain/image/upload/v1783603801/user/avatars/1783603798612-5c740be9-1b41-43fc-b1d6-3e6a87c9c4ca.jpg\"\n            }\n        ],\n        \"pagination\": {\n            \"totalSubscribers\": 1,\n            \"currentPage\": 1,\n            \"totalPages\": 1,\n            \"limit\": 10\n        }\n    },\n    \"message\": \"Channel subscribers retrieved successfully\",\n    \"success\": true\n}"
+						}
+					]
 				}
 			]
 		},
@@ -1817,7 +5673,164 @@
 							"path": ["likes", "toggle", "v", "{{videoId}}"]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Toggle Video Like",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/likes/toggle/v/{{videoId}}",
+									"host": ["{{server}}"],
+									"path": [
+										"likes",
+										"toggle",
+										"v",
+										"{{videoId}}"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "294"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"126-oQh0oehpXgFKenKZTs9o7hhBb6I\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 14:40:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 201,\n    \"data\": {\n        \"likedBy\": \"6a30f0caf89b6708cf12a313\",\n        \"targetType\": \"Video\",\n        \"targetId\": \"6a4fa76a6e4b676dd48a76af\",\n        \"_id\": \"6a4fb2da6e4b676dd48a76b4\",\n        \"createdAt\": \"2026-07-09T14:40:26.899Z\",\n        \"updatedAt\": \"2026-07-09T14:40:26.899Z\",\n        \"__v\": 0\n    },\n    \"message\": \"Video liked successfully\",\n    \"success\": true\n}"
+						},
+						{
+							"name": "Toggle Video Like",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/likes/toggle/v/{{videoId}}",
+									"host": ["{{server}}"],
+									"path": [
+										"likes",
+										"toggle",
+										"v",
+										"{{videoId}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "84"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"54-YdNKtYW1nlwwh/WW1zjuK/h4gSM\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 14:41:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": null,\n    \"message\": \"Video unliked successfully\",\n    \"success\": true\n}"
+						}
+					]
 				},
 				{
 					"name": "Toggle Tweet Like",
@@ -1867,7 +5880,164 @@
 							"path": ["likes", "toggle", "t", "{{tweetId}}"]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Toggle Tweet Like",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/likes/toggle/t/{{tweetId}}",
+									"host": ["{{server}}"],
+									"path": [
+										"likes",
+										"toggle",
+										"t",
+										"{{tweetId}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "84"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"54-YdNKtYW1nlwwh/WW1zjuK/h4gSM\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 14:40:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": null,\n    \"message\": \"Video unliked successfully\",\n    \"success\": true\n}"
+						},
+						{
+							"name": "Toggle Tweet Like",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/likes/toggle/t/{{tweetId}}",
+									"host": ["{{server}}"],
+									"path": [
+										"likes",
+										"toggle",
+										"t",
+										"{{tweetId}}"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "294"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"126-4UBFV/Nj/Y65a92tY8QArNI7zMU\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 14:40:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 201,\n    \"data\": {\n        \"likedBy\": \"6a30f0caf89b6708cf12a313\",\n        \"targetType\": \"Tweet\",\n        \"targetId\": \"6a33a80d2db3aa1dbd1eef94\",\n        \"_id\": \"6a4fb2ee6e4b676dd48a76b5\",\n        \"createdAt\": \"2026-07-09T14:40:46.312Z\",\n        \"updatedAt\": \"2026-07-09T14:40:46.312Z\",\n        \"__v\": 0\n    },\n    \"message\": \"Video liked successfully\",\n    \"success\": true\n}"
+						}
+					]
 				},
 				{
 					"name": "Toggle Comment Like",
@@ -1917,7 +6087,86 @@
 							"path": ["likes", "toggle", "c", "{{commentId}}"]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Toggle Comment Like",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/likes/toggle/c/{{commentId}}",
+									"host": ["{{server}}"],
+									"path": [
+										"likes",
+										"toggle",
+										"c",
+										"{{commentId}}"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "298"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"12a-XTXtrwpEMnWb9lOdpJ76Lhk1g4g\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 14:47:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 201,\n    \"data\": {\n        \"likedBy\": \"6a30f0caf89b6708cf12a313\",\n        \"targetType\": \"Comment\",\n        \"targetId\": \"6a4fb3d9f46859255eb30e6b\",\n        \"_id\": \"6a4fb4990a094bbef53ec69e\",\n        \"createdAt\": \"2026-07-09T14:47:53.426Z\",\n        \"updatedAt\": \"2026-07-09T14:47:53.426Z\",\n        \"__v\": 0\n    },\n    \"message\": \"Comment liked successfully\",\n    \"success\": true\n}"
+						}
+					]
 				},
 				{
 					"name": "Get Liked Videos",
@@ -1953,7 +6202,67 @@
 							"path": ["likes", "videos"]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Get Liked Videos",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}/likes/videos",
+									"host": ["{{server}}"],
+									"path": ["likes", "videos"]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "539"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"21b-buVzmVWpyqKUZyF+Qj9QDd0k0GA\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 14:43:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": [\n        {\n            \"_id\": \"6a4fa76a6e4b676dd48a76af\",\n            \"title\": \"Long Portfolio Video\",\n            \"thumbnail\": \"https://res.cloudinary.com/ujjwaljain/image/upload/v1783605078/videos/thumbnails/1783605073233-820d5f4f-9265-429e-8132-d0afba8f8caf.png\",\n            \"duration\": 75.178188,\n            \"owner\": {\n                \"_id\": [\n                    \"6a30f0caf89b6708cf12a313\"\n                ],\n                \"username\": [\n                    \"ujjwaljain\"\n                ],\n                \"avatar\": [\n                    \"http://res.cloudinary.com/ujjwaljain/image/upload/v1783603801/user/avatars/1783603798612-5c740be9-1b41-43fc-b1d6-3e6a87c9c4ca.jpg\"\n                ]\n            }\n        }\n    ],\n    \"message\": \"Liked videos fetched successfully\",\n    \"success\": true\n}"
+						}
+					]
 				}
 			]
 		},
@@ -2014,7 +6323,81 @@
 							"path": ["comments", "{{targetId}}"]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Add Comment",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"content\": \"This is a sample comment\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/comments/{{targetId}}",
+									"host": ["{{server}}"],
+									"path": ["comments", "{{targetId}}"]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "527"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"20f-Vu7F55Hvndl6MjCQsqZA204VpCY\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 14:44:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 201,\n    \"data\": {\n        \"content\": \"This is a sample comment\",\n        \"targetId\": \"6a4fa76a6e4b676dd48a76af\",\n        \"targetType\": \"Video\",\n        \"owner\": {\n            \"_id\": \"6a30f0caf89b6708cf12a313\",\n            \"username\": \"ujjwaljain\",\n            \"avatar\": \"http://res.cloudinary.com/ujjwaljain/image/upload/v1783603801/user/avatars/1783603798612-5c740be9-1b41-43fc-b1d6-3e6a87c9c4ca.jpg\"\n        },\n        \"parentCommentId\": null,\n        \"_id\": \"6a4fb3d9f46859255eb30e6b\",\n        \"createdAt\": \"2026-07-09T14:44:41.696Z\",\n        \"updatedAt\": \"2026-07-09T14:44:41.696Z\",\n        \"__v\": 0\n    },\n    \"message\": \"Comment added successfully\",\n    \"success\": true\n}"
+						}
+					]
 				},
 				{
 					"name": "Update Comment",
@@ -2064,7 +6447,81 @@
 							"path": ["comments", "{{commentId}}"]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Update Comment",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"content\": \"Updated comment\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/comments/{{commentId}}",
+									"host": ["{{server}}"],
+									"path": ["comments", "{{commentId}}"]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "520"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"208-OJtRqk5+wSlUsTJyXMRHBHSTCEA\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 14:48:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"_id\": \"6a4fb3d9f46859255eb30e6b\",\n        \"content\": \"Updated comment\",\n        \"targetId\": \"6a4fa76a6e4b676dd48a76af\",\n        \"targetType\": \"Video\",\n        \"owner\": {\n            \"_id\": \"6a30f0caf89b6708cf12a313\",\n            \"username\": \"ujjwaljain\",\n            \"avatar\": \"http://res.cloudinary.com/ujjwaljain/image/upload/v1783603801/user/avatars/1783603798612-5c740be9-1b41-43fc-b1d6-3e6a87c9c4ca.jpg\"\n        },\n        \"parentCommentId\": null,\n        \"createdAt\": \"2026-07-09T14:44:41.696Z\",\n        \"updatedAt\": \"2026-07-09T14:48:07.441Z\",\n        \"__v\": 0\n    },\n    \"message\": \"Comment updated successfully\",\n    \"success\": true\n}"
+						}
+					]
 				},
 				{
 					"name": "Delete Comment",
@@ -2100,7 +6557,67 @@
 							"path": ["comments", "{{commentId}}"]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Delete Comment",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server}}/comments/{{commentId}}",
+									"host": ["{{server}}"],
+									"path": ["comments", "{{commentId}}"]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "84"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"54-AtfOCO7zzomJbTm7GxdEiubUjsE\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 14:51:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {},\n    \"message\": \"Comment deleted successfully\",\n    \"success\": true\n}"
+						}
+					]
 				},
 				{
 					"name": "Get Replies",
@@ -2146,7 +6663,154 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Get Replies",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}/comments/{{commentId}}/replies?limit=10&cursor=",
+									"host": ["{{server}}"],
+									"path": [
+										"comments",
+										"{{commentId}}",
+										"replies"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "cursor",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "134"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"86-zlJQtPxPIiOKLeF0E8GcfvCG8/A\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 14:48:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"replies\": [],\n        \"nextCursor\": null,\n        \"hasNextPage\": false\n    },\n    \"message\": \"Replies fetched successfully\",\n    \"success\": true\n}"
+						},
+						{
+							"name": "Get Replies",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}/comments/{{commentId}}/replies?limit=10&cursor=",
+									"host": ["{{server}}"],
+									"path": [
+										"comments",
+										"{{commentId}}",
+										"replies"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "cursor",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "513"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"201-JO6znB4E0PVtLpShHSTrtMN+jYc\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 14:51:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"replies\": [\n            {\n                \"_id\": \"6a4fb4f50a094bbef53ec69f\",\n                \"content\": \"This is a sample comment\",\n                \"owner\": {\n                    \"_id\": \"6a30f0caf89b6708cf12a313\",\n                    \"username\": \"ujjwaljain\",\n                    \"avatar\": \"http://res.cloudinary.com/ujjwaljain/image/upload/v1783603801/user/avatars/1783603798612-5c740be9-1b41-43fc-b1d6-3e6a87c9c4ca.jpg\"\n                },\n                \"createdAt\": \"2026-07-09T14:49:25.169Z\",\n                \"updatedAt\": \"2026-07-09T14:49:25.169Z\"\n            }\n        ],\n        \"nextCursor\": \"2026-07-09T14:49:25.169Z\",\n        \"hasNextPage\": false\n    },\n    \"message\": \"Replies fetched successfully\",\n    \"success\": true\n}"
+						}
+					]
 				},
 				{
 					"name": "Get Comments",
@@ -2192,7 +6856,77 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Get Comments",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}/comments/{{targetId}}?limit=10&cursor=",
+									"host": ["{{server}}"],
+									"path": ["comments", "{{targetId}}"],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "cursor",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "679"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2a7-blhJFSdIs6GrOBA9mRPJEqOgpec\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 14:48:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"comments\": {\n            \"docs\": [\n                {\n                    \"_id\": \"6a4fb3d9f46859255eb30e6b\",\n                    \"content\": \"Updated comment\",\n                    \"targetType\": \"Video\",\n                    \"owner\": {\n                        \"_id\": \"6a30f0caf89b6708cf12a313\",\n                        \"username\": \"ujjwaljain\",\n                        \"avatar\": \"http://res.cloudinary.com/ujjwaljain/image/upload/v1783603801/user/avatars/1783603798612-5c740be9-1b41-43fc-b1d6-3e6a87c9c4ca.jpg\"\n                    },\n                    \"createdAt\": \"2026-07-09T14:44:41.696Z\",\n                    \"updatedAt\": \"2026-07-09T14:48:07.441Z\",\n                    \"replyCount\": 0\n                }\n            ],\n            \"totalDocs\": 1,\n            \"limit\": 10,\n            \"page\": 1,\n            \"totalPages\": 1,\n            \"pagingCounter\": 1,\n            \"hasPrevPage\": false,\n            \"hasNextPage\": false,\n            \"offset\": 0,\n            \"prevPage\": null,\n            \"nextPage\": null\n        },\n        \"nextCursor\": null,\n        \"hasNextPage\": false\n    },\n    \"message\": \"Comments fetched successfully\",\n    \"success\": true\n}"
+						}
+					]
 				}
 			]
 		},
@@ -2216,7 +6950,73 @@
 							"path": ["dashboard", "stats"]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Get Channel Stats",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{server}}/dashboard/stats",
+									"host": ["{{server}}"],
+									"path": ["dashboard", "stats"]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "170"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"aa-l9eDex6nqnOQ6tdo5rSYV7bjlLY\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 14:51:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"videos\": 3,\n        \"totalViews\": 2,\n        \"subscriberCount\": 0,\n        \"totalComments\": 0,\n        \"totalLikes\": 1\n    },\n    \"message\": \"Channel stats retrieved successfully\",\n    \"success\": true\n}"
+						}
+					]
 				},
 				{
 					"name": "Get Channel Videos (Default)",
@@ -2245,7 +7045,83 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Get Channel Videos (Default)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{server}}/dashboard/videos?page=1&limit=10",
+									"host": ["{{server}}"],
+									"path": ["dashboard", "videos"],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1243"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4db-4zKI5mPyMMh3myur5JBbGwECtuM\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 14:51:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"docs\": [\n            {\n                \"_id\": \"6a4fa76a6e4b676dd48a76af\",\n                \"thumbnail\": \"https://res.cloudinary.com/ujjwaljain/image/upload/v1783605078/videos/thumbnails/1783605073233-820d5f4f-9265-429e-8132-d0afba8f8caf.png\",\n                \"title\": \"Long Portfolio Video\",\n                \"duration\": 75.178188,\n                \"views\": 0,\n                \"isPublished\": true,\n                \"createdAt\": \"2026-07-09T13:51:38.208Z\",\n                \"commentCount\": 0,\n                \"likeCount\": 1\n            },\n            {\n                \"_id\": \"6a3568f636f6afd5e35a5195\",\n                \"title\": \"BlogX Project Video\",\n                \"duration\": 56.8,\n                \"views\": 2,\n                \"isPublished\": true,\n                \"createdAt\": \"2026-06-19T16:06:14.736Z\",\n                \"thumbnail\": \"https://res.cloudinary.com/ujjwaljain/image/upload/v1781885130/videos/thumbnails/1781885112663-70c39ae9-d3b4-4c44-a748-48f03cb44aad.png\",\n                \"commentCount\": 0,\n                \"likeCount\": 0\n            },\n            {\n                \"_id\": \"6a31479838f06c5a9dac7181\",\n                \"title\": \"Short Portfolio Video\",\n                \"duration\": 19.455875,\n                \"views\": 0,\n                \"isPublished\": true,\n                \"createdAt\": \"2026-06-16T12:54:48.895Z\",\n                \"thumbnail\": \"https://res.cloudinary.com/ujjwaljain/image/upload/v1781614485/videos/thumbnails/1781614483518-3e9e48e0-2836-41d4-a370-a9b815104880.png\",\n                \"commentCount\": 0,\n                \"likeCount\": 0\n            }\n        ],\n        \"totalDocs\": 3,\n        \"limit\": 10,\n        \"page\": 1,\n        \"totalPages\": 1,\n        \"pagingCounter\": 1,\n        \"hasPrevPage\": false,\n        \"hasNextPage\": false,\n        \"prevPage\": null,\n        \"nextPage\": null\n    },\n    \"message\": \"Channel videos retrieved successfully\",\n    \"success\": true\n}"
+						}
+					]
 				},
 				{
 					"name": "Get Channel Videos (Page 2)",
@@ -2274,7 +7150,83 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Get Channel Videos (Page 2)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{server}}/dashboard/videos?page=2&limit=5",
+									"host": ["{{server}}"],
+									"path": ["dashboard", "videos"],
+									"query": [
+										{
+											"key": "page",
+											"value": "2"
+										},
+										{
+											"key": "limit",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "236"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ec-uYwbi3tOMqRh1o+RK9YBvCWLx9g\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Jul 2026 14:52:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"docs\": [],\n        \"totalDocs\": 3,\n        \"limit\": 5,\n        \"page\": 2,\n        \"totalPages\": 1,\n        \"pagingCounter\": 6,\n        \"hasPrevPage\": true,\n        \"hasNextPage\": false,\n        \"prevPage\": 1,\n        \"nextPage\": null\n    },\n    \"message\": \"Channel videos retrieved successfully\",\n    \"success\": true\n}"
+						}
+					]
 				}
 			]
 		},
@@ -2289,7 +7241,67 @@
 					"path": ["healthcheck"]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "healthcheck",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/healthcheck",
+							"host": ["{{server}}"],
+							"path": ["healthcheck"]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "http://localhost:5173"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "89"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"59-ZVNhUMq/urReqbAqc++OzcF1cJQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 09 Jul 2026 14:52:14 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"ok\",\n    \"upTime\": 267.4353752,\n    \"timestamp\": 1783608734309,\n    \"checks\": {\n        \"database\": \"UP\"\n    }\n}"
+				}
+			]
 		}
 	],
 	"event": [
