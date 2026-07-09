@@ -1,3 +1,5 @@
+// src/api/types.ts
+
 import type { InternalAxiosRequestConfig } from 'axios';
 
 export interface RetryAxiosRequestConfig extends InternalAxiosRequestConfig {

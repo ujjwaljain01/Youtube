@@ -93,3 +93,21 @@ export interface ApiResponse<T> {
 
 	success: boolean;
 }
+
+/* ----------------------------- */
+/* API Query Params              */
+/* ----------------------------- */
+
+export interface GetVideosParams {
+	page?: number;
+
+	limit?: number;
+
+	query?: string;
+
+	sortBy?: string;
+
+	sortType?: 'asc' | 'desc';
+
+	userId?: string;
+}

@@ -3,18 +3,22 @@
 import type { AxiosError } from 'axios';
 
 import { apiClient } from '../axios';
-
 import type { RetryAxiosRequestConfig } from '../types';
 
-import { refreshAccessToken } from '@/features/auth/api/auth.api';
-import { useAuthStore } from '@/features/auth/store/auth.store';
+import { refreshAccessToken } from '@/features/auth/auth.api';
+import { useAuthStore } from '@/features/auth/auth.store';
 
-let refreshPromise: Promise<string> | null = null;
+let refreshPromise: Promise<void> | null = null;
 
 export async function authErrorInterceptor(error: AxiosError) {
 	const originalRequest = error.config as RetryAxiosRequestConfig;
 
 	if (!originalRequest) {
+		return Promise.reject(error);
+	}
+
+	// Don't retry refresh endpoint itself
+	if (originalRequest.url?.includes('/users/refresh-token')) {
 		return Promise.reject(error);
 	}
 
@@ -26,21 +30,15 @@ export async function authErrorInterceptor(error: AxiosError) {
 
 	try {
 		if (!refreshPromise) {
-			refreshPromise = refreshAccessToken()
-				.then(({ accessToken }) => {
-					useAuthStore.getState().setAccessToken(accessToken);
-
-					return accessToken;
-				})
-				.finally(() => {
-					refreshPromise = null;
-				});
+			refreshPromise = refreshAccessToken().finally(() => {
+				refreshPromise = null;
+			});
 		}
 
-		const accessToken = await refreshPromise;
+		await refreshPromise;
 
-		originalRequest.headers.Authorization = `Bearer ${accessToken}`;
-
+		// Browser now has the new accessToken cookie.
+		// Retry original request.
 		return apiClient(originalRequest);
 	} catch (err) {
 		useAuthStore.getState().logout();

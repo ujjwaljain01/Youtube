@@ -2,14 +2,19 @@
 
 import { create } from 'zustand';
 
-import type { AuthState } from '@/types/auth.types';
+import type { AuthState } from '@/features/auth/auth.types';
 
 export const useAuthStore = create<AuthState>((set) => ({
 	user: null,
 
-	accessToken: null,
-
 	isAuthenticated: false,
+
+	isLoading: true,
+
+	setLoading: (loading) =>
+		set({
+			isLoading: loading,
+		}),
 
 	setUser: (user) =>
 		set({
@@ -17,22 +22,17 @@ export const useAuthStore = create<AuthState>((set) => ({
 			isAuthenticated: !!user,
 		}),
 
-	setAccessToken: (accessToken) =>
-		set({
-			accessToken,
-		}),
-
-	login: ({ user, accessToken }) =>
+	login: (user) =>
 		set({
 			user,
-			accessToken,
 			isAuthenticated: true,
+			isLoading: false,
 		}),
 
 	logout: () =>
 		set({
 			user: null,
-			accessToken: null,
 			isAuthenticated: false,
+			isLoading: false,
 		}),
 }));

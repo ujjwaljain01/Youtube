@@ -2,18 +2,17 @@ import { motion } from 'motion/react';
 
 import { Sidebar, SidebarContent } from '@/components/ui/sidebar';
 
-import {useSidebarCollapsed} from '@/store/sidebar.selector';
+import { useSidebarCollapsed } from '@/store/sidebar.selector';
 
 import { SidebarFooter } from './SidebarFooter';
 import { SidebarGroup } from './SidebarGroup';
 
 import { useNavigation } from '@/hooks/use-navigation';
-import { useAuthStore } from '@/store/auth.store';
+import { useAuthStore } from '@/features/auth/auth.store';
 import { SIDEBAR_WIDTH, SIDEBAR_COLLAPSED_WIDTH } from '@/constants/layout';
 
 export function DesktopSidebar() {
 	const collapsed = useSidebarCollapsed();
-
 
 	const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
 

@@ -12,15 +12,15 @@ export interface AuthUser {
 export interface AuthState {
 	user: AuthUser | null;
 
-	accessToken: string | null;
-
 	isAuthenticated: boolean;
+
+	isLoading: boolean;
+
+	setLoading: (loading: boolean) => void;
 
 	setUser: (user: AuthUser | null) => void;
 
-	setAccessToken: (token: string | null) => void;
-
-	login: (payload: { user: AuthUser; accessToken: string }) => void;
+	login: (user: AuthUser) => void;
 
 	logout: () => void;
 }
