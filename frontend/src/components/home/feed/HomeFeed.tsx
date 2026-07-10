@@ -1,15 +1,23 @@
 import { VideoSection, VideoSectionSkeleton } from '../sections';
+
 import { TweetSection } from '../sections/TweetSection';
 
-import { useVideos, transformVideosToCardData } from '@/features/videos';
+import { useHomeFeed } from '@/features/home';
 
-import { tweets } from '@/features/home/mock-tweets';
+import { HOME_SECTIONS } from '@/constants/home-sections';
 
 export function HomeFeed() {
-	const { data, isLoading, isError } = useVideos({
-		page: 1,
-		limit: 9,
-	});
+	const {
+		recommendedVideos,
+		trendingVideos,
+		latestVideos,
+		latestTweets,
+		developerTweets,
+
+		isLoading,
+
+		isError,
+	} = useHomeFeed();
 
 	if (isLoading) {
 		return (
@@ -19,26 +27,33 @@ export function HomeFeed() {
 		);
 	}
 
-	if (isError || !data) {
-		return <div className="py-20 text-center">Unable to load videos.</div>;
+	if (isError) {
+		return <div className="py-20 text-center">Something went wrong.</div>;
 	}
-
-	const videos = transformVideosToCardData(data.docs);
 
 	return (
 		<div className="space-y-14">
-			<VideoSection title="Recommended" videos={videos.slice(0, 3)} />
-
-			<TweetSection title="Latest Tweets" tweets={tweets.slice(0, 4)} />
-
-			<VideoSection title="Trending" videos={videos.slice(3, 6)} />
-
-			<TweetSection
-				title="Developer Updates"
-				tweets={tweets.slice(4, 8)}
+			<VideoSection
+				title={HOME_SECTIONS.RECOMMENDED}
+				videos={recommendedVideos}
 			/>
 
-			<VideoSection title="Latest Videos" videos={videos.slice(6, 9)} />
+			<TweetSection
+				title={HOME_SECTIONS.LATEST_TWEETS}
+				tweets={latestTweets}
+			/>
+
+			<VideoSection
+				title={HOME_SECTIONS.TRENDING}
+				videos={trendingVideos}
+			/>
+
+			<TweetSection
+				title={HOME_SECTIONS.DEVELOPER_UPDATES}
+				tweets={developerTweets}
+			/>
+
+			<VideoSection title={HOME_SECTIONS.LATEST} videos={latestVideos} />
 		</div>
 	);
 }
