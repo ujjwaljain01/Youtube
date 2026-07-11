@@ -1,7 +1,11 @@
 src/
-│
-├── routes/
-│   ├── AppRouter.tsx
-│   ├── ProtectedRoute.tsx
-│   ├── GuestRoute.tsx
-│   └── route-paths.ts
+├── components/
+│   └── auth/
+│       ├── RegisterForm.tsx
+│       ├── RegisterStepper.tsx
+│       ├── register-steps.ts
+│       └── steps/
+│           ├── AccountStep.tsx
+│           ├── SecurityStep.tsx
+│           ├── ProfileStep.tsx
+│           └── index.ts

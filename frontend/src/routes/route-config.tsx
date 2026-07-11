@@ -1,24 +1,15 @@
 // src/routes/route-config.tsx
 
-import { lazy } from 'react';
-
-import { ROUTES } from './route-paths';
+import type { RouteObject } from 'react-router-dom';
 
 import AppLayout from '@/layouts/AppLayout';
 import AuthLayout from '@/layouts/AuthLayout';
 
 import ProtectedRoute from './ProtectedRoute';
 import GuestRoute from './GuestRoute';
+import { ROUTES } from './route-paths';
 
-const HomePage = lazy(() => import('@/pages/Home'));
-
-const LoginPage = lazy(() => import('@/pages/Auth/Login'));
-
-const RegisterPage = lazy(() => import('@/pages/Auth/Register'));
-
-const NotFoundPage = lazy(() => import('@/pages/NotFound'));
-
-export const routes = [
+export const routes: RouteObject[] = [
 	{
 		element: <ProtectedRoute />,
 
@@ -30,7 +21,25 @@ export const routes = [
 					{
 						path: ROUTES.HOME,
 
-						element: <HomePage />,
+						lazy: async () => {
+							const module = await import('@/pages/Home');
+
+							return {
+								Component: module.default,
+							};
+						},
+					},
+
+					{
+						path: ROUTES.WATCH,
+
+						lazy: async () => {
+							const module = await import('@/pages/Watch');
+
+							return {
+								Component: module.default,
+							};
+						},
 					},
 				],
 			},
@@ -48,13 +57,26 @@ export const routes = [
 					{
 						path: ROUTES.LOGIN,
 
-						element: <LoginPage />,
+						lazy: async () => {
+							const module = await import('@/pages/Auth/Login');
+
+							return {
+								Component: module.default,
+							};
+						},
 					},
 
 					{
 						path: ROUTES.REGISTER,
 
-						element: <RegisterPage />,
+						lazy: async () => {
+							const module =
+								await import('@/pages/Auth/Register');
+
+							return {
+								Component: module.default,
+							};
+						},
 					},
 				],
 			},
@@ -64,6 +86,12 @@ export const routes = [
 	{
 		path: ROUTES.NOT_FOUND,
 
-		element: <NotFoundPage />,
+		lazy: async () => {
+			const module = await import('@/pages/NotFound');
+
+			return {
+				Component: module.default,
+			};
+		},
 	},
 ];

@@ -2,12 +2,14 @@
 
 import { Navigate, Outlet } from 'react-router-dom';
 
-import { ROUTES } from './route-paths';
-
 import { useAuthStore } from '@/features/auth/auth.store';
 
+import { ROUTES } from './route-paths';
+
 export default function GuestRoute() {
-	const { isAuthenticated, isLoading } = useAuthStore();
+	const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
+
+	const isLoading = useAuthStore((state) => state.isLoading);
 
 	if (isLoading) {
 		return (
