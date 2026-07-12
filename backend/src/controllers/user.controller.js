@@ -57,7 +57,7 @@ const registerUser = asyncHandler(async (req, res) => {
   });
 
   if (existingUser) {
-    throw new ApiError(409, "USer with username or email already exits");
+    throw new ApiError(409, "User with username or email already exists");
   }
 
   console.log(req.files);
@@ -190,7 +190,7 @@ const logoutUser = asyncHandler(async (req, res) => {
 // router.post("/refresh-token", refreshAccessToken);
 const refreshAccessToken = asyncHandler(async (req, res) => {
   const incomingRefreshToken =
-    req.cookies.refreshToken || req.body.refreshToken;
+    req.cookies?.refreshToken || req.body?.refreshToken;
 
   if (!incomingRefreshToken) throw new ApiError(401, "Unauthorized Request");
 
