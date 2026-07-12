@@ -4,7 +4,7 @@ import { useVideos } from '@/features/videos';
 
 import { transformVideosToCardData } from '@/features/videos';
 
-import { tweets } from './mock-tweets';
+// import { tweets } from './mock-tweets';
 
 import { buildHomeFeed } from './home.transformer';
 
@@ -18,8 +18,6 @@ export function useHomeFeed() {
 
 	return buildHomeFeed({
 		videos,
-
-		tweets,
 
 		isLoading,
 

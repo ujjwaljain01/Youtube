@@ -1,30 +1,49 @@
 // src/components/auth/PasswordInput.tsx
 
+import * as React from 'react';
 import { Eye, EyeOff } from 'lucide-react';
-
-import { useState } from 'react';
 
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
-type PasswordInputProps = React.ComponentProps<typeof Input>;
+export interface PasswordInputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
 
-export function PasswordInput(props: PasswordInputProps) {
-	const [showPassword, setShowPassword] = useState(false);
+export const PasswordInput = React.forwardRef<
+	HTMLInputElement,
+	PasswordInputProps
+>(({ className, ...props }, ref) => {
+	const [showPassword, setShowPassword] = React.useState(false);
 
 	return (
 		<div className="relative">
-			<Input {...props} type={showPassword ? 'text' : 'password'} />
+			<Input
+				ref={ref}
+				type={showPassword ? 'text' : 'password'}
+				className={cn('pr-10', className)}
+				{...props}
+			/>
 
 			<Button
 				type="button"
 				variant="ghost"
 				size="icon"
-				className="absolute right-2 top-1/2 -translate-y-1/2"
+				tabIndex={-1}
 				onClick={() => setShowPassword((prev) => !prev)}
+				className="absolute right-1 top-1/2 h-8 w-8 -translate-y-1/2 hover:bg-transparent"
 			>
-				{showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+				{showPassword ? (
+					<EyeOff className="h-4 w-4" />
+				) : (
+					<Eye className="h-4 w-4" />
+				)}
+
+				<span className="sr-only">
+					{showPassword ? 'Hide password' : 'Show password'}
+				</span>
 			</Button>
 		</div>
 	);
-}
+});
+
+PasswordInput.displayName = 'PasswordInput';

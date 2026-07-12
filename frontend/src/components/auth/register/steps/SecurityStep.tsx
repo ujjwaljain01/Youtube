@@ -5,7 +5,7 @@ import { useFormContext } from 'react-hook-form';
 import { Label } from '@/components/ui/label';
 import { FormMessage } from '@/components/form';
 
-import { PasswordInput } from '../PasswordInput';
+import { PasswordInput } from '@/components/auth/PasswordInput';
 
 import type { RegisterFormValues } from '@/features/auth/validation';
 

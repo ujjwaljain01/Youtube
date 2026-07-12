@@ -14,6 +14,29 @@ frontend
 │   │   ├── logo.webp
 │   │   └── logoWithName.webp
 │   ├── components
+│   │   ├── auth
+│   │   │   ├── register
+│   │   │   │   ├── steps
+│   │   │   │   │   ├── AccountStep.tsx
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── ProfileStep.tsx
+│   │   │   │   │   └── SecurityStep.tsx
+│   │   │   │   ├── register-steps.ts
+│   │   │   │   ├── RegisterForm.tsx
+│   │   │   │   ├── RegisterStepper.tsx
+│   │   │   │   └── useRegisterStepper.tsx
+│   │   │   ├── AuthCard.tsx
+│   │   │   ├── AuthDivider.tsx
+│   │   │   ├── AuthFooter.tsx
+│   │   │   ├── AuthHeader.tsx
+│   │   │   ├── AvatarUpload.tsx
+│   │   │   ├── CoverImageUpload.tsx
+│   │   │   ├── index.ts
+│   │   │   ├── LoginForm.tsx
+│   │   │   └── PasswordInput.tsx
+│   │   ├── form
+│   │   │   ├── FormMessage.tsx
+│   │   │   └── index.ts
 │   │   ├── home
 │   │   │   ├── feed
 │   │   │   │   └── HomeFeed.tsx
@@ -33,6 +56,9 @@ frontend
 │   │   │       ├── VideoCardSkeleton.tsx
 │   │   │       ├── VideoSection.tsx
 │   │   │       └── VideoSectionSkeleton.tsx
+│   │   ├── media
+│   │   │   ├── ImagePicker.tsx
+│   │   │   └── index.ts
 │   │   ├── navigation
 │   │   │   ├── navbar
 │   │   │   │   ├── CreateButton.tsx
@@ -73,6 +99,7 @@ frontend
 │   │   │   ├── dropdown-menu.tsx
 │   │   │   ├── input-group.tsx
 │   │   │   ├── input.tsx
+│   │   │   ├── label.tsx
 │   │   │   ├── scroll-area.tsx
 │   │   │   ├── separator.tsx
 │   │   │   ├── sheet.tsx
@@ -91,6 +118,7 @@ frontend
 │   │           └── VideoThumbnail.tsx
 │   ├── constants
 │   │   ├── content-grid.ts
+│   │   ├── home-sections.ts
 │   │   ├── layout.ts
 │   │   └── navigation.ts
 │   ├── data
@@ -99,25 +127,42 @@ frontend
 │   │   └── navigation.ts
 │   ├── features
 │   │   ├── auth
-│   │   │   ├── api
-│   │   │   │   └── auth.api.ts
-│   │   │   ├── hooks
-│   │   │   │   ├── useCurrentUser.ts
-│   │   │   │   └── useInitilizeAuth.ts
-│   │   │   ├── queries
-│   │   │   │   └── auth.query-keys.ts
-│   │   │   └── store
-│   │   │       └── auth.store.ts
+│   │   │   ├── mutations
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── useLogin.ts
+│   │   │   │   ├── useLogout.ts
+│   │   │   │   └── useRegister.ts
+│   │   │   ├── validation
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── login.schema.ts
+│   │   │   │   └── register.schema.ts
+│   │   │   ├── auth.api.ts
+│   │   │   ├── auth.query-keys.ts
+│   │   │   ├── auth.store.ts
+│   │   │   ├── auth.types.ts
+│   │   │   ├── AuthProvider.tsx
+│   │   │   ├── useCurrentUser.ts
+│   │   │   └── useInitializeAuth.ts
 │   │   ├── home
-│   │   │   ├── data
-│   │   │   ├── hooks
-│   │   │   ├── transformers
-│   │   │   └── types
+│   │   │   ├── home.transformer.ts
+│   │   │   ├── home.types.ts
+│   │   │   ├── index.ts
+│   │   │   └── useHomeFeed.ts
 │   │   ├── tweets
 │   │   └── videos
-│   │       ├── api.ts
-│   │       ├── hooks.ts
-│   │       └── queries.ts
+│   │       ├── api
+│   │       │   └── video.api.ts
+│   │       ├── hooks
+│   │       │   ├── index.ts
+│   │       │   ├── useVideo.ts
+│   │       │   └── useVideos.ts
+│   │       ├── queries
+│   │       │   └── video.query-keys.ts
+│   │       ├── transformers
+│   │       │   └── video-card.transformer.ts
+│   │       ├── types
+│   │       │   └── video-api.types.ts
+│   │       └── index.ts
 │   ├── hooks
 │   │   ├── use-navigation.ts
 │   │   ├── use-theme.ts
@@ -133,15 +178,32 @@ frontend
 │   │   ├── theme.ts
 │   │   └── utils.ts
 │   ├── pages
+│   │   ├── Auth
+│   │   │   ├── login
+│   │   │   │   └── index.tsx
+│   │   │   ├── Logout
+│   │   │   └── register
+│   │   │       └── index.tsx
 │   │   ├── History
 │   │   ├── Home
-│   │   │   └── HomePage.tsx
+│   │   │   └── index.tsx
+│   │   ├── NotFound
+│   │   │   └── index.tsx
 │   │   ├── Playlist
 │   │   ├── Search
 │   │   └── Watch
+│   │       └── index.tsx
 │   ├── providers
-│   │   └── themeProvider.tsx
+│   │   ├── AppProviders.tsx
+│   │   ├── QueryProvider.tsx
+│   │   └── ThemeProvider.tsx
 │   ├── routes
+│   │   ├── AppRouter.tsx
+│   │   ├── GuestRoute.tsx
+│   │   ├── index.ts
+│   │   ├── ProtectedRoute.tsx
+│   │   ├── route-config.tsx
+│   │   └── route-paths.ts
 │   ├── store
 │   │   ├── feed-filter.store.ts
 │   │   ├── sidebar.selector.ts
@@ -154,7 +216,6 @@ frontend
 │   │   ├── themes.css
 │   │   └── utilities.css
 │   ├── types
-│   │   ├── auth.types.ts
 │   │   ├── content-section.types.ts
 │   │   ├── feed-filter.types.ts
 │   │   ├── navigation.types.ts
@@ -167,13 +228,16 @@ frontend
 │   ├── index.css
 │   └── main.tsx
 ├── .gitignore
+├── BuildTreeFromText.js
 ├── components.json
 ├── eslint.config.js
-├── generateTree.js
+├── generateTreeFromExisting.js
 ├── index.html
 ├── package-lock.json
 ├── package.json
+├── project_structure.txt
 ├── README.md
+├── structure.txt
 ├── tsconfig.app.json
 ├── tsconfig.json
 ├── tsconfig.node.json

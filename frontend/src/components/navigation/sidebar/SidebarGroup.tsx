@@ -1,6 +1,10 @@
+// src/components/navigation/sidebar/SidebarGroup.tsx
+
+import { AnimatePresence, motion } from 'motion/react';
+
 import { Separator } from '@/components/ui/separator';
 
-import { useSidebarStore } from '@/store/sidebar.store';
+import { useSidebarCollapsed } from '@/store/sidebar.selector';
 
 import type { NavigationSection } from '@/types/navigation.types';
 
@@ -11,25 +15,78 @@ interface SidebarGroupProps {
 }
 
 export function SidebarGroup({ section }: SidebarGroupProps) {
-	const collapsed = useSidebarStore((state) => state.collapsed);
+	const collapsed = useSidebarCollapsed();
 
 	return (
-		<>
-			<div className="px-2 py-2">
+		<motion.section layout initial={false} className="py-2">
+			<AnimatePresence initial={false}>
 				{!collapsed && section.title && (
-					<h2 className="mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-						{section.title}
-					</h2>
+					<motion.div
+						layout
+						initial={{
+							opacity: 0,
+							y: -6,
+						}}
+						animate={{
+							opacity: 1,
+							y: 0,
+						}}
+						exit={{
+							opacity: 0,
+							y: -6,
+						}}
+						transition={{
+							duration: 0.2,
+						}}
+						className="mb-2 px-5"
+					>
+						<h2 className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+							{section.title}
+						</h2>
+					</motion.div>
 				)}
+			</AnimatePresence>
 
-				<div className="space-y-1">
-					{section.items.map((item) => (
-						<SidebarItem key={item.id} item={item} />
-					))}
-				</div>
+			<motion.div
+				layout
+				className="space-y-1"
+				initial="hidden"
+				animate="visible"
+				variants={{
+					hidden: {},
+					visible: {
+						transition: {
+							staggerChildren: 0.03,
+						},
+					},
+				}}
+			>
+				{section.items.map((item) => (
+					<motion.div
+						key={item.id}
+						layout
+						variants={{
+							hidden: {
+								opacity: 0,
+								x: -8,
+							},
+							visible: {
+								opacity: 1,
+								x: 0,
+							},
+						}}
+						transition={{
+							duration: 0.18,
+						}}
+					>
+						<SidebarItem item={item} />
+					</motion.div>
+				))}
+			</motion.div>
+
+			<div className="mt-3 px-3">
+				<Separator />
 			</div>
-
-			<Separator />
-		</>
+		</motion.section>
 	);
 }

@@ -17,7 +17,7 @@ interface BuildHomeFeedOptions {
 
 export function buildHomeFeed({
 	videos,
-	tweets,
+	// tweets,
 	isLoading,
 	isError,
 }: BuildHomeFeedOptions): HomeFeedData {
@@ -28,9 +28,9 @@ export function buildHomeFeed({
 
 		latestVideos: videos.slice(6, 9),
 
-		latestTweets: tweets.slice(0, 4),
+		// latestTweets: tweets.slice(0, 4),
 
-		developerTweets: tweets.slice(4, 8),
+		// developerTweets: tweets.slice(4, 8),
 
 		isLoading,
 

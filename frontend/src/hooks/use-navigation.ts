@@ -1,6 +1,6 @@
 // hooks/useNavigation.ts
 
-import { useAuthStore } from '@/store/auth.store';
+import { useAuthStore } from '@/features/auth/auth.store';
 import { authenticatedNavigation, guestNavigation } from '@/data/navigation';
 
 export function useNavigation() {

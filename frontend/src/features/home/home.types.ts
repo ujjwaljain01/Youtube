@@ -10,9 +10,9 @@ export interface HomeFeedData {
 
 	latestVideos: VideoCardData[];
 
-	latestTweets: Tweet[];
+	// latestTweets: Tweet[];
 
-	developerTweets: Tweet[];
+	// developerTweets: Tweet[];
 
 	isLoading: boolean;
 

@@ -1,19 +1,24 @@
+// src/store/sidebar.selector.ts
+
 import { useSidebarStore } from './sidebar.store';
 
 export const useSidebarCollapsed = () =>
 	useSidebarStore((state) => state.collapsed);
 
-export const useMobileSidebarOpen = () =>
+export const useSidebarMobileOpen = () =>
 	useSidebarStore((state) => state.mobileOpen);
 
 export const useToggleSidebar = () =>
 	useSidebarStore((state) => state.toggleSidebar);
 
-export const useToggleMobileSidebar = () =>
-	useSidebarStore((state) => state.toggleMobileSidebar);
+export const useSetSidebarCollapsed = () =>
+	useSidebarStore((state) => state.setCollapsed);
 
-export const useCloseMobileSidebar = () =>
+export const useOpenSidebar = () =>
+	useSidebarStore((state) => state.openMobileSidebar);
+
+export const useCloseSidebar = () =>
 	useSidebarStore((state) => state.closeMobileSidebar);
 
-export const useOpenMobileSidebar = () =>
-	useSidebarStore((state) => state.openMobileSidebar);
+export const useToggleMobileSidebar = () =>
+	useSidebarStore((state) => state.toggleMobileSidebar);

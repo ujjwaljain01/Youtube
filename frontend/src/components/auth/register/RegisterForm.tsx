@@ -1,25 +1,94 @@
 // src/components/auth/RegisterForm.tsx
 
-import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import { FormProvider, useForm } from 'react-hook-form';
+import { FormProvider, useForm, useFormContext } from 'react-hook-form';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+
+import { toast } from 'sonner';
+
+import { Button } from '@/components/ui/button';
 
 import {
 	registerSchema,
 	type RegisterFormValues,
 } from '@/features/auth/validation';
 
-import { REGISTER_STEPS, RegisterStep } from './register-steps';
+import { useRegister } from '@/features/auth/mutations';
+
+import { ROUTES } from '@/routes';
 
 import { RegisterStepper } from './RegisterStepper';
 
-import { AccountStep, SecurityStep, ProfileStep } from './steps';
+import { useRegisterStepper } from './useRegisterStepper';
+
+import { AccountStep, ProfileStep, SecurityStep } from './steps';
+
+import { RegisterStep } from './register-steps';
+
+function RegisterFormContent() {
+	const navigate = useNavigate();
+
+	const registerMutation = useRegister();
+
+	const stepper = useRegisterStepper();
+
+	const methods = useFormContext<RegisterFormValues>();
+
+	const submit = async (values: RegisterFormValues) => {
+		try {
+			await registerMutation.mutateAsync(values);
+
+			toast.success('Account created successfully.');
+
+			navigate(ROUTES.LOGIN, {
+				replace: true,
+			});
+		} catch (error: any) {
+			toast.error(
+				error?.response?.data?.message ?? 'Registration failed.',
+			);
+		}
+	};
+
+	return (
+		<form onSubmit={methods.handleSubmit(submit)} className="space-y-8">
+			<RegisterStepper currentStep={stepper.currentStep} />
+
+			{stepper.currentStep === RegisterStep.ACCOUNT && <AccountStep />}
+
+			{stepper.currentStep === RegisterStep.SECURITY && <SecurityStep />}
+
+			{stepper.currentStep === RegisterStep.PROFILE && <ProfileStep />}
+
+			<div className="flex justify-between">
+				<Button
+					type="button"
+					variant="outline"
+					onClick={stepper.previous}
+					disabled={stepper.isFirstStep}
+				>
+					Back
+				</Button>
+
+				{stepper.isLastStep ? (
+					<Button type="submit" disabled={registerMutation.isPending}>
+						{registerMutation.isPending
+							? 'Creating...'
+							: 'Create Account'}
+					</Button>
+				) : (
+					<Button type="button" onClick={stepper.next}>
+						Next
+					</Button>
+				)}
+			</div>
+		</form>
+	);
+}
 
 export function RegisterForm() {
-	const [step, setStep] = useState(RegisterStep.ACCOUNT);
-
 	const methods = useForm<RegisterFormValues>({
 		resolver: zodResolver(registerSchema),
 
@@ -33,55 +102,9 @@ export function RegisterForm() {
 		},
 	});
 
-	const { trigger, handleSubmit } = methods;
-
-	const next = async () => {
-		const valid = await trigger(REGISTER_STEPS[step].fields);
-
-		if (!valid) return;
-
-		setStep((prev) => (prev + 1) as RegisterStep);
-	};
-
-	const previous = () => {
-		setStep((prev) => (prev - 1) as RegisterStep);
-	};
-
-	const submit = (values: RegisterFormValues) => {
-		console.log(values);
-
-		// useRegister mutation
-	};
-
 	return (
 		<FormProvider {...methods}>
-			<form onSubmit={handleSubmit(submit)} className="space-y-8">
-				<RegisterStepper currentStep={step} />
-
-				{step === RegisterStep.ACCOUNT && <AccountStep />}
-
-				{step === RegisterStep.SECURITY && <SecurityStep />}
-
-				{step === RegisterStep.PROFILE && <ProfileStep />}
-
-				<div className="flex justify-between">
-					<button
-						type="button"
-						onClick={previous}
-						disabled={step === 0}
-					>
-						Back
-					</button>
-
-					{step < RegisterStep.PROFILE ? (
-						<button type="button" onClick={next}>
-							Next
-						</button>
-					) : (
-						<button type="submit">Create Account</button>
-					)}
-				</div>
-			</form>
+			<RegisterFormContent />
 		</FormProvider>
 	);
 }

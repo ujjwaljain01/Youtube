@@ -1,15 +1,49 @@
-// src/routes/route-config.tsx
-
 import type { RouteObject } from 'react-router-dom';
 
 import AppLayout from '@/layouts/AppLayout';
 import AuthLayout from '@/layouts/AuthLayout';
 
-import ProtectedRoute from './ProtectedRoute';
 import GuestRoute from './GuestRoute';
+import ProtectedRoute from './ProtectedRoute';
 import { ROUTES } from './route-paths';
 
 export const routes: RouteObject[] = [
+	// -----------------------
+	// Public Routes
+	// -----------------------
+	{
+		element: <AppLayout />,
+
+		children: [
+			{
+				path: ROUTES.HOME,
+
+				lazy: async () => {
+					const module = await import('@/pages/HomePage');
+
+					return {
+						Component: module.default,
+					};
+				},
+			},
+
+			{
+				path: ROUTES.WATCH,
+
+				lazy: async () => {
+					const module = await import('@/pages/WatchPage');
+
+					return {
+						Component: module.default,
+					};
+				},
+			},
+		],
+	},
+
+	// -----------------------
+	// Protected Routes
+	// -----------------------
 	{
 		element: <ProtectedRoute />,
 
@@ -18,34 +52,18 @@ export const routes: RouteObject[] = [
 				element: <AppLayout />,
 
 				children: [
-					{
-						path: ROUTES.HOME,
-
-						lazy: async () => {
-							const module = await import('@/pages/Home');
-
-							return {
-								Component: module.default,
-							};
-						},
-					},
-
-					{
-						path: ROUTES.WATCH,
-
-						lazy: async () => {
-							const module = await import('@/pages/Watch');
-
-							return {
-								Component: module.default,
-							};
-						},
-					},
+					// history
+					// playlists
+					// upload
+					// settings
 				],
 			},
 		],
 	},
 
+	// -----------------------
+	// Guest Routes
+	// -----------------------
 	{
 		element: <GuestRoute />,
 

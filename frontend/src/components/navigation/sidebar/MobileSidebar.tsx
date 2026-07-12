@@ -1,37 +1,78 @@
+// src/components/navigation/sidebar/MobileSidebar.tsx
+
+import { useEffect } from 'react';
+import { AnimatePresence, motion } from 'motion/react';
+import { useLocation } from 'react-router-dom';
+
 import { Sheet, SheetContent } from '@/components/ui/sheet';
 
-import { SidebarContent } from '@/components/ui/sidebar';
+import {
+	useCloseSidebar,
+	useSidebarMobileOpen,
+} from '@/store/sidebar.selector';
 
-import {useMobileSidebarOpen, useCloseMobileSidebar} from '@/store/sidebar.selector';
-import { useAuthStore } from '@/store/auth.store';
+import { useNavigation } from '@/hooks/use-navigation';
 
 import { SidebarGroup } from './SidebarGroup';
 import { SidebarFooter } from './SidebarFooter';
-import { useNavigation } from '@/hooks/use-navigation';
 
 export function MobileSidebar() {
-	const mobileOpen = useMobileSidebarOpen();
+	const open = useSidebarMobileOpen();
 
-	const closeMobileSidebar = useCloseMobileSidebar();
-
-	const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
+	const close = useCloseSidebar();
 
 	const navigation = useNavigation();
 
+	const location = useLocation();
+
+	useEffect(() => {
+		close();
+	}, [location.pathname, close]);
+
 	return (
 		<Sheet
-			open={mobileOpen}
-			onOpenChange={(open) => {
-				if (!open) closeMobileSidebar();
+			open={open}
+			onOpenChange={(value) => {
+				if (!value) close();
 			}}
 		>
-			<SheetContent side="left" className="w-64 p-0">
-				<SidebarContent className="h-full overflow-y-auto py-2">
-					{navigation.map((section) => (
-						<SidebarGroup key={section.id} section={section} />
-					))}
-				</SidebarContent>
-				<SidebarFooter />
+			<SheetContent
+				side="left"
+				className="w-[290px] border-r bg-background p-0"
+			>
+				<motion.div
+					initial={{
+						x: -40,
+						opacity: 0,
+					}}
+					animate={{
+						x: 0,
+						opacity: 1,
+					}}
+					exit={{
+						x: -40,
+						opacity: 0,
+					}}
+					transition={{
+						type: 'spring',
+						stiffness: 280,
+						damping: 28,
+					}}
+					className="flex h-full flex-col"
+				>
+					<div className="flex-1 overflow-y-auto py-3 scrollbar">
+						<AnimatePresence mode="popLayout">
+							{navigation.map((section) => (
+								<SidebarGroup
+									key={section.id}
+									section={section}
+								/>
+							))}
+						</AnimatePresence>
+					</div>
+
+					<SidebarFooter />
+				</motion.div>
 			</SheetContent>
 		</Sheet>
 	);

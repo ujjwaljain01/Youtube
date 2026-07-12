@@ -1,4 +1,4 @@
-// Sidebar.tsx
+// src/components/navigation/sidebar/Sidebar.tsx
 
 import { useIsMobile } from '@/hooks/useIsMobile';
 

@@ -1,18 +1,17 @@
-import { Gear } from '@phosphor-icons/react';
+// src/components/navigation/sidebar/SidebarFooter.tsx
+
+import { motion } from 'motion/react';
+
+import { footerNavigation } from '@/data/navigation';
 
 import { SidebarItem } from './SidebarItem';
 
 export function SidebarFooter() {
 	return (
-		<div className="border-t border-border p-2">
-			<SidebarItem
-				item={{
-					id: 'settings',
-					label: 'Settings',
-					href: '/settings',
-					icon: Gear,
-				}}
-			/>
-		</div>
+		<motion.footer layout className="border-t border-border/60 py-2">
+			{footerNavigation.items.map((item) => (
+				<SidebarItem key={item.id} item={item} />
+			))}
+		</motion.footer>
 	);
 }

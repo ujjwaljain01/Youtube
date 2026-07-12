@@ -1,5 +1,3 @@
-// src/routes/ProtectedRoute.tsx
-
 import { Navigate, Outlet } from 'react-router-dom';
 
 import { useAuthStore } from '@/features/auth/auth.store';
@@ -7,9 +5,7 @@ import { useAuthStore } from '@/features/auth/auth.store';
 import { ROUTES } from './route-paths';
 
 export default function ProtectedRoute() {
-	const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
-
-	const isLoading = useAuthStore((state) => state.isLoading);
+	const { isAuthenticated, isLoading } = useAuthStore();
 
 	if (isLoading) {
 		return (

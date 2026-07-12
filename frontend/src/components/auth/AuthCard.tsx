@@ -10,7 +10,7 @@ interface AuthCardProps extends PropsWithChildren {
 
 export function AuthCard({ children, className }: AuthCardProps) {
 	return (
-		<div className="flex min-h-screen items-center justify-center bg-background px-4 py-10">
+		<div className="flex items-center justify-center bg-background px-4 py-10">
 			<div
 				className={cn(
 					'w-full max-w-md rounded-2xl border bg-card p-8 shadow-xl',

@@ -6,18 +6,41 @@ import { NotificationButton } from './NotificationButton';
 import { CreateButton } from './CreateButton';
 import { UserMenu } from './UserMenu';
 import { SearchButton } from './SearchButton';
+import { motion } from 'motion/react';
 
 export function Navbar() {
 	return (
-		<header className="sticky top-0 z-40 flex h-16 items-center justify-between border-b border-border bg-background/80 px-4 backdrop-blur">
+		<motion.header
+			layout
+			initial={false}
+			transition={{
+				layout: {
+					duration: 0.25,
+				},
+			}}
+			className=" sticky top-0 z-50 flex h-16 items-center justify-between border-b border-border/60 bg-background/75 px-4 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60"
+		>
 			<div className="flex items-center gap-3">
 				<SidebarToggle />
-				<Logo />
+				<motion.div
+					layout
+					whileHover={{
+						scale: 1.03,
+					}}
+					whileTap={{
+						scale: 0.96,
+					}}
+				>
+					<Logo />
+				</motion.div>
 			</div>
 
-			<div className="hidden flex-1 justify-center px-8 md:flex">
+			<motion.div
+				layout
+				className="hidden flex-1 justify-center px-8 md:flex"
+			>
 				<SearchBar />
-			</div>
+			</motion.div>
 
 			<div className="flex items-center gap-2">
 				<SearchButton />
@@ -30,6 +53,6 @@ export function Navbar() {
 
 				<UserMenu />
 			</div>
-		</header>
+		</motion.header>
 	);
 }

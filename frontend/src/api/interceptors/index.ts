@@ -1,10 +1,13 @@
 // src/api/interceptors/index.ts
 
-import { api } from '../axios';
+import { apiClient } from '../axios';
 
 import { authRequestInterceptor } from './auth.interceptor';
 import { authErrorInterceptor } from './error.interceptor';
 
-api.interceptors.request.use(authRequestInterceptor);
+apiClient.interceptors.request.use(authRequestInterceptor);
 
-api.interceptors.response.use((response) => response, authErrorInterceptor);
+apiClient.interceptors.response.use(
+	(response) => response,
+	authErrorInterceptor,
+);

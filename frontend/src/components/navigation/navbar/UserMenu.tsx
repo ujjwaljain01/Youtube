@@ -11,6 +11,8 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 import { Button } from '@/components/ui/button';
 
+import { motion } from 'motion/react';
+
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -47,13 +49,21 @@ export function UserMenu() {
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
-				<button className="rounded-full outline-none ring-offset-background transition focus-visible:ring-2 focus-visible:ring-ring">
+				<motion.button
+					whileHover={{
+						scale: 1.05,
+					}}
+					whileTap={{
+						scale: 0.95,
+					}}
+					className="rounded-full outline-none ring-offset-background transition focus-visible:ring-2 focus-visible:ring-ring"
+				>
 					<Avatar className="h-9 w-9 cursor-pointer">
 						<AvatarImage src={user.avatar} alt={user.fullName} />
 
 						<AvatarFallback>{initials}</AvatarFallback>
 					</Avatar>
-				</button>
+				</motion.button>
 			</DropdownMenuTrigger>
 
 			<DropdownMenuContent align="end" sideOffset={10} className="w-72">

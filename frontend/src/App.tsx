@@ -1,12 +1,12 @@
 import './App.css';
 import { ThemeProvider } from '@/providers/ThemeProvider';
+import { AppRouter } from '@/routes';
 
 function App() {
 	return (
 		<>
 			<ThemeProvider>
-				
-				<RouterProvider router={router} />
+					<AppRouter />
 			</ThemeProvider>
 		</>
 	);

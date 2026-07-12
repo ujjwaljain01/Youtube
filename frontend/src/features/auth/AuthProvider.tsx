@@ -5,9 +5,7 @@ import type { PropsWithChildren } from 'react';
 import { useInitializeAuth } from './useInitializeAuth';
 import { useAuthStore } from './auth.store';
 
-interface AuthProviderProps extends PropsWithChildren {}
-
-export function AuthProvider({ children }: AuthProviderProps) {
+export function AuthProvider({ children }: PropsWithChildren) {
 	useInitializeAuth();
 
 	const isLoading = useAuthStore((state) => state.isLoading);

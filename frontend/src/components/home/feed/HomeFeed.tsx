@@ -11,9 +11,8 @@ export function HomeFeed() {
 		recommendedVideos,
 		trendingVideos,
 		latestVideos,
-		latestTweets,
-		developerTweets,
-
+		// latestTweets,
+		// developerTweets,
 		isLoading,
 
 		isError,
@@ -38,20 +37,20 @@ export function HomeFeed() {
 				videos={recommendedVideos}
 			/>
 
-			<TweetSection
+			{/* <TweetSection
 				title={HOME_SECTIONS.LATEST_TWEETS}
 				tweets={latestTweets}
-			/>
+			/> */}
 
 			<VideoSection
 				title={HOME_SECTIONS.TRENDING}
 				videos={trendingVideos}
 			/>
 
-			<TweetSection
+			{/* <TweetSection
 				title={HOME_SECTIONS.DEVELOPER_UPDATES}
 				tweets={developerTweets}
-			/>
+			/> */}
 
 			<VideoSection title={HOME_SECTIONS.LATEST} videos={latestVideos} />
 		</div>

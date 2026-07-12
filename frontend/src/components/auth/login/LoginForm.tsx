@@ -11,7 +11,7 @@ import { Label } from '@/components/ui/label';
 
 import { FormMessage } from '@/components/form';
 
-import { PasswordInput } from './PasswordInput';
+import { PasswordInput } from '@/components/auth/PasswordInput';
 
 import { loginSchema, type LoginFormValues } from '@/features/auth/validation';
 

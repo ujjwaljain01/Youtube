@@ -1,28 +1,35 @@
 // src/store/sidebar.store.ts
+
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import type { SidebarState } from '@/types/sidebar.types';
 
-export const useSidebarStore = create<SidebarState>()(
+interface SidebarStore {
+	collapsed: boolean;
+	mobileOpen: boolean;
+
+	setCollapsed: (collapsed: boolean) => void;
+	toggleSidebar: () => void;
+
+	openMobileSidebar: () => void;
+	closeMobileSidebar: () => void;
+	toggleMobileSidebar: () => void;
+}
+
+export const useSidebarStore = create<SidebarStore>()(
 	persist(
-		(set) => ({
+		(set, get) => ({
 			collapsed: false,
 
 			mobileOpen: false,
 
-			toggleSidebar: () =>
-				set((state) => ({
-					collapsed: !state.collapsed,
-				})),
-
-			collapseSidebar: () =>
+			setCollapsed: (collapsed) =>
 				set({
-					collapsed: true,
+					collapsed,
 				}),
 
-			expandSidebar: () =>
+			toggleSidebar: () =>
 				set({
-					collapsed: false,
+					collapsed: !get().collapsed,
 				}),
 
 			openMobileSidebar: () =>
@@ -36,12 +43,12 @@ export const useSidebarStore = create<SidebarState>()(
 				}),
 
 			toggleMobileSidebar: () =>
-				set((state) => ({
-					mobileOpen: !state.mobileOpen,
-				})),
+				set({
+					mobileOpen: !get().mobileOpen,
+				}),
 		}),
 		{
-			name: 'NovaPlay-sidebar',
+			name: 'novaplay-sidebar',
 
 			partialize: (state) => ({
 				collapsed: state.collapsed,

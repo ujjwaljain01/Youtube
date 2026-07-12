@@ -1,4 +1,13 @@
-// src/features/auth/types/auth.types.ts
+//src/features/auth/auth.types.ts
+
+import type { RegisterFormValues } from '../auth/validation/register.schema';
+
+export interface ApiResponse<T> {
+	statusCode: number;
+	success: boolean;
+	message: string;
+	data: T;
+}
 
 export interface AuthUser {
 	_id: string;
@@ -8,6 +17,13 @@ export interface AuthUser {
 	avatar: string;
 	coverImage?: string;
 }
+
+export interface LoginCredentials {
+	email: string;
+	password: string;
+}
+
+export type RegisterCredentials = RegisterFormValues;
 
 export interface AuthState {
 	user: AuthUser | null;
