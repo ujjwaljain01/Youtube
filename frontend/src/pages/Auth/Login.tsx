@@ -1,4 +1,4 @@
-import { AuthCard, AuthFooter, AuthHeader } from '@/components/auth';
+import { AuthFooter, AuthHeader } from '@/components/auth';
 
 import { LoginForm } from '@/components/auth/login/LoginForm';
 
@@ -6,7 +6,7 @@ import { ROUTES } from '@/routes';
 
 export default function LoginPage() {
 	return (
-		<AuthCard>
+		<div>
 			<AuthHeader
 				title="Welcome Back"
 				description="Sign in to your NovaPlay account."
@@ -19,6 +19,6 @@ export default function LoginPage() {
 				linkLabel="Create one"
 				href={ROUTES.REGISTER}
 			/>
-		</AuthCard>
+		</div>
 	);
 }

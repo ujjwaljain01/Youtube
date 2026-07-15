@@ -1,6 +1,6 @@
 // src/pages/Auth/Register/index.tsx
 
-import { AuthCard, AuthFooter, AuthHeader, RegisterForm } from '@/components/auth';
+import { AuthFooter, AuthHeader, RegisterForm } from '@/components/auth';
 
 import { ROUTES } from '@/routes';
 

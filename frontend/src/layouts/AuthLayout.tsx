@@ -2,12 +2,10 @@
 
 import { Outlet } from 'react-router-dom';
 
-import { AuthCard } from '@/components/auth';
-
 export default function AuthLayout() {
 	return (
-		<AuthCard>
+		<div>
 			<Outlet />
-		</AuthCard>
+		</div>
 	);
 }

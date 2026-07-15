@@ -25,7 +25,6 @@ frontend
 │   │   │   │   ├── RegisterForm.tsx
 │   │   │   │   ├── RegisterStepper.tsx
 │   │   │   │   └── useRegisterStepper.tsx
-│   │   │   ├── AuthCard.tsx
 │   │   │   ├── AuthDivider.tsx
 │   │   │   ├── AuthFooter.tsx
 │   │   │   ├── AuthHeader.tsx
