@@ -18,7 +18,7 @@ export function Navbar() {
 					duration: 0.25,
 				},
 			}}
-			className=" sticky top-0 z-50 flex h-16 items-center justify-between border-b border-border/60 bg-background/75 px-4 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60"
+			className=" sticky top-0 z-50 flex h-16 items-center justify-between bg-background/75 px-4 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60"
 		>
 			<div className="flex items-center gap-3">
 				<SidebarToggle />

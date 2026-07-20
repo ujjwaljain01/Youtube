@@ -1,12 +1,12 @@
+import React from 'react';
 import ReactDOM from 'react-dom/client';
-
-import { AppProviders } from '@/providers/AppProviders';
-import { AppRouter } from '@/routes';
 
 import '@/styles/globals.css';
 
+import App from './App';
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
-	<AppProviders>
-		<AppRouter />
-	</AppProviders>,
+	<React.StrictMode>
+		<App />
+	</React.StrictMode>,
 );

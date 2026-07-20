@@ -18,7 +18,7 @@ export function FeedFilterChip({
 			pressed={selected}
 			onPressedChange={onSelect}
 			className={cn(
-				'h-9 rounded-lg px-4 text-sm font-medium transition-colors',
+				'h-9 rounded-lg  text-sm font-medium transition-colors',
 				selected
 					? 'bg-foreground text-background hover:bg-foreground/90'
 					: 'bg-muted hover:bg-muted/80',

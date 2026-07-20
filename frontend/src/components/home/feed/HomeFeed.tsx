@@ -27,7 +27,7 @@ export function HomeFeed() {
 	}
 
 	if (isError) {
-		return <div className="py-20 text-center">Something went wrong.</div>;
+		return <div className="py-20 text-center">Unable to fetch feed.</div>;
 	}
 
 	return (

@@ -1,7 +1,7 @@
 /* ========================================================================
    NovaPlay Design System
    Light Theme → Inspired by DaisyUI Caramellatte
-   Dark Theme  → Inspired by YouTube + DaisyUI Black
+   Dark Theme  → Inspired by DaisyUI Night
 ======================================================================== */
 
 :root {
@@ -13,7 +13,7 @@
 
 	--background: oklch(98.5% 0.008 75);
 	--foreground: oklch(27% 0.02 35);
-	
+
 	/* ------------------------------------------------------------------
      Surfaces
   ------------------------------------------------------------------ */
@@ -63,7 +63,6 @@
   ------------------------------------------------------------------ */
 
 	--sidebar: oklch(97.5% 0.008 75);
-	
 	--sidebar-foreground: var(--foreground);
 
 	--sidebar-border: var(--border);
@@ -144,138 +143,138 @@
 }
 
 /* ==========================================================================
-   DARK THEME
+   DARK THEME (DaisyUI Night)
 ========================================================================== */
 
 .dark {
 	color-scheme: dark;
 
 	/* ------------------------------------------------------------------
-     Core
+     Core (base-100 & slate-50)
   ------------------------------------------------------------------ */
 
-	--background: #0f0f0f;
-	--foreground: #f1f1f1;
+	--background: #0f172a;
+	--foreground: #f8fafc;
 
 	/* ------------------------------------------------------------------
-     Surfaces
+     Surfaces (neutral / base-200)
   ------------------------------------------------------------------ */
 
-	--card: #181818;
-	--card-foreground: #f1f1f1;
+	--card: #1e293b;
+	--card-foreground: #f8fafc;
 
-	--popover: #202020;
-	--popover-foreground: #f1f1f1;
+	--popover: #1e293b;
+	--popover-foreground: #f8fafc;
 
 	/* ------------------------------------------------------------------
      Brand
   ------------------------------------------------------------------ */
 
-	--primary: #ffffff;
-	--primary-foreground: #0f0f0f;
+	--primary: #38bdf8;
+	--primary-foreground: #0f172a;
 
-	--secondary: #272727;
-	--secondary-foreground: #f1f1f1;
+	--secondary: #818cf8;
+	--secondary-foreground: #0f172a;
 
-	--accent: #272727;
-	--accent-foreground: #ffffff;
+	--accent: #f471b5;
+	--accent-foreground: #0f172a;
 
 	/* ------------------------------------------------------------------
      Muted
   ------------------------------------------------------------------ */
 
-	--muted: #272727;
-	--muted-foreground: #aaaaaa;
+	--muted: #334155;
+	--muted-foreground: #94a3b8;
 
 	/* ------------------------------------------------------------------
      Borders
   ------------------------------------------------------------------ */
 
-	--border: #303030;
-	--input: #303030;
-	--ring: #ffffff;
+	--border: #334155;
+	--input: #334155;
+	--ring: #38bdf8;
 
 	/* ------------------------------------------------------------------
      Sidebar
   ------------------------------------------------------------------ */
 
-	--sidebar: #111111;
+	--sidebar: #0f172a;
 
-	--sidebar-foreground: #f1f1f1;
+	--sidebar-foreground: #f8fafc;
 
-	--sidebar-border: #303030;
+	--sidebar-border: #334155;
 
-	--sidebar-hover: #272727;
+	--sidebar-hover: #1e293b;
 
-	--sidebar-active: #3b3b3b;
+	--sidebar-active: #334155;
 
-	--sidebar-accent: #272727;
+	--sidebar-accent: #818cf8;
 
-	--sidebar-accent-foreground: #ffffff;
+	--sidebar-accent-foreground: #0f172a;
 
 	/* ------------------------------------------------------------------
      Navbar
   ------------------------------------------------------------------ */
 
-	--navbar: #0f0f0f;
+	--navbar: #0f172a;
 
-	--navbar-border: #303030;
+	--navbar-border: #334155;
 
 	/* ------------------------------------------------------------------
      Video Cards
   ------------------------------------------------------------------ */
 
-	--video-card: #181818;
+	--video-card: #1e293b;
 
-	--video-card-hover: #232323;
+	--video-card-hover: #334155;
 
 	/* ------------------------------------------------------------------
      Skeleton
   ------------------------------------------------------------------ */
 
-	--skeleton: #2b2b2b;
+	--skeleton: #334155;
 
 	/* ------------------------------------------------------------------
      Scrollbar
   ------------------------------------------------------------------ */
 
-	--scrollbar: #202020;
+	--scrollbar: #1e293b;
 
-	--scrollbar-thumb: #555555;
+	--scrollbar-thumb: #475569;
 
 	/* ------------------------------------------------------------------
      Semantic Colors
   ------------------------------------------------------------------ */
 
-	--success: #22c55e;
+	--success: #2dd4bf;
 
-	--warning: #f59e0b;
+	--warning: #f4bf50;
 
-	--destructive: #ef4444;
+	--destructive: #fb7085;
 
-	--info: #3b82f6;
+	--info: #0ca5e9;
 
 	/* ------------------------------------------------------------------
-     YouTube Tokens
+     YouTube Tokens (Retained for NovaPlay consistency)
   ------------------------------------------------------------------ */
 
 	--youtube-red: #ff0033;
 
-	--verified-blue: #3ea6ff;
+	--verified-blue: #38bdf8; /* Adapted slightly to match Night primary */
 
-	--live-red: #ff1744;
+	--live-red: #fb7085; /* Adapted slightly to match Night destructive */
 
-	--premium-gold: #d6a21d;
+	--premium-gold: #f4bf50; /* Adapted slightly to match Night warning */
 
-	--creator-purple: #8b5cf6;
+	--creator-purple: #818cf8; /* Adapted slightly to match Night secondary */
 
 	/* ------------------------------------------------------------------
-     Charts
+     Charts (Adapted to match Night's vibrant palette)
   ------------------------------------------------------------------ */
 
-	--chart-1: #ff7a59;
-	--chart-2: #34d399;
-	--chart-3: #60a5fa;
-	--chart-4: #fbbf24;
-	--chart-5: #c084fc;
+	--chart-1: #38bdf8;
+	--chart-2: #818cf8;
+	--chart-3: #f471b5;
+	--chart-4: #2dd4bf;
+	--chart-5: #f4bf50;
 }

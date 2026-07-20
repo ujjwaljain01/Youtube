@@ -37,8 +37,6 @@ export function DesktopSidebar() {
 				'h-[calc(100vh-4rem)]',
 				'shrink-0',
 				'overflow-hidden',
-				'border-r',
-				'border-border/60',
 				'bg-background/95',
 				'backdrop-blur-xl',
 				'lg:flex',
@@ -51,7 +49,7 @@ export function DesktopSidebar() {
 			{/* Navigation */}
 			<motion.div
 				layout
-				className="relative flex-1 overflow-y-auto py-3 scrollbar"
+				className="relative flex-1 overflow-y-auto pb-3 scrollbar"
 			>
 				<AnimatePresence mode="popLayout">
 					{navigation.map((section, index) => (

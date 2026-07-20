@@ -3,8 +3,8 @@ import { HomeFeed } from '@/components/home/feed/HomeFeed';
 
 export default function HomePage() {
 	return (
-		<div className="space-y-8 p-6">
-			<FeedFilters />
+		<div className="p-4">
+			{/* <FeedFilters /> */}
 			<HomeFeed />
 		</div>
 	);

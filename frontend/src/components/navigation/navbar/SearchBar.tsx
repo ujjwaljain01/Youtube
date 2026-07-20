@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 
 export function SearchBar() {
 	return (
-		<div className="flex w-full max-w-xl">
+		<div className="flex w-">
 			<Input placeholder="Search" className="rounded-r-none" />
 
 			<Button variant="secondary" className="rounded-l-none border-l">

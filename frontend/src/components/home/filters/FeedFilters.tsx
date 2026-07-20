@@ -12,9 +12,9 @@ export function FeedFilters() {
 	const setSelected = useFeedFilterStore((state) => state.setSelected);
 
 	return (
-		<div className="sticky top-16 z-20 bg-background">
+		<div className="sticky z-20 bg-background">
 			<ScrollArea className="w-full whitespace-nowrap">
-				<div className="flex gap-3 px-4 py-3">
+				<div className="flex  pr-2">
 					{feedFilters.map((filter) => (
 						<FeedFilterChip
 							key={filter.id}
