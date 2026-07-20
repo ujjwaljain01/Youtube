@@ -1,4 +1,4 @@
-export type Theme = 'light' | 'dark' | 'system';
+export type Theme = 'light' | 'dark' | 'night' | 'system';
 
 export type ResolvedTheme = Exclude<Theme, 'system'>;
 

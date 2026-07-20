@@ -1,34 +1,27 @@
-import { motion } from 'motion/react';
-
+// src/components/theme/ThemeToggle.tsx
 import {
-	DropdownMenu,
-	DropdownMenuTrigger,
+    DropdownMenu,
+    DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-
-import { Button } from '@/components/ui/button';
-
+import { buttonVariants } from '@/components/ui/button'; // Import the variants
 import { ThemeIcon } from './ThemeIcon';
 import { ThemeMenu } from './ThemeMenu';
 
 export function ThemeToggle() {
-	return (
-		<DropdownMenu>
-			<DropdownMenuTrigger asChild>
-				<Button
-					size="icon"
-					variant="ghost"
-					className="icon-button icon-button-md"
-				>
-					<motion.div
-						whileTap={{ scale: 0.85 }}
-						whileHover={{ rotate: 15 }}
-					>
-						<ThemeIcon />
-					</motion.div>
-				</Button>
-			</DropdownMenuTrigger>
-
-			<ThemeMenu />
-		</DropdownMenu>
-	);
+    return (
+        <DropdownMenu>
+            <DropdownMenuTrigger 
+                className={buttonVariants({ 
+                    variant: 'outline', 
+                    size: 'icon', 
+                    className: 'relative overflow-hidden border-border bg-background hover:bg-accent hover:text-accent-foreground ring-offset-background transition-colors focus-visible:ring-ring' 
+                })}
+            >
+                <ThemeIcon />
+                <span className="sr-only">Toggle theme</span>
+            </DropdownMenuTrigger>
+            
+            <ThemeMenu />
+        </DropdownMenu>
+    );
 }

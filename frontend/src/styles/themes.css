@@ -1,281 +1,243 @@
 /* ========================================================================
    NovaPlay Design System
-   Light Theme → Inspired by DaisyUI Caramellatte
-   Dark Theme  → Inspired by YouTube + DaisyUI Black
+   Theme 1: Light (Caramellatte)
+   Theme 2: Dark (Daisy UI Black / YouTube)
+   Theme 3: Night (Daisy UI Night)
 ======================================================================== */
 
-:root {
-	color-scheme: light;
+/* ==========================================================================
+   THEME 1: LIGHT (Caramellatte)
+========================================================================== */
+:root, [data-theme="light"] {
+    color-scheme: light;
 
-	/* ------------------------------------------------------------------
-     Core
-  ------------------------------------------------------------------ */
+    /* Core */
+    --background: oklch(98.5% 0.008 75);
+    --foreground: oklch(27% 0.02 35);
 
-	--background: oklch(98.5% 0.008 75);
-	--foreground: oklch(27% 0.02 35);
-	
-	/* ------------------------------------------------------------------
-     Surfaces
-  ------------------------------------------------------------------ */
+    /* Surfaces */
+    --card: oklch(100% 0 0);
+    --card-foreground: var(--foreground);
+    --popover: oklch(100% 0 0);
+    --popover-foreground: var(--foreground);
 
-	--card: oklch(100% 0 0);
-	--card-foreground: var(--foreground);
+    /* Brand */
+    --primary: oklch(43% 0.12 42);
+    --primary-foreground: oklch(99% 0 0);
+    --secondary: oklch(93% 0.02 75);
+    --secondary-foreground: var(--foreground);
+    --accent: oklch(91% 0.03 78);
+    --accent-foreground: var(--foreground);
 
-	--popover: oklch(100% 0 0);
-	--popover-foreground: var(--foreground);
+    /* Muted */
+    --muted: oklch(95% 0.015 75);
+    --muted-foreground: oklch(52% 0.02 45);
 
-	/* ------------------------------------------------------------------
-     Brand
-  ------------------------------------------------------------------ */
+    /* Borders */
+    --border: oklch(88% 0.015 75);
+    --input: oklch(88% 0.015 75);
+    --ring: var(--primary);
 
-	--primary: oklch(43% 0.12 42);
-	--primary-foreground: oklch(99% 0 0);
+    /* Radius */
+    --radius: 0.85rem;
 
-	--secondary: oklch(93% 0.02 75);
-	--secondary-foreground: var(--foreground);
+    /* Sidebar */
+    --sidebar: oklch(97.5% 0.008 75);
+    --sidebar-foreground: var(--foreground);
+    --sidebar-border: var(--border);
+    --sidebar-hover: oklch(93% 0.02 75);
+    --sidebar-active: oklch(89% 0.03 75);
+    --sidebar-accent: oklch(91% 0.03 78);
+    --sidebar-accent-foreground: var(--foreground);
 
-	--accent: oklch(91% 0.03 78);
-	--accent-foreground: var(--foreground);
+    /* Navbar */
+    --navbar: oklch(100% 0 0);
+    --navbar-border: var(--border);
 
-	/* ------------------------------------------------------------------
-     Muted
-  ------------------------------------------------------------------ */
+    /* Video Cards */
+    --video-card: oklch(100% 0 0);
+    --video-card-hover: oklch(97% 0.01 75);
 
-	--muted: oklch(95% 0.015 75);
-	--muted-foreground: oklch(52% 0.02 45);
+    /* Skeleton */
+    --skeleton: oklch(91% 0.02 75);
 
-	/* ------------------------------------------------------------------
-     Borders
-  ------------------------------------------------------------------ */
+    /* Scrollbar */
+    --scrollbar: oklch(96% 0.01 75);
+    --scrollbar-thumb: oklch(74% 0.02 75);
 
-	--border: oklch(88% 0.015 75);
-	--input: oklch(88% 0.015 75);
-	--ring: var(--primary);
+    /* Semantic Colors */
+    --success: oklch(68% 0.18 145);
+    --warning: oklch(80% 0.17 85);
+    --destructive: oklch(63% 0.23 28);
+    --info: oklch(68% 0.17 240);
 
-	/* ------------------------------------------------------------------
-     Radius
-  ------------------------------------------------------------------ */
+    /* YouTube Tokens */
+    --youtube-red: #ff0033;
+    --verified-blue: #3ea6ff;
+    --live-red: #ff1744;
+    --premium-gold: #d6a21d;
+    --creator-purple: #8b5cf6;
 
-	--radius: 0.85rem;
-
-	/* ------------------------------------------------------------------
-     Sidebar
-  ------------------------------------------------------------------ */
-
-	--sidebar: oklch(97.5% 0.008 75);
-	
-	--sidebar-foreground: var(--foreground);
-
-	--sidebar-border: var(--border);
-
-	--sidebar-hover: oklch(93% 0.02 75);
-
-	--sidebar-active: oklch(89% 0.03 75);
-
-	--sidebar-accent: oklch(91% 0.03 78);
-
-	--sidebar-accent-foreground: var(--foreground);
-
-	/* ------------------------------------------------------------------
-     Navbar
-  ------------------------------------------------------------------ */
-
-	--navbar: oklch(100% 0 0);
-
-	--navbar-border: var(--border);
-
-	/* ------------------------------------------------------------------
-     Video Cards
-  ------------------------------------------------------------------ */
-
-	--video-card: oklch(100% 0 0);
-
-	--video-card-hover: oklch(97% 0.01 75);
-
-	/* ------------------------------------------------------------------
-     Skeleton
-  ------------------------------------------------------------------ */
-
-	--skeleton: oklch(91% 0.02 75);
-
-	/* ------------------------------------------------------------------
-     Scrollbar
-  ------------------------------------------------------------------ */
-
-	--scrollbar: oklch(96% 0.01 75);
-
-	--scrollbar-thumb: oklch(74% 0.02 75);
-
-	/* ------------------------------------------------------------------
-     Semantic Colors
-  ------------------------------------------------------------------ */
-
-	--success: oklch(68% 0.18 145);
-
-	--warning: oklch(80% 0.17 85);
-
-	--destructive: oklch(63% 0.23 28);
-
-	--info: oklch(68% 0.17 240);
-
-	/* ------------------------------------------------------------------
-     YouTube Tokens
-  ------------------------------------------------------------------ */
-
-	--youtube-red: #ff0033;
-
-	--verified-blue: #3ea6ff;
-
-	--live-red: #ff1744;
-
-	--premium-gold: #d6a21d;
-
-	--creator-purple: #8b5cf6;
-
-	/* ------------------------------------------------------------------
-     Charts
-  ------------------------------------------------------------------ */
-
-	--chart-1: oklch(70% 0.15 40);
-	--chart-2: oklch(65% 0.15 120);
-	--chart-3: oklch(60% 0.16 220);
-	--chart-4: oklch(75% 0.15 85);
-	--chart-5: oklch(68% 0.17 300);
+    /* Charts */
+    --chart-1: oklch(70% 0.15 40);
+    --chart-2: oklch(65% 0.15 120);
+    --chart-3: oklch(60% 0.16 220);
+    --chart-4: oklch(75% 0.15 85);
+    --chart-5: oklch(68% 0.17 300);
 }
 
 /* ==========================================================================
-   DARK THEME
+   THEME 2: DARK (DaisyUI Black / YouTube)
 ========================================================================== */
+.dark, [data-theme="dark"] {
+    color-scheme: dark;
 
-.dark {
-	color-scheme: dark;
+    /* Core */
+    --background: #0f0f0f;
+    --foreground: #f1f1f1;
 
-	/* ------------------------------------------------------------------
-     Core
-  ------------------------------------------------------------------ */
+    /* Surfaces */
+    --card: #181818;
+    --card-foreground: #f1f1f1;
+    --popover: #202020;
+    --popover-foreground: #f1f1f1;
 
-	--background: #0f0f0f;
-	--foreground: #f1f1f1;
+    /* Brand */
+    --primary: #ffffff;
+    --primary-foreground: #0f0f0f;
+    --secondary: #272727;	
+    --secondary-foreground: #f1f1f1;
+    --accent: #272727;
+    --accent-foreground: #ffffff;
 
-	/* ------------------------------------------------------------------
-     Surfaces
-  ------------------------------------------------------------------ */
+    /* Muted */
+    --muted: #272727;
+    --muted-foreground: #aaaaaa;
 
-	--card: #181818;
-	--card-foreground: #f1f1f1;
+    /* Borders */
+    --border: #303030;
+    --input: #303030;
+    --ring: #ffffff;
 
-	--popover: #202020;
-	--popover-foreground: #f1f1f1;
+    /* Sidebar */
+    --sidebar: #111111;
+    --sidebar-foreground: #f1f1f1;
+    --sidebar-border: #303030;
+    --sidebar-hover: #272727;
+    --sidebar-active: #3b3b3b;
+    --sidebar-accent: #272727;
+    --sidebar-accent-foreground: #ffffff;
 
-	/* ------------------------------------------------------------------
-     Brand
-  ------------------------------------------------------------------ */
+    /* Navbar */
+    --navbar: #0f0f0f;
+    --navbar-border: #303030;
 
-	--primary: #ffffff;
-	--primary-foreground: #0f0f0f;
+    /* Video Cards */
+    --video-card: #181818;
+    --video-card-hover: #232323;
 
-	--secondary: #272727;
-	--secondary-foreground: #f1f1f1;
+    /* Skeleton */
+    --skeleton: #2b2b2b;
 
-	--accent: #272727;
-	--accent-foreground: #ffffff;
+    /* Scrollbar */
+    --scrollbar: #202020;
+    --scrollbar-thumb: #555555;
 
-	/* ------------------------------------------------------------------
-     Muted
-  ------------------------------------------------------------------ */
+    /* Semantic Colors */
+    --success: #22c55e;
+    --warning: #f59e0b;
+    --destructive: #ef4444;
+    --info: #3b82f6;
 
-	--muted: #272727;
-	--muted-foreground: #aaaaaa;
+    /* YouTube Tokens */
+    --youtube-red: #ff0033;
+    --verified-blue: #3ea6ff;
+    --live-red: #ff1744;
+    --premium-gold: #d6a21d;
+    --creator-purple: #8b5cf6;
 
-	/* ------------------------------------------------------------------
-     Borders
-  ------------------------------------------------------------------ */
+    /* Charts */
+    --chart-1: #ff7a59;
+    --chart-2: #34d399;
+    --chart-3: #60a5fa;
+    --chart-4: #fbbf24;
+    --chart-5: #c084fc;
+}
 
-	--border: #303030;
-	--input: #303030;
-	--ring: #ffffff;
+/* ==========================================================================
+   THEME 3: NIGHT (DaisyUI Night)
+========================================================================== */
+.night, [data-theme="night"] {
+    color-scheme: dark;
 
-	/* ------------------------------------------------------------------
-     Sidebar
-  ------------------------------------------------------------------ */
+    /* Core (base-100 & slate-50) */
+    --background: #0f172a;
+    --foreground: #f8fafc;
 
-	--sidebar: #111111;
+    /* Surfaces (neutral / base-200) */
+    --card: #1e293b;
+    --card-foreground: #f8fafc;
+    --popover: #1e293b;
+    --popover-foreground: #f8fafc;
 
-	--sidebar-foreground: #f1f1f1;
+    /* Brand */
+    --primary: #38bdf8;
+    --primary-foreground: #0f172a;
+    --secondary: #818cf8;
+    --secondary-foreground: #0f172a;
+    --accent: #f471b5;
+    --accent-foreground: #0f172a;
 
-	--sidebar-border: #303030;
+    /* Muted */
+    --muted: #334155;
+    --muted-foreground: #94a3b8;
 
-	--sidebar-hover: #272727;
+    /* Borders */
+    --border: #334155;
+    --input: #334155;
+    --ring: #38bdf8;
 
-	--sidebar-active: #3b3b3b;
+    /* Sidebar */
+    --sidebar: #0f172a;
+    --sidebar-foreground: #f8fafc;
+    --sidebar-border: #334155;
+    --sidebar-hover: #1e293b;
+    --sidebar-active: #334155;
+    --sidebar-accent: #818cf8;
+    --sidebar-accent-foreground: #0f172a;
 
-	--sidebar-accent: #272727;
+    /* Navbar */
+    --navbar: #0f172a;
+    --navbar-border: #334155;
 
-	--sidebar-accent-foreground: #ffffff;
+    /* Video Cards */
+    --video-card: #1e293b;
+    --video-card-hover: #334155;
 
-	/* ------------------------------------------------------------------
-     Navbar
-  ------------------------------------------------------------------ */
+    /* Skeleton */
+    --skeleton: #334155;
 
-	--navbar: #0f0f0f;
+    /* Scrollbar */
+    --scrollbar: #1e293b;
+    --scrollbar-thumb: #475569;
 
-	--navbar-border: #303030;
+    /* Semantic Colors */
+    --success: #2dd4bf;
+    --warning: #f4bf50;
+    --destructive: #fb7085;
+    --info: #0ca5e9;
 
-	/* ------------------------------------------------------------------
-     Video Cards
-  ------------------------------------------------------------------ */
+    /* YouTube Tokens (Retained for NovaPlay consistency) */
+    --youtube-red: #ff0033;
+    --verified-blue: #38bdf8;
+    --live-red: #fb7085;
+    --premium-gold: #f4bf50;
+    --creator-purple: #818cf8;
 
-	--video-card: #181818;
-
-	--video-card-hover: #232323;
-
-	/* ------------------------------------------------------------------
-     Skeleton
-  ------------------------------------------------------------------ */
-
-	--skeleton: #2b2b2b;
-
-	/* ------------------------------------------------------------------
-     Scrollbar
-  ------------------------------------------------------------------ */
-
-	--scrollbar: #202020;
-
-	--scrollbar-thumb: #555555;
-
-	/* ------------------------------------------------------------------
-     Semantic Colors
-  ------------------------------------------------------------------ */
-
-	--success: #22c55e;
-
-	--warning: #f59e0b;
-
-	--destructive: #ef4444;
-
-	--info: #3b82f6;
-
-	/* ------------------------------------------------------------------
-     YouTube Tokens
-  ------------------------------------------------------------------ */
-
-	--youtube-red: #ff0033;
-
-	--verified-blue: #3ea6ff;
-
-	--live-red: #ff1744;
-
-	--premium-gold: #d6a21d;
-
-	--creator-purple: #8b5cf6;
-
-	/* ------------------------------------------------------------------
-     Charts
-  ------------------------------------------------------------------ */
-
-	--chart-1: #ff7a59;
-	--chart-2: #34d399;
-	--chart-3: #60a5fa;
-	--chart-4: #fbbf24;
-	--chart-5: #c084fc;
+    /* Charts (Adapted to match Night's vibrant palette) */
+    --chart-1: #38bdf8;
+    --chart-2: #818cf8;
+    --chart-3: #f471b5;
+    --chart-4: #2dd4bf;
+    --chart-5: #f4bf50;
 }

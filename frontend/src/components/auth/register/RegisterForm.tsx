@@ -140,7 +140,7 @@ export function RegisterForm() {
                 </div>
 
                 {/* Right Column - Multi-step Form */}
-                <div className="p-8 sm:p-12 flex flex-col bg-card relative min-h-[500px]">
+                <div className="p-8 sm:p-12 sm:pb-8 flex flex-col bg-card relative min-h-[500px]">
                     <div className="mb-8">
                         <RegisterStepper currentStep={stepper.currentStep} />
                     </div>

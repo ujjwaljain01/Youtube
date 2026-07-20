@@ -92,7 +92,7 @@ export function ImagePicker({
                             {placeholder}
                         </p>
                         <p className="text-xs text-muted-foreground/70">
-                            SVG, PNG, JPG or WEBP (max. 5MB)
+                            SVG, PNG, JPG or WEBP (max. 4MB)
                         </p>
                     </div>
                     

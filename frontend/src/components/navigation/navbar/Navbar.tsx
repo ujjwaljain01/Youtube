@@ -2,7 +2,6 @@ import { SearchBar } from './SearchBar';
 import { SidebarToggle } from './SidebarToggle';
 import { Logo } from './Logo';
 import { ThemeToggle } from '@/components/theme/ThemeToggle';
-import { NotificationButton } from './NotificationButton';
 import { CreateButton } from './CreateButton';
 import { UserMenu } from './UserMenu';
 import { SearchButton } from './SearchButton';
@@ -48,8 +47,6 @@ export function Navbar() {
 				<ThemeToggle />
 
 				<CreateButton />
-
-				<NotificationButton />
 
 				<UserMenu />
 			</div>
