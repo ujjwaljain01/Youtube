@@ -74,7 +74,7 @@ export const SidebarItem = memo(function SidebarItem({
 					)}
 				>
 					<Tooltip delayDuration={300}>
-						<TooltipTrigger asChild>
+						<TooltipTrigger>
 							<div
 								className={cn(
 									'relative z-10 flex h-full w-full items-center',
