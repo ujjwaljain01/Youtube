@@ -1,76 +1,203 @@
 # 🎥 NovaPlay
 
-> A modern video-sharing and creator platform that combines YouTube-style publishing and playback with Twitter-like conversation, channel identity, and creator management tools.
+> NovaPlay is a full-stack video creator platform for independent creators and communities. It pairs polished video publishing and playback with social engagement, channel identity, and creator analytics powered by React, Vite, Node.js, Express, MongoDB, and Cloudinary.
 
-NovaPlay is a full-stack creator platform designed to be a calmer, more minimal alternative to cluttered media dashboards. With soft gradients, clean cards, and a simplified flow, NovaPlay brings the focus back to content and community. Built with **Next.js**, it features a light social layer woven directly into the video consumption experience.
+## Table of Contents
 
----
+- [Core Features](#core-features)
+- [Tech Stack](#tech-stack)
+- [Architecture & Folder Structure](#architecture--folder-structure)
+- [Getting Started](#getting-started)
+- [Environment Variables](#environment-variables)
+- [Third-Party Service Setup](#third-party-service-setup)
+- [License & Contact](#license--contact)
 
-## ✨ Key Features
+## Core Features
 
-### 🔐 Authentication & Onboarding
+### Authentication & User Management
 
-- **Guided 3-Step Sign-up:** Collects full name, username, email, password, avatar, and an optional cover image.
-- **Secure Sessions:** Real session-based account management featuring login, logout, refresh tokens, and password changes.
-- **Profile Management:** Seamless current-user lookups and account updates.
+- Email and username login with secure JWT-based sessions
+- Refresh token flow and cookie-based access control
+- User profile creation with avatar and optional cover image
+- Account update, password change, and current-user lookup endpoints
 
-### 📺 Creator Channels & Identity
+### Creator Channels & Video Management
 
-- **Dedicated Profiles:** Each user gets a public channel at an `@username` route.
-- **Visual Identity:** Showcases avatar, cover image, subscriber counts, and account creation dates.
-- **Creator Controls:** Owner-specific actions for editing channel details and managing uploaded videos. It’s not just a file host—it’s your space.
+- Upload videos with custom thumbnails
+- Video metadata editing, publish/unpublish toggling, and deletion
+- Cloudinary-backed media storage and asset lifecycle handling
+- View count tracking and watch history support
 
-### 🎬 Video Publishing & Management
+### Social & Discovery
 
-- **Complete Upload Flow:** Publish videos, attach custom thumbnails, and add rich titles and descriptions.
-- **Lifecycle Management:** Edit metadata, or fully replace video files and thumbnails post-publish.
-- **Robust Storage:** Backend integration with **Cloudinary** for scalable asset references, duration tracking, and publish status.
+- Public channel profiles with subscriber tracking
+- Tweet-style short posts and engagement actions
+- Likes and comments across videos and tweets
+- Playlist creation and video organization
 
-### 🍿 Premium Watch Experience
+### Dashboard & Analytics
 
-- **Cinematic Playback:** Utilizes **Vidstack** for a highly polished, custom media player experience (no bare `<video>` tags).
-- **Dynamic Data:** Fetches hosted media directly from the backend, increments view counts, and displays rich metadata on load.
+- Creator metrics for videos, views, subscribers, likes, and comments
+- Channel-specific listings and engagement summaries
+- Secure dashboard APIs protected by authentication
 
-### 🌐 Hybrid Discovery Feed
+## Tech Stack
 
-- **Mixed Media Timeline:** The `/videos` feed seamlessly alternates between video rows and short social posts ("tweets").
-- **Social Integration:** Creates a unique platform identity—part video streaming hub, part community conversation space.
+- Frontend
+    - React 19
+    - Vite
+    - React Router DOM
+    - Zustand
+    - React Query
+    - Tailwind CSS
+    - Vidstack
+    - Axios
+    - Zod
+    - React Hook Form
 
-### 💬 Community & Social Systems
+- Backend
+    - Node.js
+    - Express 5
+    - MongoDB with Mongoose
+    - JSON Web Tokens (JWT)
+    - Multer
+    - Cloudinary
+    - Bcrypt
+    - Fluent-ffmpeg / ffprobe
 
-- **Engage:** Like, comment, and reply to both videos and tweets.
-- **Connect:** Subscribe to your favorite creator channels.
-- **Organize:** Curate content into Playlists and track your Watch History.
+- Tools
+    - npm
+    - nodemon
+    - ESLint
+    - Prettier
+    - Vite
 
-### 📊 Creator Analytics & Dashboard
+## Architecture & Folder Structure
 
-- **Performance Metrics:** Track total videos, total views, total subscribers, total comments, and total likes.
-- **Content Control Panel:** Advanced channel video listing endpoints that provide engagement counts for a creator's own uploads.
+NovaPlay is separated into two main applications:
 
----
+- `backend/` — Express REST API server
+- `frontend/` — React SPA built with Vite
 
-## 🛠️ Tech Stack
+Directory layout:
 
-- **Frontend:** [Next.js](https://nextjs.org/) – Delivering a modern, fast, and polished user interface.
-- **Media Player:** [Vidstack](https://vidstack.io/) – For a robust, customizable video consumption experience.
-- **Asset Storage:** [Cloudinary](https://cloudinary.com/) – Handling video and image asset lifecycle management.
-- **Backend Infrastructure:** REST API architecture with dedicated routes and controllers for Auth, Users, Videos, Tweets, Comments, Likes, Playlists, and Dashboard stats.
+```
+NovaPlay/
+├── backend/
+│   ├── src/
+│   │   ├── app.js              # Express application setup
+│   │   ├── index.js            # Server entrypoint and DB bootstrap
+│   │   ├── db/                 # MongoDB connection logic
+│   │   ├── controllers/        # Route handlers and business logic
+│   │   ├── models/             # Mongoose schemas and methods
+│   │   ├── routes/             # Express routing configuration
+│   │   ├── middlewares/        # Auth, upload, and error middleware
+│   │   └── utils/              # API helpers, Cloudinary helpers, error classes
+│   ├── package.json
+│   ├── .env.example
+│   └── public/
+├── frontend/
+│   ├── src/
+│   │   ├── main.tsx            # App bootstrap
+│   │   ├── App.tsx             # Root provider composition
+│   │   ├── routes/             # Browser route configuration
+│   │   ├── pages/              # App page components
+│   │   ├── features/           # Feature slices (auth, data, UI)
+│   │   ├── api/                # Axios client and API abstractions
+│   │   ├── providers/          # React context and query providers
+│   │   └── styles/             # Global CSS and theme support
+│   ├── package.json
+│   └── .env
+└── Readme.md
+```
 
----
+### Data Flow
 
-## 🚀 Getting Started
+1. The frontend uses `axios` via `apiClient` to send requests to backend endpoints under `/api/v1/*`.
+2. Auth state is initialized by fetching the current user and stored in a Zustand store.
+3. Backend controllers validate requests, interact with MongoDB models, and manage Cloudinary uploads for media assets.
+4. The backend returns structured JSON responses to the client for rendering UI state.
 
-### Prerequisites
+## Getting Started
 
-- Node.js (v18 or higher recommended)
-- npm, yarn, or pnpm
-- Cloudinary Account & API Keys
-- Backend API up and running
+### Backend Setup
 
-### Installation
+```bash
+cd backend
+npm install
+cp .env.example .env
+```
 
-1. **Clone the repository:**
-    ```bash
-    git clone [https://github.com/ujjwaljain01/NovaPlay.git](https://github.com/ujjwaljain01/NovaPlay.git)
-    cd novaplay
-    ```
+Edit `backend/.env` with your values, then start the server:
+
+```bash
+npm run dev
+```
+
+### Frontend Setup
+
+```bash
+cd frontend
+npm install
+```
+
+Verify `frontend/.env` contains the correct API base URL, then start the client:
+
+```bash
+npm run dev
+```
+
+### Local Development Defaults
+
+- Backend default port: `5000` (or `process.env.PORT`)
+- Frontend Vite dev server: typically `http://localhost:5173`
+- API base URL should point to the backend, e.g. `http://localhost:5000/api/v1`
+
+## Environment Variables
+
+### Backend (`backend/.env`)
+
+```env
+PORT=5000
+CORS_ORIGIN=http://localhost:5173
+MONGODB_URI=mongodb://localhost:27017
+ACCESS_TOKEN_SECRET=your-access-token-secret
+ACCESS_TOKEN_EXPIRY=15m
+REFRESH_TOKEN_SECRET=your-refresh-token-secret
+REFRESH_TOKEN_EXPIRY=7d
+CLOUDINARY_URL=cloudinary://API_KEY:API_SECRET@CLOUD_NAME
+```
+
+### Frontend (`frontend/.env`)
+
+```env
+VITE_API_BASE_URL=http://localhost:5000/api/v1
+```
+
+## Third-Party Service Setup
+
+### Cloudinary
+
+NovaPlay uses Cloudinary to store uploaded videos, thumbnails, avatars, and cover images.
+
+1. Create a Cloudinary account at https://cloudinary.com.
+2. Retrieve your Cloud name, API key, and API secret.
+3. Set `CLOUDINARY_URL=cloudinary://API_KEY:API_SECRET@CLOUD_NAME` in `backend/.env`.
+
+### MongoDB
+
+The backend requires a MongoDB database.
+
+- For local development, install MongoDB locally and use `mongodb://localhost:27017`.
+- For hosted deployment, use MongoDB Atlas and set `MONGODB_URI` to your cluster connection string.
+
+### CORS and Cookies
+
+- Set `CORS_ORIGIN` in the backend to your frontend URL, such as `http://localhost:5173`.
+- The backend sends `accessToken` and `refreshToken` cookies; the frontend client is configured to send credentials with requests.
+
+## License & Contact
+
+This repository does not currently include a `LICENSE` file. If you want to open-source NovaPlay, add a license such as MIT or GPL.
+
+Questions or feedback? Reach out through the repository owner profile or add an issue in this repository.

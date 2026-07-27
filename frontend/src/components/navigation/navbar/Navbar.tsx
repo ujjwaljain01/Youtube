@@ -10,6 +10,7 @@ import { useAuthStore } from "@/features/auth/auth.store";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { ThemeToggle } from "@/components/theme";
 
 export function Navbar() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -93,6 +94,8 @@ export function Navbar() {
           </div>
         )}
         
+<ThemeToggle />
+		
         <div className="ml-1 border-l border-[var(--border)] pl-3">
           <UserMenu />
         </div>
